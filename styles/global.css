@@ -1,3 +1,47 @@
+/* Load fonts */
+@font-face {
+  font-family: "Urbanist-Black";
+  src: url("../assets/fonts/urbanist/Urbanist-Black.ttf");
+}
+
+@font-face {
+  font-family: "Urbanist-Bold";
+  src: url("../assets/fonts/urbanist/Urbanist-Bold.ttf");
+}
+
+@font-face {
+  font-family: "Urbanist-Medium";
+  src: url("../assets/fonts/urbanist/Urbanist-Medium.ttf");
+}
+
+@font-face {
+  font-family: "Urbanist-Regular";
+  src: url("../assets/fonts/urbanist/Urbanist-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Urbanist-Thin";
+  src: url("../assets/fonts/urbanist/Urbanist-Thin.ttf");
+}
+
+@font-face {
+  font-family: "Urbanist-Light";
+  src: url("../assets/fonts/urbanist/Urbanist-Light.ttf");
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  font-family: "Urbanist-Regular";
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Urbanist-Bold";
+}
+
+.logo-container > span {
+  font-family: "Urbanist-Black";
+  font-size: 1.5em;
+}

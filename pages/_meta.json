@@ -1,15 +1,54 @@
 {
-  "index": "Introduction",
-  "another": "Guide",
-  "advanced": "API",
+  "index": {
+    "display": "hidden",
+    "theme": {
+      "breadcrumb": false,
+      "footer": true,
+      "sidebar": false,
+      "toc": false,
+      "pagination": false,
+      "layout": "raw"
+    }
+  },
+  "showcase": {
+    "title": "Showcase",
+    "type": "page",
+    "theme": {
+      "breadcrumb": false,
+      "footer": true,
+      "sidebar": true,
+      "toc": true,
+      "pagination": true,
+      "layout": "raw"
+    }
+  },
+  "docs": {
+    "title": "Docs",
+    "type": "page",
+    "href": "docs"
+  },
+  "blog": {
+    "title": "Blog",
+    "type": "page",
+    "theme": {
+      "breadcrumb": false,
+      "footer": true,
+      "sidebar": true,
+      "toc": true,
+      "pagination": true,
+      "layout": "full"
+    }
+  },
   "about": {
     "title": "About",
-    "type": "page"
-  },
-  "contact": {
-    "title": "Contact ↗",
     "type": "page",
-    "href": "https://twitter.com/shuding_",
-    "newWindow": true
+    "theme": {
+      "breadcrumb": false,
+      "footer": true,
+      "sidebar": true,
+      "toc": true,
+      "pagination": true,
+      "layout": "raw"
+    }
   }
 }

@@ -1,0 +1,31 @@
+{
+  "index": {
+    "title": "Introduction"
+  },
+  "getting-started": {
+    "title": "Getting Started"
+  },
+  "core": {
+    "title": "Core Concepts"
+  },
+  "api": {
+    "title": "API Reference"
+  },
+  "extensions": {
+    "title": "Extensions Libraries"
+  },
+  "community": {
+    "title": "Community"
+  },
+  "another": {
+    "display": "hidden"
+  },
+  "advanced": {
+    "display": "hidden"
+  },
+  "about": {
+    "title": "About",
+    "type": "page",
+    "display": "hidden"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "components": {
+    "title": "Components"
+  },
+  "functions": {
+    "title": "Functions"
+  },
+  "file-conventions": {
+    "title": "File Conventions"
+  },
+  "rasengan.config.js": {
+    "title": "rasengan.config.js"
+  },
+  "create-rasengan-app": {
+    "title": "create-rasengan-app"
+  },
+  "cli": {
+    "title": "Rasengan CLI"
+  }
+}

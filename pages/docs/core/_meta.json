@@ -1,0 +1,34 @@
+{
+  "routing": {
+    "title": "Routing"
+  },
+  "rendering": {
+    "title": "Rendering"
+  },
+  "styling": {
+    "title": "Styling"
+  },
+  "optimizing": {
+    "title": "Optimizing"
+  },
+  "metadata": {
+    "title": "Metadata"
+  },
+  "configuring": {
+    "title": "Configuring"
+  },
+  "testing": {
+    "title": "Testing",
+    "display": "hidden"
+  },
+  "authentication": {
+    "title": "Authentication"
+  },
+  "internationalization": {
+    "title": "Internationalization",
+    "display": "hidden"
+  },
+  "deploying": {
+    "title": "Deploying"
+  }
+}
