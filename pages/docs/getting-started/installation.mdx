@@ -1,5 +1,63 @@
 # Installation
 
-import Button from "/components/atoms/Button"
+System Requirements:
 
-<Button text="Click Me" />
+- [Node.js 18.19](https://nodejs.org) or later.
+- macOS, Windows, and Linux are supported.
+
+
+## Automatic Installation
+
+We recommend starting a new Rasengan.js app using [create-rasengan](/docs/api/create-rasengan-app), which sets up everything automatically for you. 
+To create a project, run:
+
+```bash filename="Terminal"
+  npx create-rasengan@latest new
+```
+
+On the installation process, you will see the following prompts:
+
+```txt filename="Terminal"
+  You are using Create Rasengan CLI 🎉
+
+  ? Enter the project name: my-app
+  ? Select a version: 1.0.0-beta.2
+  ? Select a language: typescript
+  ? Select a template: blank
+```
+
+After the prompts, create-rasengan will create a folder with your project name. You will then have to install the required dependencies manually.
+
+```bash filename="Terminal"
+  cd my-app
+  npm install
+```
+
+## Manual Installation
+
+If you prefer to install Rasengan.js manually, you have to create a new project and install the required dependencies.
+
+```bash filename="Terminal"
+  mkdir my-app
+  cd my-app
+  npm init -y
+  npm install rasengan@latest react@latest react-dom@latest
+```
+
+Open the `package.json` file and add the following scripts:
+
+```json filename="package.json"
+  "scripts": {
+    "dev": "rasengan dev",
+    "build": "rasengan build",
+    "prepare": "rasengan prepare",
+    "preview": "rasengan preview"
+  }
+```
+
+These scripts refer to the different stages of developing an application:
+
+- `dev`: runs `rasengan dev` to start Rasengan.js in development mode.
+- `build`: runs `rasengan build` to build the application for production usage.
+- `prepare`: runs `rasengan prepare` to setup configuration need for hosting your application.
+- `preview`: runs `rasengan preview` to start a Rasengan.js production server.
