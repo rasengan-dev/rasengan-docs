@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/rasengan-dev/rasengan-docs#readme",
   "dependencies": {
+    "bootstrap-icons": "^1.11.3",
     "next": "^13.0.6",
     "nextra": "latest",
     "nextra-theme-docs": "latest",
