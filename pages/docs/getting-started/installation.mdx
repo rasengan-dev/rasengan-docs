@@ -1,3 +1,5 @@
+import AlertBox from "@components/atoms/Alert";
+
 # Installation
 
 System Requirements:
@@ -11,24 +13,24 @@ System Requirements:
 We recommend starting a new Rasengan.js app using [create-rasengan](/docs/api/create-rasengan-app), which sets up everything automatically for you. 
 To create a project, run:
 
-```bash filename="Terminal"
-  npx create-rasengan@latest new
+```bash filename="Terminal" copy
+npx create-rasengan@latest new
 ```
 
 On the installation process, you will see the following prompts:
 
 ```txt filename="Terminal"
-  You are using Create Rasengan CLI 🎉
+You are using Create Rasengan CLI 🎉
 
-  ? Enter the project name: my-app
-  ? Select a version: 1.0.0-beta.2
-  ? Select a language: typescript
-  ? Select a template: blank
+? Enter the project name: my-app
+? Select a version: 1.0.0-beta.2
+? Select a language: typescript
+? Select a template: blank
 ```
 
 After the prompts, create-rasengan will create a folder with your project name. You will then have to install the required dependencies manually.
 
-```bash filename="Terminal"
+```bash filename="Terminal" copy
   cd my-app
   npm install
 ```
@@ -37,27 +39,176 @@ After the prompts, create-rasengan will create a folder with your project name. 
 
 If you prefer to install Rasengan.js manually, you have to create a new project and install the required dependencies.
 
-```bash filename="Terminal"
-  mkdir my-app
-  cd my-app
-  npm init -y
-  npm install rasengan@latest react@latest react-dom@latest
+```bash filename="Terminal" copy
+mkdir my-app
+cd my-app
+npm init -y
+npm install rasengan@latest react@latest react-dom@latest
 ```
 
 Open the `package.json` file and add the following scripts:
 
-```json filename="package.json"
-  "scripts": {
-    "dev": "rasengan dev",
-    "build": "rasengan build",
-    "prepare": "rasengan prepare",
-    "preview": "rasengan preview"
-  }
+```json filename="package.json" copy
+"scripts": {
+  "dev": "rasengan dev",
+  "build": "rasengan build",
+  "prepare": "rasengan prepare",
+  "preview": "rasengan preview"
+}
 ```
 
 These scripts refer to the different stages of developing an application:
 
 - `dev`: runs `rasengan dev` to start Rasengan.js in development mode.
 - `build`: runs `rasengan build` to build the application for production usage.
-- `prepare`: runs `rasengan prepare` to setup configuration need for hosting your application.
+- `prepare`: runs `rasengan prepare` to setup configuration needed for hosting your application.
 - `preview`: runs `rasengan preview` to start a Rasengan.js production server.
+
+
+### Creating root directories and root files
+
+There are just two directories you need to create at the root level of your project:
+
+- `public`: contains static files that will be served by Rasengan.js, especially icons.
+- `src`: contains the source code of your application.
+
+```bash filename="Terminal" copy
+mkdir public src
+```
+
+Always at the root level, create these important files:
+
+- index.html: the main HTML template file of your application.
+- rasengan.config.js: the configuration file for Rasengan.js.
+
+```bash filename="Terminal" copy
+touch index.html
+touch rasengan.config.js
+```
+
+Then add the following content to the `index.html` file:
+
+```html filename="index.html" copy
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--app-head-->
+  </head>
+  <body>
+    <div id="root"><!--app-html--></div>
+
+    <script
+      type="module"
+      src="/node_modules/rasengan/lib/entries/entry-client.js"
+      defer
+    ></script>
+  </body>
+</html>
+```
+
+<AlertBox type="info">
+  The `<!--app-head-->` and `<!--app-html-->` comments are used by Rasengan.js to inject the head and HTML content of your application.
+</AlertBox>
+
+And the following content to the `rasengan.config.js` file:
+
+```javascript filename="rasengan.config.js" copy
+import { defineConfig } from 'rasengan';
+
+export default defineConfig({
+  reactStrictMode: true,
+
+  /* More config here */
+});
+```
+
+This file is used to configure Rasengan.js. You can add more configuration options as needed.
+See the [Configuration](/docs/api/rasengan-config) section for more details.
+
+### Creating subdirectories and others files
+
+Inside the `src` directory, create a `pages` directory to store your application's pages.
+
+```bash filename="Terminal" copy
+mkdir src/pages
+```
+
+Then create a `home.page.jsx` and app.router.js files inside the `pages` directory:
+
+```bash filename="Terminal" copy
+touch src/pages/home.page.jsx src/pages/app.router.js
+```
+
+The `home.page.jsx` file will define a [`page`](/docs/core/routing#pages), more precisely the home page,
+and the `app.router.js` file will define a [`router`](/docs/core/routing#routers), which is a collection of pages.
+
+After, copy and paste the following code into `home.page.jsx`
+
+```javascript filename="home.page.jsx" copy
+import { PageComponent, defineRoutePage } from "rasengan";
+
+class Home extends PageComponent {
+  render() {
+    return (
+      <div>Home Page</div>
+    )
+  }
+}
+
+export default defineRoutePage({
+  path: "/",
+  title: "Home",
+  description: "Home page",
+})(Home);
+```
+
+Do the same for `app.router.js`
+
+```javascript filename="app.router.js" copy
+import { RouterComponent, defineRouter } from "rasengan";
+import Home from "./home.page";
+
+class AppRouter extends RouterComponent {}
+
+export default defineRouter({
+  imports: [],
+  pages: [Home]
+})(AppRouter);
+```
+
+<AlertBox type="info">
+The `app.router.js` file is required, because it's used by Rasengan.js to define routing for your app automatically.
+</AlertBox>
+
+Finally, create the entry file called `main.js` inside the `src` folder.
+
+```bash filename="Terminal" copy
+touch src/main.js
+```
+
+Then add the following content in it:
+
+```javascript filename="main.js" copy
+import { AppProps } from "rasengan";
+import AppRouter from "./pages/app.router";
+
+export default function App({ Component }: AppProps) {
+  return <Component router={AppRouter} />;
+}
+```
+
+Learn more about [`main.js`](/docs/api/file-convention/main) file.
+
+
+<AlertBox type="info">
+The `main.js` file is the entry file of a Rasengan.js application, so it is required.
+</AlertBox>
+
+### Run the development server
+
+1. Execute `npm run dev` command.
+2. Open `http://localhost:5320` in the browser.
+3. Edit `src/pages/home.page.jsx` and save to reload automatically.

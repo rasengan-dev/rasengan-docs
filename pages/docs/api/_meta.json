@@ -8,7 +8,7 @@
   "file-conventions": {
     "title": "File Conventions"
   },
-  "rasengan.config.js": {
+  "rasengan-config": {
     "title": "rasengan.config.js"
   },
   "create-rasengan-app": {

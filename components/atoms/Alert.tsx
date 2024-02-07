@@ -105,7 +105,7 @@ export default function AlertBox({ children, type }: Props) {
   return (
     <div
       className={twMerge(
-        "w-full rounded-lg border-2 px-4 py-2 flex overflow-hidden",
+        "w-full rounded-lg border-2 px-4 py-2 flex overflow-hidden my-4",
         `${bgColorName} ${borderColorName}`
       )}
     >
