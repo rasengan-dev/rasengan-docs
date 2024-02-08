@@ -111,7 +111,7 @@ export default function AlertBox({ children, type }: Props) {
     >
       <Icon name={iconName} size={24} className={twMerge("mr-4", iconColorName)} />
 
-      <div>{children}</div>
+      <div className="flex items-center">{children}</div>
     </div>
   );
 }

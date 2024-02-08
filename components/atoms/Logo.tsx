@@ -16,7 +16,7 @@ export default function Logo() {
       <Image
         src={isDark ? logoWhite : logo}
         alt="Logo of Rasengan"
-        width={200}
+        width={180}
         height={80}
       />
     </div>

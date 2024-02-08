@@ -1,1 +1,69 @@
-# Project Structure
+import AlertBox from '@components/atoms/Alert';
+
+# Rasengan.js Project Structure
+
+This page provides an overview of how a Rasengan.js project is structured. 
+We will go through the top-level directories and files, and also the configuration files that are used to set up the project
+and some conventions that are used in the project.
+
+## Top-level Directories
+
+A Rasengan.js project has the following top-level directories:
+
+| Directory | Description                               |
+|-----------|-------------------------------------------|
+| `public`  | Contains the static files of the project. |
+| `src`     | Contains the source code of the project.  |
+
+## Top-level Files
+
+A Rasengan.js project has the following top-level files:
+
+| File                 | Description                                                                 |
+|----------------------|-----------------------------------------------------------------------------|
+| `rasengan.config.js` | Configuration file for Rasengan.js project                                  |
+| `package.json`       | Project dependencies, scripts and others                                    |
+| `index.html`         | HTML template                                                               |
+| `.env`               | Environment variables                                                       |
+| `.env.example`       | Example of environment variables                                            |
+| `.gitignore`         | Files and directories that should be ignored by git                         |
+| `README.md`          | Project documentation                                                       |
+| `rasengan-env.d.ts`  | TypeScript declaration file for Rasengan.js                                 |
+| `tsconfig.json`      | TypeScript configuration file                                               |
+| `jsconfig.json`      | JavaScript configuration file                                               |
+
+## Src folder
+
+Inside the `src` you have the following folders and files 
+
+### Folders
+
+| Directory     | Description                               |            |
+|---------------|-------------------------------------------|------------|
+| `pages`       | Contains the pages of the project.        | `required` |
+| `components`  | Contains the components of the project.   | `optional` |
+| `assets`      | Contains the assets of the project.       | `optional` |
+
+
+### Files
+
+| File          | Extension         | Description                  |            |
+|---------------|-------------------|------------------------------|------------|
+| `main`        | `.js` `.ts`       | Entry point of the project.  | `required` |
+
+### Pages folder
+
+The `pages` folder contains the pages of the project. But also, we can have `routers` and `layouts` files inside the `pages` folder.
+
+| File               | Extension                      | Description                                      | Example        |
+|--------------------|--------------------------------|--------------------------------------------------|----------------|
+| `[name].page`      | `.js` `.jsx` `.ts` `.tsx`      | A page                                           | `home.page`    |
+| `[name].router`    | `.js` `.ts`                    | A router                                         | `app.router`   |
+| `[name].layout`    | `.js` `.jsx` `.ts` `.tsx`      | A layout                                         | `app.layout`   |
+
+<AlertBox type="tip">
+You can organize the `pages`, `routers` and `layouts` as you want in subfolders, but please, keep the convention of the file name.
+</AlertBox>
+<AlertBox>
+The `app.router` file is required for defining routing into your app and should be present in the `pages` folder.
+</AlertBox>

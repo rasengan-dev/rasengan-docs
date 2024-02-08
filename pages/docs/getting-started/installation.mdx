@@ -1,4 +1,5 @@
 import AlertBox from "@components/atoms/Alert";
+import { Tabs } from 'nextra/components'
 
 # Installation
 
@@ -13,9 +14,19 @@ System Requirements:
 We recommend starting a new Rasengan.js app using [create-rasengan](/docs/api/create-rasengan-app), which sets up everything automatically for you. 
 To create a project, run:
 
-```bash filename="Terminal" copy
-npx create-rasengan@latest new
-```
+<Tabs items={['npm', 'yarn']}>
+  <Tabs.Tab>
+    ```bash filename="Terminal" copy
+    npx create-rasengan@latest new
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```bash filename="Terminal" copy
+    yarn create rasengan new
+    ```
+  </Tabs.Tab>
+</Tabs>
+
 
 On the installation process, you will see the following prompts:
 
@@ -31,8 +42,8 @@ You are using Create Rasengan CLI 🎉
 After the prompts, create-rasengan will create a folder with your project name. You will then have to install the required dependencies manually.
 
 ```bash filename="Terminal" copy
-  cd my-app
-  npm install
+cd my-app
+npm install
 ```
 
 ## Manual Installation
@@ -44,11 +55,12 @@ mkdir my-app
 cd my-app
 npm init -y
 npm install rasengan@latest react@latest react-dom@latest
+npm install --save-dev cross-env
 ```
 
 Open the `package.json` file and add the following scripts:
 
-```json filename="package.json" copy
+```json filename="package.json" showLineNumbers copy
 "scripts": {
   "dev": "rasengan dev",
   "build": "rasengan build",
@@ -69,7 +81,7 @@ These scripts refer to the different stages of developing an application:
 
 There are just two directories you need to create at the root level of your project:
 
-- `public`: contains static files that will be served by Rasengan.js, especially icons.
+- `public`: contains static files that will be served by Rasengan.js, especially icons or images.
 - `src`: contains the source code of your application.
 
 ```bash filename="Terminal" copy
@@ -78,8 +90,8 @@ mkdir public src
 
 Always at the root level, create these important files:
 
-- index.html: the main HTML template file of your application.
-- rasengan.config.js: the configuration file for Rasengan.js.
+- `index.html`: the main HTML template file of your application.
+- `rasengan.config.js`: the configuration file for Rasengan.js.
 
 ```bash filename="Terminal" copy
 touch index.html
@@ -88,7 +100,7 @@ touch rasengan.config.js
 
 Then add the following content to the `index.html` file:
 
-```html filename="index.html" copy
+```html filename="index.html" showLineNumbers copy
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -115,7 +127,7 @@ Then add the following content to the `index.html` file:
 
 And the following content to the `rasengan.config.js` file:
 
-```javascript filename="rasengan.config.js" copy
+```javascript filename="rasengan.config.js" showLineNumbers copy
 import { defineConfig } from 'rasengan';
 
 export default defineConfig({
@@ -136,7 +148,7 @@ Inside the `src` directory, create a `pages` directory to store your application
 mkdir src/pages
 ```
 
-Then create a `home.page.jsx` and app.router.js files inside the `pages` directory:
+Then create a `home.page.jsx` and `app.router.js` files inside the `pages` directory:
 
 ```bash filename="Terminal" copy
 touch src/pages/home.page.jsx src/pages/app.router.js
@@ -147,7 +159,7 @@ and the `app.router.js` file will define a [`router`](/docs/core/routing#routers
 
 After, copy and paste the following code into `home.page.jsx`
 
-```javascript filename="home.page.jsx" copy
+```jsx filename="home.page.jsx" showLineNumbers copy
 import { PageComponent, defineRoutePage } from "rasengan";
 
 class Home extends PageComponent {
@@ -167,20 +179,19 @@ export default defineRoutePage({
 
 Do the same for `app.router.js`
 
-```javascript filename="app.router.js" copy
+```javascript filename="app.router.js" showLineNumbers copy
 import { RouterComponent, defineRouter } from "rasengan";
 import Home from "./home.page";
 
 class AppRouter extends RouterComponent {}
 
 export default defineRouter({
-  imports: [],
   pages: [Home]
 })(AppRouter);
 ```
 
 <AlertBox type="info">
-The `app.router.js` file is required, because it's used by Rasengan.js to define routing for your app automatically.
+The `app.router.js` file is required and have to be located in the `pages` directory, because it's used by Rasengan.js to define routing for your app automatically.
 </AlertBox>
 
 Finally, create the entry file called `main.js` inside the `src` folder.
@@ -191,19 +202,17 @@ touch src/main.js
 
 Then add the following content in it:
 
-```javascript filename="main.js" copy
-import { AppProps } from "rasengan";
+```javascript filename="main.js" showLineNumbers copy
 import AppRouter from "./pages/app.router";
 
-export default function App({ Component }: AppProps) {
+export default function App({ Component }) {
   return <Component router={AppRouter} />;
 }
 ```
 
 Learn more about [`main.js`](/docs/api/file-convention/main) file.
 
-
-<AlertBox type="info">
+<AlertBox>
 The `main.js` file is the entry file of a Rasengan.js application, so it is required.
 </AlertBox>
 
