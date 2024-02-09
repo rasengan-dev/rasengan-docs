@@ -148,76 +148,130 @@ Inside the `src` directory, create a `pages` directory to store your application
 mkdir src/pages
 ```
 
-Then create a `home.page.jsx` and `app.router.js` files inside the `pages` directory:
+Then create a `home.page.tsx` and `app.router.ts` files inside the `pages` directory:
 
 ```bash filename="Terminal" copy
-touch src/pages/home.page.jsx src/pages/app.router.js
+touch src/pages/home.page.tsx src/pages/app.router.ts
 ```
 
-The `home.page.jsx` file will define a [`page`](/docs/core/routing#pages), more precisely the home page,
-and the `app.router.js` file will define a [`router`](/docs/core/routing#routers), which is a collection of pages.
+The `home.page.tsx` file will define a [`page`](/docs/core/routing#pages), more precisely the home page,
+and the `app.router.ts` file will define a [`router`](/docs/core/routing#routers), which is a collection of pages.
 
-After, copy and paste the following code into `home.page.jsx`
+After, copy and paste the following code into `home.page.tsx`
 
-```jsx filename="home.page.jsx" showLineNumbers copy
-import { PageComponent, defineRoutePage } from "rasengan";
+<Tabs items={['TypeScript', 'JavaScript']} defaultIndex="1">
+  <Tabs.Tab>
+    ```tsx filename="home.page.tsx" showLineNumbers copy
+    import { PageComponent, defineRoutePage } from "rasengan";
 
-class Home extends PageComponent {
-  render() {
-    return (
-      <div>Home Page</div>
-    )
-  }
-}
+    class Home extends PageComponent {
+      render() {
+        return (
+          <div>Home Page</div>
+        )
+      }
+    }
 
-export default defineRoutePage({
-  path: "/",
-  title: "Home",
-  description: "Home page",
-})(Home);
-```
+    export default defineRoutePage({
+      path: "/",
+      title: "Home",
+      description: "Home page",
+    })(Home);
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```jsx filename="home.page.jsx" showLineNumbers copy
+    import { PageComponent, defineRoutePage } from "rasengan";
+
+    class Home extends PageComponent {
+      render() {
+        return (
+          <div>Home Page</div>
+        )
+      }
+    }
+
+    export default defineRoutePage({
+      path: "/",
+      title: "Home",
+      description: "Home page",
+    })(Home);
+    ```
+  </Tabs.Tab>
+</Tabs>
+
 
 Do the same for `app.router.js`
 
-```javascript filename="app.router.js" showLineNumbers copy
-import { RouterComponent, defineRouter } from "rasengan";
-import Home from "./home.page";
+<Tabs items={['TypeScript', 'JavaScript']} defaultIndex="1">
+  <Tabs.Tab>
+    ```typescript filename="app.router.ts" showLineNumbers copy
+    import { RouterComponent, defineRouter } from "rasengan";
+    import Home from "./home.page";
 
-class AppRouter extends RouterComponent {}
+    class AppRouter extends RouterComponent {}
 
-export default defineRouter({
-  pages: [Home]
-})(AppRouter);
-```
+    export default defineRouter({
+      pages: [Home]
+    })(AppRouter);
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```javascript filename="app.router.js" showLineNumbers copy
+    import { RouterComponent, defineRouter } from "rasengan";
+    import Home from "./home.page";
+
+    class AppRouter extends RouterComponent {}
+
+    export default defineRouter({
+      pages: [Home]
+    })(AppRouter);
+    ```
+  </Tabs.Tab>
+</Tabs>
 
 <AlertBox type="info">
-The `app.router.js` file is required and have to be located in the `pages` directory, because it's used by Rasengan.js to define routing for your app automatically.
+The `app.router.ts` file is required and have to be located in the `pages` directory, because it's used by Rasengan.js to define routing for your app automatically.
 </AlertBox>
 
-Finally, create the entry file called `main.js` inside the `src` folder.
+Finally, create the entry file called `main.ts` inside the `src` folder.
 
 ```bash filename="Terminal" copy
-touch src/main.js
+touch src/main.ts
 ```
 
 Then add the following content in it:
 
-```javascript filename="main.js" showLineNumbers copy
-import AppRouter from "./pages/app.router";
+<Tabs items={['TypeScript', 'JavaScript']}>
+  <Tabs.Tab>
+    ```typescript filename="main.ts" showLineNumbers copy
+    import { type AppProps } from "rasengan";
+    import AppRouter from "./pages/app.router";
 
-export default function App({ Component }) {
-  return <Component router={AppRouter} />;
-}
-```
+    export default function App({ Component }: AppProps) {
+      return <Component router={AppRouter} />;
+    }
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```javascript filename="main.js" showLineNumbers copy
+    import AppRouter from "./pages/app.router";
 
-Learn more about [`main.js`](/docs/api/file-convention/main) file.
+    export default function App({ Component }) {
+      return <Component router={AppRouter} />;
+    }
+    ```
+  </Tabs.Tab>
+</Tabs>
+
+Learn more about [`main.ts`](/docs/api/file-convention/main) file.
 
 <AlertBox>
-The `main.js` file is the entry file of a Rasengan.js application, so it is required.
+The `main.ts` file is the entry file of a Rasengan.js application, so it is required.
 </AlertBox>
 
 ### Run the development server
 
 1. Execute `npm run dev` command.
 2. Open `http://localhost:5320` in the browser.
-3. Edit `src/pages/home.page.jsx` and save to reload automatically.
+3. Edit `src/pages/home.page.tsx` and save to reload automatically.

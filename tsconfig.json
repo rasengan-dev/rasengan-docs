@@ -18,6 +18,7 @@
 
     "paths": {
       "@components/*": ["components/*"],
+      "@assets/*": ["assets/*"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/index.mdx"],

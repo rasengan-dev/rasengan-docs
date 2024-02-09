@@ -29,6 +29,11 @@
   src: url("../assets/fonts/urbanist/Urbanist-Light.ttf");
 }
 
+@font-face {
+  font-family: "JetBrains-Regular";
+  src: url("../assets/fonts/jetbrains/JetBrains-Regular.ttf");
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -37,11 +42,16 @@ body {
   font-family: "Urbanist-Regular";
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: "Urbanist-Bold";
 }
 
-.logo-container > span {
-  font-family: "Urbanist-Black";
-  font-size: 1.5em;
+.nextra-code-block,
+.nextra-code-block code {
+  font-family: "JetBrains-Regular" !important;
 }

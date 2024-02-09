@@ -1,3 +1,26 @@
 {
-  
+  "base-concepts": {
+    "title": "Base Concepts"
+  },
+  "defining-routes": {
+    "title": "Defining Routes"
+  },
+  "setting-layouts": {
+    "title": "Setting Layouts"
+  },
+  "linking": {
+    "title": "Linking and Navigating"
+  },
+  "error-handling": {
+    "title": "Error Handling"
+  },
+  "redirecting": {
+    "title": "Redirecting"
+  },
+  "project-organization": {
+    "title": "Project Organization"
+  },
+  "dynamic-routes": {
+    "title": "Dynamic Routes"
+  }
 }

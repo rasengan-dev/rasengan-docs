@@ -10,7 +10,6 @@ export default function Logo() {
 
   const isDark = useMemo(() => theme === "dark", [theme]);
 
-  console.log({ cond: isDark ? logoWhite : logo, isDark });
   return (
     <div>
       <Image

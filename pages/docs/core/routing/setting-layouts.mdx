@@ -1,0 +1,55 @@
+import { Tabs } from 'nextra/components'
+import AlertBox from "@components/atoms/Alert";
+
+# Setting Layout 
+
+To create a `Layout` you have to create a class that extends `LayoutComponent` and then use the `defineRouteLayout` function to set the base `path` that will be used by its `Pages` as base URL.
+
+<Tabs items={['TypeScript', 'JavaScript']} defaultIndex="1">
+  <Tabs.Tab>
+    ```typescript filename="src/pages/app.layout.tsx" showLineNumbers copy
+    import React from "react";
+    import { LayoutComponent, Outlet, defineRouteLayout } from "rasengan";
+
+    class AppLayout extends LayoutComponent {
+      render() {
+        return (
+          <React.Fragment>
+            <Outlet />
+          </React.Fragment>
+        );
+      }
+    }
+
+    export default defineRouteLayout({
+      path: "/",
+    })(AppLayout);
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```javascript filename="src/pages/app.layout.jsx" showLineNumbers copy
+    import React from "react";
+    import { LayoutComponent, Outlet, defineRouteLayout } from "rasengan";
+
+    class AppLayout extends LayoutComponent {
+      render() {
+        return (
+          <React.Fragment>
+            <Outlet />
+          </React.Fragment>
+        );
+      }
+    }
+
+    export default defineRouteLayout({
+      path: "/" // base path URL shared by all pages which will use the layout
+    })(AppLayout);
+    ```
+  </Tabs.Tab>
+</Tabs>
+
+<AlertBox>
+`LayoutComponent` is a class component, different to `React.Component` class, because the `render` methods, support `hooks` call.
+
+`Outlet` component is a special component that will render the `Page` component that matches the current URL.
+</AlertBox>
