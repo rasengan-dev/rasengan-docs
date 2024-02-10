@@ -1,0 +1,189 @@
+import { Tabs } from "nextra/components";
+import AlertBox from "@components/atoms/Alert";
+
+# Linking and Navigating
+
+There are four ways to navigate between routes in Rasengan.js:
+
+- Using the [`<Link>`](/docs/core/routing/linking#link-component) Component
+- Using the [`useNavigate`](/docs/core/routing/linking#useNavigate) hook
+- Using the [`native History API`](/docs/core/routing/linking#native-history-api)
+
+This page will go through how to use each of these options, and dive deeper into how navigation works.
+
+## Using the `<Link>` Component[#link-component]
+
+The `<Link>` component is a React component that allows you to navigate between routes in your application. 
+It is the recommended way to navigate between routes in Rasengan.js.
+
+Here's an example of how to use the `<Link>` component:
+
+<Tabs items={['TypeScript', 'JavaScript']} defaultIndex="1">
+  <Tabs.Tab>
+    ```tsx filename="src/pages/home.page.tsx" showLineNumbers copy
+    import React from "react";
+    import { PageComponent, defineRoutePage, Link } from "rasengan";
+
+    class Home extends PageComponent {
+      render() {
+        return (
+          <div>
+            <h1>Home</h1>
+            <Link to="/dashboard">Go to Dashboard</Link>
+          </div>
+        );
+      }
+    }
+
+    export default defineRoutePage({
+      path: "/", 
+      title: "Home",
+      description: "Home Page",
+    })(Home);
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```jsx filename="src/pages/home.page.jsx" showLineNumbers copy
+    import React from "react";
+    import { PageComponent, defineRoutePage, Link } from "rasengan";
+
+    class Home extends PageComponent {
+      render() {
+        return (
+          <div>
+            <h1>Home</h1>
+            <Link to="/dashboard">Go to Dashboard</Link>
+          </div>
+        );
+      }
+    }
+
+    export default defineRoutePage({
+      path: "/", 
+      title: "Home",
+      description: "Home Page",
+    })(Home);
+    ```
+  </Tabs.Tab>
+</Tabs>
+
+<AlertBox>
+To handle `Routing` in Rasengan.js, we have based our routing on the `react-router` library. So, you can learn more about 
+the [`Link Component`](https://reactrouter.com/en/main/components/link) from the `react-router` documentation.
+</AlertBox>
+
+There are other option props available to `<Link />`, see the [`API Reference`](/docs/api/components/link-component) for more details.
+
+### Examples
+
+#### Using dynamic routes
+
+You can use the `to` prop to navigate to a dynamic route. For example, if you have a route with a dynamic parameter, you can pass the parameter to the `to` prop.
+
+<Tabs items={['TypeScript', 'JavaScript']}>
+  <Tabs.Tab>
+    ```tsx filename="src/components/Posts.tsx" showLineNumbers copy
+    import { Link } from "rasengan";
+
+    type Props = {
+      posts: {
+        id: number;
+        title: string;
+      }[];
+    };
+
+    export default function PostList({ posts }: Props) {
+      return (
+        <div>
+          {posts.map((post) => (
+            <div key={post.id}>
+              <h2>{post.title}</h2>
+              <Link to={`/post/${post.id}`}>Read More</Link>
+            </div>
+          ))}
+        </div>
+      );
+    };
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```tsx filename="src/components/Posts.jsx" showLineNumbers copy
+    import { Link } from "rasengan";
+
+    export default function PostList({ posts }: Props) {
+      return (
+        <div>
+          {posts.map((post) => (
+            <div key={post.id}>
+              <h2>{post.title}</h2>
+              <Link to={`/post/${post.id}`}>Read More</Link>
+            </div>
+          ))}
+        </div>
+      );
+    };
+    ```
+  </Tabs.Tab>
+</Tabs>
+
+#### Checking active links
+
+You can use the `useLocation` hook to have access to the current `pathname` of the URL and use it to check if the link is active.
+
+<Tabs items={['TypeScript', 'JavaScript']}>
+  <Tabs.Tab>
+    ```tsx filename="src/components/ActiveLink.tsx" showLineNumbers copy
+    import React from "react";
+    import { Link, useLocation } from "rasengan";
+
+    type Props = {
+      to: string;
+      children: React.ReactNode;
+    };
+
+    export default function ActiveLink({ to, children }: Props) {
+      const { pathname } = useLocation();
+
+      return (
+        <Link to={to} className={`link ${pathname === to ? "active" : ""}`}>
+          {children}
+        </Link>
+      );
+    }
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```jsx filename="src/components/ActiveLink.jsx" showLineNumbers copy
+    import { Link, useLocation } from "rasengan";
+
+    export default function ActiveLink({ to, children }) {
+      const { pathname } = useLocation();
+
+      return (
+        <Link to={to} className={`link ${pathname === to ? "active" : ""}`}>
+          {children}
+        </Link>
+      );
+    }
+    ```
+  </Tabs.Tab>
+</Tabs>
+
+#### Scrolling to an `id`
+
+The default behavior of a Rasengan.js Routing system is to navigate to the top of the page when a new route is visited.
+
+If you want to scroll to a specific `id` on the page, you can use the `to` prop with the `hash` value.
+
+<Tabs items={['TypeScript', 'JavaScript']} defaultIndex="1">
+  <Tabs.Tab>
+    ```tsx copy showLineNumbers
+    <Link to="/admin/dashboard#statistics">Statistics</Link>
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```jsx copy showLineNumbers
+    <Link to="/admin/dashboard#statistics">Statistics</Link>
+    ```
+  </Tabs.Tab>
+</Tabs>
