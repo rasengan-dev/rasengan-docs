@@ -1,9 +1,26 @@
-import { Tabs } from 'nextra/components'
+import { Tabs } from "nextra/components";
 import AlertBox from "@components/atoms/Alert";
+import { Steps } from 'nextra/components'
 
-# Setting Layout 
+# Setting Layout
+
+<AlertBox type="success">
+  Before starting reading this documentation, make sure you have read the
+  [Routing Base Concepts](/docs/core/routing/base-concepts) guide.
+</AlertBox>
+
+## What is a Layout?
+
+A `Layout` is a component that wraps a set of `Pages` and provides a common structure for them. It is useful to create a common structure for a set of pages, like a header, footer, or a sidebar.
+
+## How to create a Layout?
 
 To create a `Layout` you have to create a class that extends `LayoutComponent` and then use the `defineRouteLayout` function to set the base `path` that will be used by its `Pages` as base URL.
+
+Let's suppose you have a `Layout` component that set the base URL path to `/admin`, and you want to create a page which URL is `/admin/dashboard`. You have to create a `Page` component and set its `path` to `/dashboard`
+because the `Layout` component already set the base URL to `/admin`.
+
+Now let's see how to create a `Layout`:
 
 <Tabs items={['TypeScript', 'JavaScript']} defaultIndex="1">
   <Tabs.Tab>
@@ -15,6 +32,7 @@ To create a `Layout` you have to create a class that extends `LayoutComponent` a
       render() {
         return (
           <React.Fragment>
+            {/* Outlet component will render the Page component that matches the current URL */}
             <Outlet />
           </React.Fragment>
         );
@@ -25,6 +43,7 @@ To create a `Layout` you have to create a class that extends `LayoutComponent` a
       path: "/",
     })(AppLayout);
     ```
+
   </Tabs.Tab>
   <Tabs.Tab>
     ```javascript filename="src/pages/app.layout.jsx" showLineNumbers copy
@@ -35,6 +54,7 @@ To create a `Layout` you have to create a class that extends `LayoutComponent` a
       render() {
         return (
           <React.Fragment>
+            {/* Outlet component will render the Page component that matches the current URL */}
             <Outlet />
           </React.Fragment>
         );
@@ -45,6 +65,7 @@ To create a `Layout` you have to create a class that extends `LayoutComponent` a
       path: "/" // base path URL shared by all pages which will use the layout
     })(AppLayout);
     ```
+
   </Tabs.Tab>
 </Tabs>
 
@@ -52,4 +73,248 @@ To create a `Layout` you have to create a class that extends `LayoutComponent` a
 `LayoutComponent` is a class component, different to `React.Component` class, because the `render` methods, support `hooks` call.
 
 `Outlet` component is a special component that will render the `Page` component that matches the current URL.
+
 </AlertBox>
+
+## How to use a Layout?
+
+To use a `Layout` you have to set the `Layout` property in the `Router` in which you want to use it. As the `Router` is the place
+where you group all your `Pages`, you just have to set the `Layout` there and all the `Pages` that are children of the `Router` will use the `Layout`.
+
+<Tabs items={['TypeScript', 'JavaScript']} defaultIndex="1">
+  <Tabs.Tab>
+    ```typescript filename="src/pages/app.router.tsx" {3,9} showLineNumbers copy
+    import { RouterComponent, defineRouter } from "rasengan";
+    import Home from "./home.page";
+    import AppLayout from "./app.layout";
+
+    class AppRouter extends RouterComponent {}
+
+    export default defineRouter({
+      import: [],
+      layout: AppLayout, // set the layout here
+      pages: [Home]
+    })(AppRouter);
+    ```
+
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```javascript filename="src/pages/app.router.jsx" {3,9} showLineNumbers copy
+    import { RouterComponent, defineRouter } from "rasengan";
+    import Home from "./home.page";
+    import AppLayout from "./app.layout";
+
+    class AppRouter extends RouterComponent {}
+
+    export default defineRouter({
+      import: [],
+      layout: AppLayout, // set the layout here
+      pages: [Home]
+    })(AppRouter);
+    ```
+
+  </Tabs.Tab>
+</Tabs>
+
+As you can see, the `AppLayout` is set in the `Router` and the `Home` page is a child of the `Router`, so it will use the `AppLayout`.
+
+In a Rasengan.js application, you can have multiple `Layouts` and use them in different `Routers` to create different structures for different parts of your application.
+
+### Example
+
+<Steps>
+### Create a Layout 
+
+Let's create a `Layout` that will be used in the `/admin` part of the application.
+
+<Tabs items={['TypeScript', 'JavaScript']} defaultIndex="1">
+  <Tabs.Tab>
+    ```typescript filename="src/pages/admin.layout.tsx" showLineNumbers copy
+    import React from "react";
+    import { LayoutComponent, Outlet, defineRouteLayout } from "rasengan";
+
+    class AdminLayout extends LayoutComponent {
+      render() {
+        return (
+          <React.Fragment>
+            <h1>Admin Layout</h1>
+            <Outlet />
+          </React.Fragment>
+        );
+      }
+    }
+
+    export default defineRouteLayout({
+      path: "/admin",
+    })(AdminLayout);
+    ```
+
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```javascript filename="src/pages/admin.layout.jsx" showLineNumbers copy
+    import React from "react";
+    import { LayoutComponent, Outlet, defineRouteLayout } from "rasengan";
+
+    class AdminLayout extends LayoutComponent {
+      render() {
+        return (
+          <React.Fragment>
+            <h1>Admin Layout</h1>
+            <Outlet />
+          </React.Fragment>
+        );
+      }
+    }
+
+    export default defineRouteLayout({
+      path: "/admin",
+    })(AdminLayout);
+    ```
+
+  </Tabs.Tab>
+</Tabs>
+
+### Create a Page
+
+Now let's create another `Page` called `Dashboard` that will use the `AdminLayout` and will respond to the URL `/admin/dashboard`.
+
+<Tabs items={['TypeScript', 'JavaScript']} defaultIndex="1">
+  <Tabs.Tab>
+    ```typescript filename="src/pages/dashboard.page.tsx" showLineNumbers copy
+    import React from "react";
+    import { PageComponent, defineRoutePage } from "rasengan";
+
+    class Dashboard extends PageComponent {
+      render() {
+        return (
+          <h1>Admin Dashboard</h1>
+        );
+      }
+    }
+
+    export default defineRoutePage({
+      path: "/dashboard", // the path is set to /dashboard because the AdminLayout already set the base path to /admin
+      title: "Dashboard",
+      description: "Admin Dashboard",
+    })(AdminDashboard);
+    ```
+
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```javascript filename="src/pages/dashboard.page.jsx" showLineNumbers copy
+    import React from "react";
+    import { PageComponent, defineRoutePage } from "rasengan";
+
+    class Dashboard extends PageComponent {
+      render() {
+        return (
+          <h1>Admin Dashboard</h1>
+        );
+      }
+    }
+
+    export default defineRoutePage({
+      path: "/dashboard", // the path is set to /dashboard because the AdminLayout already set the base path to /admin
+      title: "Dashboard",
+      description: "Admin Dashboard",
+    })(AdminDashboard);
+    ```
+
+  </Tabs.Tab>
+</Tabs>
+
+### Create a Router and Use the AdminLayout and Dashboard Page
+
+Then we have to create a `Router` that will use the `AdminLayout` and the `Dashboard` page.
+
+<Tabs items={['TypeScript', 'JavaScript']} defaultIndex="1">
+  <Tabs.Tab>
+    ```typescript filename="src/pages/admin.router.ts" {2-3,9-10} showLineNumbers copy
+    import { RouterComponent, defineRouter } from "rasengan";
+    import Dashboard from "./dashboard.page";
+    import AdminLayout from "./admin.layout";
+
+    class AdminRouter extends RouterComponent {}
+
+    export default defineRouter({
+      import: [],
+      layout: AdminLayout, // set the layout here
+      pages: [Dashboard]
+    })(AdminRouter);
+    ```
+
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```javascript filename="src/pages/admin.router.js" {2-3,9-10} showLineNumbers copy
+    import { RouterComponent, defineRouter } from "rasengan";
+    import Dashboard from "./dashboard.page";
+    import AdminLayout from "./admin.layout";
+
+    class AdminRouter extends RouterComponent {}
+
+    export default defineRouter({
+      import: [],
+      layout: AdminLayout, // set the layout here
+      pages: [Dashboard]
+    })(AdminRouter);
+    ```
+
+  </Tabs.Tab>
+</Tabs>
+
+### Set the AdminRouter into the AppRouter
+
+Finally we have to set the `AdminRouter` in the main `Router` of the application.
+
+<Tabs items={['TypeScript', 'JavaScript']} defaultIndex="1">
+  <Tabs.Tab>
+    ```typescript filename="src/pages/app.router.ts" {4,9} showLineNumbers copy
+    import { RouterComponent, defineRouter } from "rasengan";
+    import Home from "./home.page";
+    import AppLayout from "./app.layout";
+    import AdminRouter from "./admin.router";
+
+    class AppRouter extends RouterComponent {}
+
+    export default defineRouter({
+      import: [AdminRouter],
+      layout: AppLayout, // set the layout here
+      pages: [Home]
+    })(AppRouter);
+    ```
+
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```javascript filename="src/pages/app.router.js" {4,9} showLineNumbers copy
+    import { RouterComponent, defineRouter } from "rasengan";
+    import Home from "./home.page";
+    import AppLayout from "./app.layout";
+    import AdminRouter from "./admin.router";
+
+    class AppRouter extends RouterComponent {}
+
+    export default defineRouter({
+      import: [AdminRouter],
+      layout: AppLayout, // set the layout here
+      pages: [Home]
+    })(AppRouter);
+    ```
+
+  </Tabs.Tab>
+</Tabs>
+
+<AlertBox>
+  To define many `Routers` in the same application, you have to set the `import`
+  property in the `defineRouter` function to import the other `Routers` that you
+  want to use.
+</AlertBox>
+<AlertBox type="tip">
+  Note that, the `AdminRouter` is imported in the `AppRouter`, but you can also
+  import other `Routers` in the `AdminRouter` to create a more complex
+  structure, like a `Layout` for the `/admin/auth` part of the application to
+  handle the authentication.
+</AlertBox>
+
+</Steps>
+
+## Next Steps
