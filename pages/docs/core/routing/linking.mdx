@@ -7,7 +7,6 @@ There are four ways to navigate between routes in Rasengan.js:
 
 - Using the [`<Link>`](/docs/core/routing/linking#link-component) Component
 - Using the [`useNavigate`](/docs/core/routing/linking#useNavigate) hook
-- Using the [`native History API`](/docs/core/routing/linking#native-history-api)
 
 This page will go through how to use each of these options, and dive deeper into how navigation works.
 
@@ -184,6 +183,123 @@ If you want to scroll to a specific `id` on the page, you can use the `to` prop 
   <Tabs.Tab>
     ```jsx copy showLineNumbers
     <Link to="/admin/dashboard#statistics">Statistics</Link>
+    ```
+  </Tabs.Tab>
+</Tabs>
+
+## `useNavigate` hook 
+
+The `useNavigate` hook is used to change the current route in your application. 
+It returns a function that you can call to navigate to a different route.
+
+Here's an example of how to use the `useNavigate` hook:
+
+<Tabs items={['TypeScript', 'JavaScript']} defaultIndex="1">
+  <Tabs.Tab>
+    ```tsx filename="src/pages/home.page.tsx" showLineNumbers copy
+    import React from "react";
+    import { PageComponent, defineRoutePage, useNavigate } from "rasengan";
+
+    class Home extends PageComponent {
+      render() {
+        const navigate = useNavigate();
+
+        return (
+          <div>
+            <h1>Home</h1>
+            <button onClick={() => navigate("/dashboard")}>Go to Dashboard</button>
+          </div>
+        );
+      }
+    }
+
+    export default defineRoutePage({
+      path: "/", 
+      title: "Home",
+      description: "Home Page",
+    })(Home);
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```jsx filename="src/pages/home.page.jsx" showLineNumbers copy
+    import React from "react";
+    import { PageComponent, defineRoutePage, useNavigate } from "rasengan";
+
+    class Home extends PageComponent {
+      render() {
+        const navigate = useNavigate();
+
+        return (
+          <div>
+            <h1>Home</h1>
+            <button onClick={() => navigate("/dashboard")}>Go to Dashboard</button>
+          </div>
+        );
+      }
+    }
+
+    export default defineRoutePage({
+      path: "/", 
+      title: "Home",
+      description: "Home Page",
+    })(Home);
+    ```
+  </Tabs.Tab>
+</Tabs>
+
+For a full list of `useNavigate` options, see the [API reference](https://reactrouter.com/en/main/hooks/use-navigate) on the documentation of `React Router`.
+
+<AlertBox type="tip">
+`useNavigate` is useful when you want to do something before navigating to the new page. 
+</AlertBox>
+
+<Tabs items={['TypeScript', 'JavaScript']} defaultIndex="1">
+  <Tabs.Tab>
+    ```tsx filename="src/components/LogoutButton.tsx" showLineNumbers copy
+    import React from "react";
+    import { useNavigate } from "rasengan";
+
+    export default function LogoutButton() {
+      const navigate = useNavigate();
+
+      const logout = async () => {
+        try {
+          // Logout logic Here
+
+          navigate("/sign-in");
+        } catch (error) {
+          console.error(error);
+        }
+      }
+
+      return (
+        <button onClick={logout}>Logout</button>
+      )
+    }
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```jsx filename="src/components/LogoutButton.tsx" showLineNumbers copy
+    import React from "react";
+    import { useNavigate } from "rasengan";
+
+    export default function LogoutButton() {
+      const navigate = useNavigate();
+
+      const logout = async () => {
+        try {
+          // Logout logic Here
+
+          navigate("/sign-in");
+        } catch (error) {
+          console.error(error);
+        }
+      }
+
+      return (
+        <button onClick={logout}>Logout</button>
+      )
+    }
     ```
   </Tabs.Tab>
 </Tabs>
