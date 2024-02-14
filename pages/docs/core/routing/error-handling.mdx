@@ -1,0 +1,113 @@
+import { Tabs, Steps } from "nextra/components";
+import AlertBox from "@components/atoms/Alert";
+
+# Handling Error
+
+When you encounter an error, Rasengan.js will throw an error message specifying the error type and the line number where the error occurred.
+
+It's important for debugging purposes to know where the error occurred, but in production the error details should be hidden from the user.
+
+## Handling 404 Error
+
+By default, Rasengan.js will throw a 404 error if the page is not found by providing a predifined 404 page.
+
+You can customize the 404 page by creating a simple `React Component` and passing it to the `AppRouter` configuration.
+
+<Steps>
+### Step 1: Create a 404 Page Component
+
+<AlertBox type="info">
+  It's not a `PageComponent` class but a simple `React Component` that will be
+  used as a 404 page.
+</AlertBox>
+
+<Tabs items={['TypeScript', 'JavaScript']} defaultIndex="1">
+  <Tabs.Tab>
+    ```tsx filename="src/pages/_404.tsx" showLineNumbers copy
+    import { Link } from "rasengan";
+
+    export default function NotFound() {
+      return (
+        <div>
+          <h1>404 - Page Not Found</h1>
+          <Link to="/">Go to Home</Link>
+        </div>
+      );
+    }
+    ```
+
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```tsx filename="src/pages/_404.jsx" showLineNumbers copy
+    import { Link } from "rasengan";
+
+    export default function NotFound() {
+      return (
+        <div>
+          <h1>404 - Page Not Found</h1>
+          <Link to="/">Go to Home</Link>
+        </div>
+      );
+    }
+    ```
+
+  </Tabs.Tab>
+</Tabs>
+
+### Step 2: Using the 404 Page Component
+
+You now have to pass the 404 page component to the `AppRouter` configuration.
+
+<Tabs items={['TypeScript', 'JavaScript']} defaultIndex="1">
+  <Tabs.Tab>
+    ```typescript filename="src/pages/app.router.ts" {4,12} showLineNumbers copy
+    import { RouterComponent, defineRouter } from "rasengan";
+    import Home from "./home.page";
+    import AppLayout from "./app.layout";
+    import NotFound from "./_404";
+
+    class AppRouter extends RouterComponent {}
+
+    export default defineRouter({
+      import: [],
+      layout: AppLayout,
+      pages: [Home],
+      notFoundComponent: NotFound // set the 404 page here
+    })(AppRouter);
+    ```
+
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```typescript filename="src/pages/app.router.js" {4,12} showLineNumbers copy
+    import { RouterComponent, defineRouter } from "rasengan";
+    import Home from "./home.page";
+    import AppLayout from "./app.layout";
+    import NotFound from "./_404";
+
+    class AppRouter extends RouterComponent {}
+
+    export default defineRouter({
+      import: [],
+      layout: AppLayout,
+      pages: [Home],
+      notFoundComponent: NotFound // set the 404 page here
+    })(AppRouter);
+    ```
+
+  </Tabs.Tab>
+</Tabs>
+
+### Step 3: Test the 404 Page
+
+Now, if you navigate to a page that doesn't exist, you should see the 404 page you created.
+
+With some simple styling, here is the result: 
+
+![404 Page](@assets/images/renders/_404.png)
+
+You can provide a better UI for the 404 page by adding some CSS to the page.
+
+</Steps>
+
+
+## Next Steps 
