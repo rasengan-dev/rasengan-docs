@@ -1,3 +1,14 @@
 {
-  
+  "introduction": {
+    "title": "Introduction to Rendering"
+  },
+  "component-rendering": {
+    "title": "Component Rendering"
+  },
+  "data-fetching": {
+    "title": "Data Fetching"
+  },
+  "hydration": {
+    "title": "Hydration"
+  }
 }
