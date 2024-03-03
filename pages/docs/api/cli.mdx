@@ -1,0 +1,115 @@
+import AlertBox from '@components/atoms/Alert';
+
+# Rasengan CLI
+
+The Rasengan.js CLI allows you to develop, build, start your application, and more.
+
+## development 
+
+`rasengan dev` starts the application in development mode with hot-code reloading, error reporting, and more.
+
+```bash filename="Terminal" copy
+rasengan dev
+```
+
+This will start the application in development mode. The application will be available at `http://localhost:5320`.
+The default port can be changed with -p, like so:
+
+```bash filename="Terminal" copy
+rasengan dev -p 3000
+```
+
+Or configure it in the `rasengan.config.js` file:
+
+```javascript filename="rasengan.config.js" copy {8}
+import { defineConfig } from 'rasengan';
+
+export default defineConfig({
+  reactStrictMode: true,
+
+  server: {
+    development: {
+      port: 3000
+    }
+  },
+});
+```
+
+And just run `rasengan dev` again.
+
+## build
+
+`rasengan build` creates a production build of your application in the `dist` directory.
+
+```bash filename="Terminal" copy
+rasengan build
+```
+
+The output prompts showed is similar to the following:
+
+```bash filename="Terminal"
+vite v5.0.12 building for production...
+✓ 68 modules transformed.
+dist/client/assets/worker-gQaxk6_E.js           0.15 kB
+dist/client/index.html                          0.53 kB │ gzip:  0.33 kB
+dist/client/.vite/ssr-manifest.json             5.72 kB │ gzip:  0.64 kB
+dist/client/assets/pic2-PSiJ7Pr_.jpg           22.35 kB
+dist/client/assets/notpagefound-zvwRbyPd.png   52.33 kB
+dist/client/assets/index-_6j_HwpH.css           4.18 kB │ gzip:  1.25 kB
+dist/client/assets/pic2-DSrfA4ee.js             0.10 kB │ gzip:  0.12 kB │ map:   0.19 kB
+dist/client/assets/index-7XOVudyH.js          227.10 kB │ gzip: 74.29 kB │ map: 830.90 kB
+✓ built in 8.51s
+
+
+vite v5.0.12 building SSR bundle for production...
+✓ 26 modules transformed.
+dist/server/assets/pic2-GzdhJ58p.js   0.11 kB │ map:  0.19 kB
+dist/server/entry-server.js          14.77 kB │ map: 37.02 kB
+✓ built in 893ms
+```
+
+## prepare 
+
+`rasengan prepare` configure your application for production depending on the hosting strategy.
+
+You have to select a hosting strategy, which is `vercel` for now.
+
+```javascript filename="rasengan.config.js" copy {8}
+import { defineConfig } from 'rasengan';
+
+export default defineConfig({
+  reactStrictMode: true,
+
+  server: {
+    production: {
+      hosting: "vercel"
+    }
+  }
+});
+```
+
+<AlertBox type="tip">
+Actually, there is only one strategy supported, which is hosting on `vercel`. We are working on others.
+</AlertBox>
+
+```bash filename="Terminal" copy
+rasengan prepare
+```
+
+The output prompts showed is similar to the following:
+
+```text filename="Terminal"
+Preparing your project for production...
+
+Your project is configured to be hosted on vercel.
+```
+
+## start
+
+`rasengan start` starts the application in production mode.
+
+```bash filename="Terminal" copy
+rasengan start
+```
+
+This will start the application in production mode. The application will be available at `http://localhost:4320`.

@@ -1,0 +1,80 @@
+import { Steps, Tabs } from "nextra/components"
+
+# Alias imports
+
+Alias imports allow you to shorten and clarify file paths or modules. Instead of lengthy import paths, you can use concise, descriptive aliases. 
+This not only makes your code cleaner but also more readable.
+
+## Define aliases
+
+<Steps>
+### configure your `tsconfig.json` or `jsconfig.json`
+
+This is very useful for autocompletion purposes.
+
+<Tabs items={['TypeScript', 'JavaScript']} defaultIndex="0">
+  <Tabs.Tab>
+    ```json filename="tsconfig.json" showLineNumbers copy
+    {
+      "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+          "@components/*": ["src/components/*"],
+          "@styles/*": ["src/styles/*"],
+          "@pages/*": ["src/pages/*"]
+        }
+      }
+    }
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```json filename="jsconfig.json" copy showLineNumbers
+    {
+      "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+          "@components/*": ["src/components/*"],
+          "@styles/*": ["src/styles/*"],
+          "@pages/*": ["src/pages/*"]
+        }
+      }
+    }
+    ```
+  </Tabs.Tab>
+</Tabs>
+
+### Define aliases in `rasengan.config.js`
+
+```javascript filename="rasengan.config.js" copy showLineNumbers
+import { defineConfig } from 'rasengan'
+
+export default defineConfig({
+  vite: {
+    resolve: {
+      alias: [
+        {
+          find: "@components",
+          replacement: "src/components"
+        },
+        {
+          find: "@styles",
+          replacement: "src/styles"
+        },
+        {
+          find: "@pages",
+          replacement: "src/pages"
+        }
+      ]
+    }
+  }
+})
+```
+</Steps>
+
+## Use aliases
+
+```javascript showLineNumbers
+import { Steps, Tabs } from "@components"
+
+// Alias imports
+```
