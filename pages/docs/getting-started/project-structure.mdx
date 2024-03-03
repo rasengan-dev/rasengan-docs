@@ -47,9 +47,9 @@ Inside the `src` you have the following folders and files
 
 ### Files
 
-| File          | Extension         | Description                  |            |
-|---------------|-------------------|------------------------------|------------|
-| `main`        | `.js` `.ts`       | Entry point of the project.  | `required` |
+| File          | Extension           | Description                  |            |
+|---------------|---------------------|------------------------------|------------|
+| `main`        | `.jsx` `.tsx`       | Entry point of the project.  | `required` |
 
 ### Pages folder
 
@@ -57,13 +57,15 @@ The `pages` folder contains the pages of the project. But also, we can have `rou
 
 | File               | Extension                      | Description                                      | Example        |
 |--------------------|--------------------------------|--------------------------------------------------|----------------|
-| `[name].page`      | `.js` `.jsx` `.ts` `.tsx`      | A page                                           | `home.page`    |
-| `[name].router`    | `.js` `.ts`                    | A router                                         | `app.router`   |
-| `[name].layout`    | `.js` `.jsx` `.ts` `.tsx`      | A layout                                         | `app.layout`   |
+| `[name].page`      | `.js` `.jsx` `.ts` `.tsx`      | A page file                                      | `home.page`    |
+| `[name].router`    | `.js` `.ts`                    | A router file                                    | `app.router`   |
+| `[name].layout`    | `.js` `.jsx` `.ts` `.tsx`      | A layout file                                    | `app.layout`   |
 
 <AlertBox type="tip">
 You can organize the `pages`, `routers` and `layouts` as you want in subfolders, but please, keep the convention of the file name.
 </AlertBox>
 <AlertBox>
-The `app.router` file is required for defining routing into your app and should be present in the `pages` folder.
+The `app.router` file is **required** for defining routing into your app and should be present in the `pages` folder.
 </AlertBox>
+
+## Next Steps

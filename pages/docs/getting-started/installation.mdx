@@ -17,12 +17,12 @@ To create a project, run:
 <Tabs items={['npm', 'yarn']}>
   <Tabs.Tab>
     ```bash filename="Terminal" copy
-    npx create-rasengan@latest new
+    npx create-rasengan@latest
     ```
   </Tabs.Tab>
   <Tabs.Tab>
     ```bash filename="Terminal" copy
-    yarn create rasengan new
+    yarn create rasengan
     ```
   </Tabs.Tab>
 </Tabs>
@@ -234,40 +234,40 @@ Do the same for `app.router.js`
 The `app.router.ts` file is required and have to be located in the `pages` directory, because it's used by Rasengan.js to define routing for your app automatically.
 </AlertBox>
 
-Finally, create the entry file called `main.ts` inside the `src` folder.
+Finally, create the entry file called `main.tsx` inside the `src` folder.
 
 ```bash filename="Terminal" copy
-touch src/main.ts
+touch src/main.tsx
 ```
 
 Then add the following content in it:
 
 <Tabs items={['TypeScript', 'JavaScript']}>
   <Tabs.Tab>
-    ```typescript filename="main.ts" showLineNumbers copy
+    ```tsx filename="main.tsx" showLineNumbers copy
     import { type AppProps } from "rasengan";
     import AppRouter from "./pages/app.router";
 
-    export default function App({ Component }: AppProps) {
-      return <Component router={AppRouter} />;
+    export default function App({ Component, children }: AppProps) {
+      return <Component router={AppRouter}>{children}</Component>;
     }
     ```
   </Tabs.Tab>
   <Tabs.Tab>
-    ```javascript filename="main.js" showLineNumbers copy
+    ```jsx filename="main.jsx" showLineNumbers copy
     import AppRouter from "./pages/app.router";
 
-    export default function App({ Component }) {
-      return <Component router={AppRouter} />;
+    export default function App({ Component, children }) {
+      return <Component router={AppRouter}>{children}</Component>;
     }
     ```
   </Tabs.Tab>
 </Tabs>
 
-Learn more about [`main.ts`](/docs/api/file-convention/main) file.
+Learn more about [`main.tsx`](/docs/api/file-convention/main) file.
 
 <AlertBox>
-The `main.ts` file is the entry file of a Rasengan.js application, so it is required.
+The `main.tsx` file is the entry file of a Rasengan.js application, so it is required.
 </AlertBox>
 
 ### Run the development server
