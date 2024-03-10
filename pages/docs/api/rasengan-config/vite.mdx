@@ -1,0 +1,106 @@
+import AlertBox from "@components/atoms/Alert";
+
+# Vite Options 
+
+As `Rasengan.js` is based on top of `Vite` you can pass some `Vite options` to the `Rasengan` config.
+
+```javascript filename="rasengan.config.js" copy showLineNumbers
+import { defineConfig } from "rasengan";
+
+export default defineConfig({
+  vite: {
+    // Vite options
+  };
+});
+```
+
+## Vite Plugins
+
+You can pass `Vite plugins` to the `Rasengan` config.
+
+```javascript filename="rasengan.config.js" copy showLineNumbers
+import { defineConfig } from "rasengan";
+import plugin1 from "plugin1";
+import plugin2 from "plugin2";
+
+export default defineConfig({
+  vite: {
+    plugins: [plugin1(), plugin2()];
+  };
+});
+```
+
+## Vite OptimizeDeps
+
+This option allows you to exclude some dependencies from the `Vite` build.
+
+```javascript filename="rasengan.config.js" copy showLineNumbers
+import { defineConfig } from "rasengan";
+
+export default defineConfig({
+  vite: {
+    optimizeDeps: {
+      exclude: ["dependency1", "dependency2"];
+    };
+  };
+});
+```
+
+## Vite CSS
+
+You can pass `PostCSS` plugins to the `Rasengan` config.
+
+```javascript filename="rasengan.config.js" copy showLineNumbers
+import { defineConfig } from "rasengan";
+
+export default defineConfig({
+  vite: {
+    css: {
+      postcss: {
+        plugins: [require("postcss-plugin")];
+      };
+    };
+  };
+});
+```
+
+## Vite Build
+
+You can pass `external` dependencies to the `Rasengan` config.
+
+```javascript filename="rasengan.config.js" copy showLineNumbers
+import { defineConfig } from "rasengan";
+
+export default defineConfig({
+  vite: {
+    build: {
+      external: ["dependency1", "dependency2"];
+    };
+  };
+});
+```
+
+## Vite Resolve
+
+You can pass `alias` to the `Rasengan` config.
+
+```javascript filename="rasengan.config.js" copy showLineNumbers
+import { defineConfig } from "rasengan";
+
+export default defineConfig({
+  vite: {
+    resolve: {
+      alias: [
+        {
+          find: "@";
+          replacement: "./src";
+        }
+      ];
+    };
+  };
+});
+```
+
+<AlertBox>
+To learn about more about `aliases`, check the [Alias section](/docs/api/rasengan-config/aliases) in the `Rasengan` documentation.
+</AlertBox>

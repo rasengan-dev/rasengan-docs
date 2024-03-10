@@ -1,4 +1,5 @@
 import { Steps, Tabs } from "nextra/components"
+import AlertBox from "@components/atoms/Alert";
 
 # Alias imports
 
@@ -14,7 +15,7 @@ This is very useful for autocompletion purposes.
 
 <Tabs items={['TypeScript', 'JavaScript']} defaultIndex="0">
   <Tabs.Tab>
-    ```json filename="tsconfig.json" showLineNumbers copy
+    ```json filename="tsconfig.json" showLineNumbers copy /baseUrl/
     {
       "compilerOptions": {
         "baseUrl": ".",
@@ -26,9 +27,12 @@ This is very useful for autocompletion purposes.
       }
     }
     ```
+    <AlertBox>
+      If you are using `tsconfig.json`, make sure to set the `baseUrl` to `.`.
+    </AlertBox>
   </Tabs.Tab>
   <Tabs.Tab>
-    ```json filename="jsconfig.json" copy showLineNumbers
+    ```json filename="jsconfig.json" showLineNumbers copy /baseUrl/
     {
       "compilerOptions": {
         "baseUrl": ".",
@@ -40,6 +44,10 @@ This is very useful for autocompletion purposes.
       }
     }
     ```
+
+    <AlertBox>
+      If you are using `jsconfig.json`, make sure to set the `baseUrl` to `.`.
+    </AlertBox>
   </Tabs.Tab>
 </Tabs>
 

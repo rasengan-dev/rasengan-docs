@@ -1,0 +1,49 @@
+import AlertBox from "@components/atoms/Alert";
+
+# Server Options
+
+The server options are used to configure some aspect of the development and production server.
+
+## `server.development`
+
+The development server options are used to configure the development server.
+
+```javascript filename="rasengan.config.js" 
+import { defineConfig } from "rasengan";
+
+export default defineConfig({
+  "server": {
+    "development": {
+      "port": 3000, // The port to run the development server on
+      "open": true // Whether to open the browser when the development server starts
+    }
+  }
+})
+```
+
+| Option | Type | Default | Description |
+| ------ | ---- | ------- | ----------- |
+| `port` | `number` | `3000` | The port to run the development server on |
+| `open` | `boolean` | `true` | Whether to open the browser when the development server starts |
+
+## `server.production`
+
+The production server options are used to configure the production server.
+
+```javascript filename="rasengan.config.js"
+import { defineConfig } from "rasengan";
+
+export default defineConfig({
+  "server": {
+    "production": {
+      "hosting": "vercel", // The hosting platform to use
+    }
+  }
+})
+```
+
+| Option | Type | Default | Description |
+| ------ | ---- | ------- | ----------- |
+| `hosting` | `"vercel" \| "custom"` | `"custom"` | The hosting platform to use |
+
+The default hosting platform is `custom`. This means that you will have to configure the server yourself. If you are using Vercel, you can set the `hosting` option to `vercel` and the server will be automatically configured for you.
