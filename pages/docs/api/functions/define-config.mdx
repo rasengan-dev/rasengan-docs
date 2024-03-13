@@ -1,0 +1,69 @@
+# defineConfig
+
+This is a simple utility to define a configuration object with default values and validation.
+
+This function is very useful to well define the configuration of your Rasengan.js application.
+
+## Usage 
+
+```javascript filename="rasengan.config.js" showLineNumbers copy 
+import { defineConfig } from 'rasengan';
+
+export default defineConfig({
+  // Configuration options here
+});
+```
+
+## Configuration Options
+
+| Option | Type | Description | Default |
+|--------|------|-------------|---------|
+| `reactStrictMode` | `boolean` | Enable strict mode | `true` |
+| `server.development.port` | `number` | Port to listen on | `5320` |
+| `server.development.open` | `boolean` | Automatically open browser | `false` |
+| `server.production.hosting` | `vercel` `custom` | Set the hosting strategy | `custom` |
+| `vite.plugins` | `any[]` | Configure Vite plugins | `[]` |
+| `vite.optimizeDeps.exclude` | `string[]` | Optimize dependencies | `[]` |
+| `vite.css.postcss.plugins` | `any[]` | Configure css options | `[]` |
+| `vite.build.external` | `string[]` | Configure external dependencies | `[]` |
+| `vite.resolve.alias` | `Array<{ find: string; replacement: string; }>` | Configure aliases | `[]` |
+
+## Example
+
+```javascript filename="rasengan.config.js" showLineNumbers copy
+import { defineConfig } from 'rasengan';
+
+export default defineConfig({
+  server: {
+    development: {
+      port: 3000,
+      open: true,
+    },
+    production: {
+      hosting: 'vercel',
+    },
+  },
+  vite: {
+    plugins: [],
+    optimizeDeps: {
+      exclude: ['@chakra-ui/react'],
+    },
+    css: {
+      postcss: {
+        plugins: [require('tailwindcss')],
+      },
+    },
+    build: {
+      external: ['react', 'react-dom'],
+    },
+    resolve: {
+      alias: [
+        {
+          find: '@',
+          replacement: '/src',
+        },
+      ],
+    },
+  },
+});
+```

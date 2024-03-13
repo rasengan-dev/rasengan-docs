@@ -1,0 +1,58 @@
+import { Tabs } from "nextra/components";
+
+# defineRoutePage
+
+The `defineRoutePage` is a function that allows you to define `metadata` of a `page`.
+
+<Tabs items={['TypeScript', 'JavaScript']} defaultIndex="1">
+  <Tabs.Tab>
+    ```tsx filename="home.page.tsx" {13-17} showLineNumbers copy
+    import { PageComponent, defineRoutePage } from "rasengan";
+
+    class Home extends PageComponent {
+      render() {
+        return (
+          <div>
+            <h1>Home Page</h1>
+          </div>
+        )
+      }
+    }
+
+    export default defineRoutePage({
+      path: "/",
+      title: "Home",
+      description: "This is the home page",
+    })(Home);
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```jsx filename="home.page.jsx" {13-17} showLineNumbers copy
+    import { PageComponent, defineRoutePage } from "rasengan";
+
+    class Home extends PageComponent {
+      render() {
+        return (
+          <div>
+            <h1>Home Page</h1>
+          </div>
+        )
+      }
+    }
+
+    export default defineRoutePage({
+      path: "/",
+      title: "Home",
+      description: "This is the home page",
+    })(Home);
+    ```
+  </Tabs.Tab>
+</Tabs>
+
+This function takes an object with the following properties:
+
+- `path` - The path of the page.
+- `title` - The title of the page.
+- `description` - The description of the page.
+
+And returns a function that takes a `PageComponent` and returns a new `PageComponent` with the `metadata` attached to it.

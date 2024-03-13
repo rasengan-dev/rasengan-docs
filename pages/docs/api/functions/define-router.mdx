@@ -1,0 +1,56 @@
+import { Tabs } from "nextra/components";
+
+# defineRouter
+
+`defineRouter` is an utility function that allows you to define a router by attaching `pages` to it and setting a `layout` and other options.
+
+<Tabs items={['TypeScript', 'JavaScript']} defaultIndex="1">
+  <Tabs.Tab>
+    ```tsx filename="app.router.tsx" {8-12} showLineNumbers copy
+    import { RouterComponent, defineRouter } from "rasengan";
+    import AppLayout from "@pages/app.layout";
+    import Home from "@pages/home.page";
+    import About from "@pages/about.page";
+
+    class AppRouter extends RouterComponent {}
+
+    export default defineRouter({
+      imports: [],
+      layout: AppLayout,
+      pages: [Home, About],
+    })(AppRouter);
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```jsx filename="app.router.jsx" {8-12} showLineNumbers copy
+    import { RouterComponent, defineRouter } from "rasengan";
+    import AppLayout from "@pages/app.layout";
+    import Home from "@pages/home.page";
+    import About from "@pages/about.page";
+
+    class AppRouter extends RouterComponent {}
+
+    export default defineRouter({
+      imports: [],
+      layout: AppLayout,
+      pages: [Home, About],
+    })(AppRouter);
+    ```
+  </Tabs.Tab>
+</Tabs>
+
+## Options
+
+`defineRouter` accepts an object with the following options:
+
+| Option            | Type                | Description                                        |
+| ----------------- | ------------------- | -------------------------------------------------- |
+| imports           | `RouterComponent[]` | An array of other `Router` classes to be imported. |
+| layout            | `LayoutComponent`   | The layout component to be used.                   |
+| pages             | `PageComponent[]`   | An array of page components to be used.            |
+| notFoundComponent | `React.FC`          | The 404 page component to be used.                 |
+| loaderComponent   | `React.FC`          | The loader component to be used.                   |
+
+## Returned value
+
+`defineRouter` returns a function that accepts a `Router` class and returns a new `Router` instance object with the options defined.

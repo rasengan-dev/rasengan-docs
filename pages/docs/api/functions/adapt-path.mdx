@@ -1,0 +1,34 @@
+# adaptPath
+
+`adaptPath` is a simple utility function to adapt a path depending on the environment mode `(development or production)`.
+
+It's provided by Rasengan.js as a helper function. 
+The first usecase of this function is to adapt the path of your pages inside the `tailwind.config.js`'s content property file when you want to use TailwindCss in your Rasengan.js project.
+
+
+## Usage
+
+Here is an example of how to use `adaptPath` in your `tailwind.config.js` file:
+
+```javascript filename="tailwind.config.js" showLineNumbers copy 
+import { adaptPath } from "rasengan";
+
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: adaptPath(["./index.html", "./src/**/*.{ts,tsx,js,jsx}"]),
+  // ...
+}
+```
+
+## Parameters
+
+`adaptPath` accepts either a path string or an array of paths as its first parameter.
+
+| Parameter | Type | Description |
+| :--- | :--- | :--- |
+| `paths` | `string`, `string[]` | Either a path or an array of paths to adapt. |
+
+
+## Returned value
+
+`adaptPath` returns an array of adapted paths depending on the environment mode `(development or production)`.
