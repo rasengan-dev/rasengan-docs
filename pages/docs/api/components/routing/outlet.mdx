@@ -1,0 +1,63 @@
+import { Tabs } from "nextra/components";
+import AlertBox from '@components/atoms/Alert';
+
+# Outlet
+
+The `Outlet` React component is a special component that is used to render the content of the current page. It is used in the `Layout` component to render the content of the current page.
+
+## Usage 
+
+<Tabs items={["Typescript", "JavaScript"]}>
+  <Tabs.Tab>
+    ```tsx filename="app.layout.tsx" {15} showLineNumbers copy /Outlet/
+    import { LayoutComponent, Outlet, defineRouteLayout } from "rasengan";
+    
+    type Props = {
+      title: string;
+    };
+
+    class AppLayout extends LayoutComponent {
+      render({ title }: Props) {
+        return (
+          <div>
+            <header>
+              <h1>{title}</h1>
+            </header>
+            <main>
+              <Outlet />
+            </main>
+          </div>
+        );
+      }
+    }
+
+    export default defineRouteLayout({
+      path: "/"
+    })(AppLayout);
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```jsx filename="app.layout.jsx" {11} showLineNumbers copy /Outlet/
+    import { LayoutComponent, Outlet, defineRouteLayout } from "rasengan";
+    
+    class AppLayout extends LayoutComponent {
+      render({ title }) {
+        return (
+          <div>
+            <header>
+              <h1>{title}</h1>
+            </header>
+            <main>
+              <Outlet />
+            </main>
+          </div>
+        );
+      }
+    }
+
+    export default defineRouteLayout({
+      path: "/"
+    })(AppLayout);
+    ```
+  </Tabs.Tab>
+</Tabs>

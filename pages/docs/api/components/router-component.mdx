@@ -1,0 +1,55 @@
+import { Tabs } from "nextra/components";
+import AlertBox from '@components/atoms/Alert';
+
+# RouterComponent
+
+`RouterComponent` is a class provided by Rasengan.js used to create Routers in your application.
+
+<AlertBox type="tip">
+Learn what [`Routers`](/docs/core/routing/base-concepts#router) are here.
+</AlertBox>
+
+## Usage
+
+<Tabs items={["Typescript", "JavaScript"]}>
+  <Tabs.Tab>
+    ```tsx filename="app.router.tsx" showLineNumbers copy /RouterComponent/
+    import { RouterComponent, defineRouter } from "rasengan";
+
+    class AppRouter extends RouterComponent {};
+
+    export default defineRouter({
+      imports: [], // Import others routers 
+      layout: null, // Set a layout 
+      pages: [] // Import pages
+    })(AppRouter)
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```jsx filename="app.router.jsx" showLineNumbers copy /RouterComponent/
+    import { RouterComponent, defineRouter } from "rasengan";
+
+    class AppRouter extends RouterComponent {};
+
+    export default defineRouter({
+      imports: [], // Import others routers 
+      layout: null, // Set a layout 
+      pages: [] // Import pages
+    })(AppRouter)
+    ```
+  </Tabs.Tab>
+</Tabs>
+
+## Properties
+
+Here is the list of all the properties of `RouterComponent` class.
+
+| Properties          | Type                                                         | Description                                        |
+| ------------------- | ------------------------------------------------------------ | -------------------------------------------------- |
+| `routers`           | `RouterComponent[]`                                          | An array of other `Router` classes to be imported. |
+| `layout`            | [`LayoutComponent`](/docs/api/components/layout-component)   | The layout component to be used.                   |
+| `pages`             | [`PageComponent[]`](/docs/api/components/page-component)     | An array of page components to be used.            |
+| `notFoundComponent` | `React.FC`                                                   | The 404 page component to be used.                 |
+| `loaderComponent`   | `React.FC`                                                   | The loader component to be used.                   |
+
+Rather than setting these values manually, the [`defineRouter`](/docs/api/functions/define-router) does it for us and create a new instance of `RouterComponent` class and return it.

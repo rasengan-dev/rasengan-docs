@@ -1,0 +1,132 @@
+import { Tabs } from "nextra/components";
+import AlertBox from '@components/atoms/Alert';
+
+# Link 
+
+The `<Link>` component is a React component that allows you to navigate between routes in your application. 
+It is the recommended way to navigate between routes in Rasengan.js.
+
+
+## Usage 
+
+### `to` Property 
+
+Here's an example of how to use the `<Link>` component:
+
+<Tabs items={['TypeScript', 'JavaScript']} defaultIndex="1">
+  <Tabs.Tab>
+    ```tsx filename="src/pages/home.page.tsx" showLineNumbers copy
+    import React from "react";
+    import { PageComponent, defineRoutePage, Link } from "rasengan";
+
+    class Home extends PageComponent {
+      render() {
+        return (
+          <div>
+            <h1>Home</h1>
+            <Link to="/dashboard">Go to Dashboard</Link>
+          </div>
+        );
+      }
+    }
+
+    export default defineRoutePage({
+      path: "/", 
+      title: "Home",
+      description: "Home Page",
+    })(Home);
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```jsx filename="src/pages/home.page.jsx" showLineNumbers copy
+    import React from "react";
+    import { PageComponent, defineRoutePage, Link } from "rasengan";
+
+    class Home extends PageComponent {
+      render() {
+        return (
+          <div>
+            <h1>Home</h1>
+            <Link to="/dashboard">Go to Dashboard</Link>
+          </div>
+        );
+      }
+    }
+
+    export default defineRoutePage({
+      path: "/", 
+      title: "Home",
+      description: "Home Page",
+    })(Home);
+    ```
+  </Tabs.Tab>
+</Tabs>
+
+<AlertBox>
+Lean more [`here`](/docs/core/routing/linking#link-component)
+</AlertBox>
+
+### Passing data via `state` prop
+
+<Tabs items={['TypeScript', 'JavaScript']} defaultIndex="1">
+  <Tabs.Tab>
+    ```tsx filename="src/pages/home.page.tsx" showLineNumbers copy /state={{ name: "hello" }}/
+    import React from "react";
+    import { PageComponent, defineRoutePage, Link } from "rasengan";
+
+    class Home extends PageComponent {
+      render() {
+        return (
+          <div>
+            <h1>Home</h1>
+            <Link to="/dashboard" state={{ name: "hello" }}>Go to Dashboard</Link>
+          </div>
+        );
+      }
+    }
+
+    export default defineRoutePage({
+      path: "/", 
+      title: "Home",
+      description: "Home Page",
+    })(Home);
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```jsx filename="src/pages/home.page.jsx" showLineNumbers copy /state={{ name: "hello" }}/
+    import React from "react";
+    import { PageComponent, defineRoutePage, Link } from "rasengan";
+
+    class Home extends PageComponent {
+      render() {
+        return (
+          <div>
+            <h1>Home</h1>
+            <Link to="/dashboard" state={{ name: "hello" }}>Go to Dashboard</Link>
+          </div>
+        );
+      }
+    }
+
+    export default defineRoutePage({
+      path: "/", 
+      title: "Home",
+      description: "Home Page",
+    })(Home);
+    ```
+  </Tabs.Tab>
+</Tabs>
+
+Then, you can access to the `state` like follow:
+
+```jsx showLineNumbers copy /useLocation()/
+const { state } = useLocation();
+```
+
+## Properties
+
+| Props   | Type      | Description                               |
+|---------|-----------|-------------------------------------------|
+| `to`    | `string`  | The path to navigate to                   |
+| `state` | `any`     | Data send via URL to the destination page |
+

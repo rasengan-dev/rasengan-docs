@@ -1,0 +1,48 @@
+import { Tabs } from "nextra/components";
+import AlertBox from '@components/atoms/Alert';
+
+# Component 
+
+The `Component` React component is the main component provided by Rasengan.js to setting up all the routing system based on the `AppRouter` that it receives as a prop.
+
+This component is used inside the `main.tsx` file (the entry point of the application) to set up the routing system.
+
+## Usage
+
+<Tabs items={['TypeScript', 'JavaScript']}>
+  <Tabs.Tab>
+    ```tsx filename="main.tsx" {5} showLineNumbers copy /Component/
+    import { type AppProps } from "rasengan";
+    import AppRouter from "@pages/app.router";
+
+    export default function App({ Component, children }: AppProps) {
+      return <Component router={AppRouter}>{children}</Component>;
+    }
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```jsx filename="main.jsx" {4} showLineNumbers copy /Component/
+    import AppRouter from "@pages/app.router";
+
+    export default function App({ Component, children }) {
+      return <Component router={AppRouter}>{children}</Component>;
+    }
+    ```
+  </Tabs.Tab>
+</Tabs>
+
+<AlertBox>
+The `Component` component is injected by Rasengan.js into the `App` component, it's the only way to have access to that component.
+</AlertBox>
+
+The `Component` component receives the `router` prop, which is the `AppRouter` class that contains all the routes of the application.
+It will be responsible for setting up the routing system based on the routes defined in the `AppRouter` class.
+
+## Props
+
+The `Component` component accepts two props:
+
+- `router`: The `AppRouter` class that contains all the routes of the application.
+- `children`: The children of the `Component` component, which represents all the routing system of the application.
+
+### 
