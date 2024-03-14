@@ -51,8 +51,11 @@ The `defineRoutePage` is a function that allows you to define `metadata` of a `p
 
 This function takes an object with the following properties:
 
-- `path` - The path of the page.
-- `title` - The title of the page.
-- `description` - The description of the page.
+| Properties    | Type     | Description                  | Default    | Optional |
+|---------------|----------|------------------------------|------------|----------|
+| `path`        | `string` | The path of the page.        | -          | No       |
+| `title`       | `string` | The title of the page.       | Class name | Yes      |
+| `description` | `string` | The description of the page. | -          | Yes      |
+
 
 And returns a function that takes a `PageComponent` and returns a new `PageComponent` with the `metadata` attached to it.

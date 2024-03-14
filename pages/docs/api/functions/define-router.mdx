@@ -43,13 +43,13 @@ import { Tabs } from "nextra/components";
 
 `defineRouter` accepts an object with the following options:
 
-| Option            | Type                | Description                                        |
-| ----------------- | ------------------- | -------------------------------------------------- |
-| imports           | `RouterComponent[]` | An array of other `Router` classes to be imported. |
-| layout            | `LayoutComponent`   | The layout component to be used.                   |
-| pages             | `PageComponent[]`   | An array of page components to be used.            |
-| notFoundComponent | `React.FC`          | The 404 page component to be used.                 |
-| loaderComponent   | `React.FC`          | The loader component to be used.                   |
+| Option            | Type                | Description                                        | Optional |
+| ----------------- | ------------------- | -------------------------------------------------- | -------- |
+| imports           | `RouterComponent[]` | An array of other `Router` classes to be imported. | Yes      |
+| layout            | `LayoutComponent`   | The layout component to be used.                   | Yes      |
+| pages             | `PageComponent[]`   | An array of page components to be used.            | No       |
+| notFoundComponent | `React.FC`          | The 404 page component to be used.                 | Yes      |
+| loaderComponent   | `React.FC`          | The loader component to be used.                   | Yes      |
 
 ## Returned value
 
