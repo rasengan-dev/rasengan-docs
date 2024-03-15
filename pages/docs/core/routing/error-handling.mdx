@@ -62,9 +62,9 @@ You now have to pass the 404 page component to the `AppRouter` configuration.
   <Tabs.Tab>
     ```typescript filename="src/pages/app.router.ts" {4,12} showLineNumbers copy
     import { RouterComponent, defineRouter } from "rasengan";
-    import Home from "./home.page";
-    import AppLayout from "./app.layout";
-    import NotFound from "./_404";
+    import Home from "@/pages/home.page";
+    import AppLayout from "@/pages/app.layout";
+    import NotFound from "@/pages/_404";
 
     class AppRouter extends RouterComponent {}
 
@@ -80,9 +80,9 @@ You now have to pass the 404 page component to the `AppRouter` configuration.
   <Tabs.Tab>
     ```typescript filename="src/pages/app.router.js" {4,12} showLineNumbers copy
     import { RouterComponent, defineRouter } from "rasengan";
-    import Home from "./home.page";
-    import AppLayout from "./app.layout";
-    import NotFound from "./_404";
+    import Home from "@/pages/home.page";
+    import AppLayout from "@/pages/app.layout";
+    import NotFound from "@/pages/_404";
 
     class AppRouter extends RouterComponent {}
 

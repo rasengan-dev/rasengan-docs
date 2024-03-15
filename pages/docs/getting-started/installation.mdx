@@ -207,7 +207,7 @@ Do the same for `app.router.js`
   <Tabs.Tab>
     ```typescript filename="app.router.ts" showLineNumbers copy
     import { RouterComponent, defineRouter } from "rasengan";
-    import Home from "./home.page";
+    import Home from "@/pages/home.page";
 
     class AppRouter extends RouterComponent {}
 
@@ -219,7 +219,7 @@ Do the same for `app.router.js`
   <Tabs.Tab>
     ```javascript filename="app.router.js" showLineNumbers copy
     import { RouterComponent, defineRouter } from "rasengan";
-    import Home from "./home.page";
+    import Home from "@/pages/home.page";
 
     class AppRouter extends RouterComponent {}
 
@@ -246,7 +246,7 @@ Then add the following content in it:
   <Tabs.Tab>
     ```tsx filename="main.tsx" showLineNumbers copy
     import { type AppProps } from "rasengan";
-    import AppRouter from "./pages/app.router";
+    import AppRouter from "@/pages/app.router";
 
     export default function App({ Component, children }: AppProps) {
       return <Component router={AppRouter}>{children}</Component>;
@@ -255,7 +255,7 @@ Then add the following content in it:
   </Tabs.Tab>
   <Tabs.Tab>
     ```jsx filename="main.jsx" showLineNumbers copy
-    import AppRouter from "./pages/app.router";
+    import AppRouter from "@/pages/app.router";
 
     export default function App({ Component, children }) {
       return <Component router={AppRouter}>{children}</Component>;

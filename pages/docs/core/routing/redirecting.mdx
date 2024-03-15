@@ -6,10 +6,11 @@ import AlertBox from "@components/atoms/Alert";
 There are a few ways you can handle redirects in Rasengan.js. 
 This page will go through each available option, use cases, and how to manage large numbers of redirects.
 
-| Api                    | Description                              | Where to use                              |
-|------------------------|------------------------------------------|-------------------------------------------|
-| `useNavigate`          | Perform a client-side redirection        | Event Handlers in Client Components       |
-| `PageComponent.loader` | Enable redirection on the server.        | During the server-side rendering process. |
+| Api                        | Description                              | Where to use                              |
+|----------------------------|------------------------------------------|-------------------------------------------|
+| `useNavigate`              | Perform a client-side redirection        | Event Handlers in Client Components       |
+| `PageComponent.loader()`   | Enable redirection on the server.        | During the server-side rendering process. |
+| `LayoutComponent.loader()` | Enable redirection on the server.        | During the server-side rendering process. |
 
 ## `useNavigate` hook
 
@@ -71,15 +72,15 @@ The `useNavigate` hook is used in event handlers in client components to perform
 After the logout logic is executed, the `navigate` function is called with the path to redirect to.
 </AlertBox>
 
-## `PageComponent.loader` method
+## `PageComponent.loader()` method
 
-The `PageComponent.loader` method is a special method used for `SSR` (Server-Side Rendering) like `getServerSideProps` in `Next.js`.
+Similar to `LayoutComponent.loader()`, the `PageComponent.loader()` method is a special method used for `SSR` (Server-Side Rendering) like `getServerSideProps` in `Next.js`.
 
 So, you can perform server-side redirections using this method and it can only be used in `Page Components`.
 
 <Tabs items={['TypeScript', 'JavaScript']} defaultIndex="1">
   <Tabs.Tab>
-    ```tsx filename="src/pages/redirect.tsx" {2,5,11} showLineNumbers copy
+    ```tsx filename="src/pages/redirect.tsx" {14-23} showLineNumbers copy
     import React from "react";
     import { PageComponent, defineRoutePage, LoaderResponse } from "rasengan";
 
@@ -113,7 +114,7 @@ So, you can perform server-side redirections using this method and it can only b
     ```
   </Tabs.Tab>
   <Tabs.Tab>
-    ```tsx filename="src/pages/redirect.jsx" {2,5,11} showLineNumbers copy
+    ```tsx filename="src/pages/redirect.jsx" {14-23} showLineNumbers copy
     import React from "react";
     import { PageComponent, defineRoutePage } from "rasengan";
 
@@ -160,7 +161,7 @@ The `loader` method can receive an object argument containing:
 
 <Tabs items={['TypeScript', 'JavaScript']}>
   <Tabs.Tab>
-    ```tsx filename="src/pages/redirect.tsx" {2,5,11} showLineNumbers copy
+    ```tsx filename="src/pages/redirect.tsx" {14} showLineNumbers copy
     import React from "react";
     import { PageComponent, defineRoutePage, LoaderResponse, LoaderOptions } from "rasengan";
 
@@ -196,7 +197,7 @@ The `loader` method can receive an object argument containing:
     ```
   </Tabs.Tab>
   <Tabs.Tab>
-    ```tsx filename="src/pages/redirect.jsx" {2,5,11} showLineNumbers copy
+    ```tsx filename="src/pages/redirect.jsx" {14} showLineNumbers copy
     import React from "react";
     import { PageComponent, defineRoutePage } from "rasengan";
 

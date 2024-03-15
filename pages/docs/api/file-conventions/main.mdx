@@ -1,0 +1,89 @@
+import { Tabs } from "nextra/components";
+import AlertBox from '@components/atoms/Alert';
+
+# main.js
+
+The `main.js` is the entry point of your application, so it's required and has to be present inside the `src/` folder.
+
+## Example
+
+### Simple case
+
+<Tabs items={['TypeScript', 'JavaScript']}>
+  <Tabs.Tab>
+    ```typescript filename="src/main.tsx" showLineNumbers copy
+    import { type AppProps } from "rasengan";
+    import AppRouter from "@/pages/app.router";
+
+    export default function App({ Component, children }: AppProps) {
+      return <Component router={AppRouter}>{children}</Component>;
+    }
+    ```
+
+    <AlertBox>
+      The `App` component is a special component that is used to render the application. Make sure to import the `AppProps` type from `rasengan` and use it as the type of the `App` component props.
+    </AlertBox>
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```javascript filename="src/main.jsx" showLineNumbers copy
+    import AppRouter from "@/pages/app.router";
+
+    export default function App({ Component, children }) {
+      return <Component router={AppRouter}>{children}</Component>;
+    }
+    ```
+
+    <AlertBox>
+      The `App` component is a special component that is used to render the application.
+    </AlertBox>
+  </Tabs.Tab>
+</Tabs>
+
+
+### Other case 
+
+In some case, you will want to wrap your application entirely with a component in order to share the same context or data to all your pages.
+To do that, just wrap the `Component` component with the one you want to use.
+
+Let's take an example of [`GX State Management`](https://gx.dilane3.com). Assuming, you want to handle global state by using `GX`, you will just have to wrap the `Component` component with `GXProvider` component coming from `@dilane3/gx`.
+
+<Tabs items={['TypeScript', 'JavaScript']}>
+  <Tabs.Tab>
+    ```tsx filename="src/main.tsx" showLineNumbers copy
+    import { type AppProps } from "rasengan";
+    import AppRouter from "@/pages/app.router";
+    import store from "@/gx/store";
+    import GXProvider from "@dilane3/gx";
+
+    export default function App({ Component, children }: AppProps) {
+      return (
+        <GXProvider store={store}>
+          <Component router={AppRouter}>{children}</Component>
+        </GXProvider>
+      );
+    }
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```jsx filename="src/main.jsx" showLineNumbers copy
+    import AppRouter from "@/pages/app.router";
+    import store from "@/gx/store";
+    import GXProvider from "@dilane3/gx";
+
+    export default function App({ Component, children }) {
+      return (
+        <GXProvider store={store}>
+          <Component router={AppRouter}>{children}</Component>
+        </GXProvider>
+      );
+    }
+    ```
+  </Tabs.Tab>
+</Tabs>
+
+<AlertBox type="tip">
+We assume that, we have created a `store` inside the `src/gx/store` folder.
+</AlertBox>
+
+Now, all pages will have access to the store via `useSignal`, `useActions`, `userAsyncActions` and `useOperations` hooks.
+Learn more about these [`hooks`](https://gx.dilane3.com/docs/hooks)

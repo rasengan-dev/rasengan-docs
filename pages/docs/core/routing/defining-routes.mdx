@@ -66,7 +66,7 @@ This is a common pattern used in Rasengan.js to define metadata for components.
   <Tabs.Tab>
     ```typescript filename="src/pages/app.router.ts" showLineNumbers copy
     import { RouterComponent, defineRouter } from "rasengan";
-    import Home from "./home.page";
+    import Home from "@/pages/home.page";
 
     class AppRouter extends RouterComponent {}
 
@@ -79,7 +79,7 @@ This is a common pattern used in Rasengan.js to define metadata for components.
   <Tabs.Tab>
     ```javascript filename="src/pages/app.router.js" showLineNumbers copy
     import { RouterComponent, defineRouter } from "rasengan";
-    import Home from "./home.page";
+    import Home from "@/pages/home.page";
 
     class AppRouter extends RouterComponent {}
 
@@ -104,12 +104,12 @@ In order to have your routing system working, you have to use the `Router` compo
 
 <Tabs items={['TypeScript', 'JavaScript']}>
   <Tabs.Tab>
-    ```typescript filename="src/main.tsx" showLineNumbers copy
+    ```tsx filename="src/main.tsx" showLineNumbers copy
     import { type AppProps } from "rasengan";
-    import AppRouter from "./pages/app.router";
+    import AppRouter from "@/pages/app.router";
 
-    export default function App({ Component }: AppProps) {
-      return <Component router={AppRouter} />;
+    export default function App({ Component, children }: AppProps) {
+      return <Component router={AppRouter}>{children}</Component>;
     }
     ```
 
@@ -118,13 +118,17 @@ In order to have your routing system working, you have to use the `Router` compo
     </AlertBox>
   </Tabs.Tab>
   <Tabs.Tab>
-    ```javascript filename="src/main.jsx" showLineNumbers copy
-    import AppRouter from "./pages/app.router";
+    ```jsx filename="src/main.jsx" showLineNumbers copy
+    import AppRouter from "@/pages/app.router";
 
-    export default function App({ Component }) {
-      return <Component router={AppRouter} />;
+    export default function App({ Component, children }) {
+      return <Component router={AppRouter}>{children}</Component>;
     }
     ```
+
+    <AlertBox>
+      The `App` component is a special component that is used to render the application.
+    </AlertBox>
   </Tabs.Tab>
 </Tabs>
 

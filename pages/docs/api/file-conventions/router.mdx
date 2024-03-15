@@ -1,0 +1,61 @@
+import { Tabs } from "nextra/components";
+import AlertBox from '@components/atoms/Alert';
+
+# [name].router.js
+
+In Rasengan.js, to create a `router`, you have to create a file that follow the following name pattern: 
+
+```txt showLineNumbers copy /router.js/
+[name].router.js
+```
+
+A `router` is a set of pages grouped under the same `layout` that share it.
+
+## Example 
+
+<Tabs items={['TypeScript', 'JavaScript']} defaultIndex="1">
+  <Tabs.Tab>
+    ```tsx filename="app.router.tsx" showLineNumbers copy /app.router.tsx/
+    import { RouterComponent, defineRouter } from "rasengan";
+    import AppLayout from "@pages/app.layout";
+    import Home from "@pages/home.page";
+    import About from "@pages/about.page";
+
+    /*
+     * This AppRouter is located inside the app.router.tsx file
+     */
+    class AppRouter extends RouterComponent {}
+
+    export default defineRouter({
+      imports: [],
+      layout: AppLayout,
+      pages: [Home, About],
+    })(AppRouter);
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```jsx filename="app.router.jsx" showLineNumbers copy /app.router.jsx/
+    import { RouterComponent, defineRouter } from "rasengan";
+    import AppLayout from "@pages/app.layout";
+    import Home from "@pages/home.page";
+    import About from "@pages/about.page";
+
+    /*
+     * This AppRouter is located inside the app.router.jsx file
+     */
+    class AppRouter extends RouterComponent {}
+
+    export default defineRouter({
+      imports: [],
+      layout: AppLayout,
+      pages: [Home, About],
+    })(AppRouter);
+    ```
+  </Tabs.Tab>
+</Tabs>
+
+Based on the convention, we have juste replace the `[name]` by `app` in the convention name and we got `app.router.js`.
+
+<AlertBox type="error">
+It's required to have your main `router` inside the `pages/app.router.js` page, because it's considered as an `entry` point.
+</AlertBox>
