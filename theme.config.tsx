@@ -8,9 +8,9 @@ const config: DocsThemeConfig = {
   project: {
     link: 'https://github.com/rasengan-dev/rasenganjs',
   },
-  chat: {
-    link: 'https://discord.com',
-  },
+  // chat: {
+  //   link: 'https://discord.com',
+  // },
   docsRepositoryBase: 'https://github.com/rasengan-dev/rasenganjs',
   footer: {
     text: 'Rasenganjs © 2024',
@@ -35,7 +35,7 @@ const config: DocsThemeConfig = {
   navbar: {
     extraContent: () => {
       return (
-        <Button text="Learn" />
+        <Button text="Learn" className='hidden sm:block' />
       )
     }
   }

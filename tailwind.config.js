@@ -58,8 +58,13 @@ module.exports = {
 
         gray: {
           DEFAULT: "#AAA7AD",
-          500: "#AAAAAA"
-        }
+          500: "#AAAAAA",
+          800: "#888888"
+        },
+      },
+
+      height: {
+        hero: "calc(100vh - 64px)"
       },
 
       fontFamily: {
