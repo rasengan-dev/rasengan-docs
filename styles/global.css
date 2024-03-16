@@ -59,3 +59,9 @@ h6 {
 .hero-section {
   min-height: 500px;
 }
+
+@media screen and (max-width: 767px) {
+  .hero-section {
+    min-height: 600px;
+  }
+}

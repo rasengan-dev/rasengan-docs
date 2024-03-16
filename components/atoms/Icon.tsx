@@ -9,12 +9,22 @@ interface IconProps {
   style?: CSSProperties;
   onClick?: VoidFunction;
 }
-export default function Icon({ onClick, name, className, size, active, style }: IconProps) {
+export default function Icon({
+  onClick,
+  name,
+  className,
+  size,
+  active,
+  style,
+}: IconProps) {
   return (
     <i
       onClick={onClick}
-      className={twMerge(`bi bi-${name} opacity-${active ? "1" : "70"}`, className)}
-      style={{ fontSize: size, ...style}}
+      className={twMerge(
+        `bi bi-${name} opacity-${active ? "1" : "70"}`,
+        className
+      )}
+      style={{ fontSize: size, ...style }}
     ></i>
   );
 }

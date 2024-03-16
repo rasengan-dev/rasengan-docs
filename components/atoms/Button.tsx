@@ -11,7 +11,7 @@ export default function Button({ text, className }: Props) {
   const { resolvedTheme: theme, ...rest } = useTheme();
 
   const themeStyle = useMemo(() => {
-    return theme === "dark" ? "bg-white text-black" : "bg-primary text-white border-[1px] border-primary hover:bg-primary-500 hover:border-primary-500 transition-all";
+    return theme === "dark" ? "bg-white text-black hover:bg-[#eee]" : "bg-primary text-white border-[1px] border-primary hover:bg-primary-600 hover:border-primary-600 transition-all";
   }, [theme]);
 
   return (

@@ -58,8 +58,10 @@ module.exports = {
 
         gray: {
           DEFAULT: "#AAA7AD",
+          200: "#EEEEEE",
           500: "#AAAAAA",
-          800: "#888888"
+          800: "#888888",
+          900: "#333333"
         },
       },
 
