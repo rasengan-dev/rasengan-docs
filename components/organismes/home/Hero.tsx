@@ -1,4 +1,3 @@
-import { useTheme } from "nextra-theme-docs";
 import { useMemo, useState, useEffect } from "react";
 import { twMerge } from "tailwind-merge";
 import Button from "components/atoms/Button";
@@ -7,6 +6,7 @@ import sleep from "utils/sleep";
 import Image from "next/image";
 import LogoWhite from "assets/images/logo/logo-white.svg";
 import LogoBlack from "assets/images/logo/logo-black.svg";
+import useTheme from "hooks/useTheme";
 
 export default function Hero() {
   // Local State
@@ -14,11 +14,7 @@ export default function Hero() {
   const [isHover, setIsHover] = useState(false);
 
   // Using theme
-  const { resolvedTheme: theme, ...rest } = useTheme();
-
-  const isDark = useMemo(() => {
-    return theme === "dark";
-  }, [theme]);
+  const { isDark } = useTheme();
 
   //Effects
   useEffect(() => {

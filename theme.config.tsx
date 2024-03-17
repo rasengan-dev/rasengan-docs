@@ -2,6 +2,7 @@ import React from 'react'
 import { DocsThemeConfig } from 'nextra-theme-docs'
 import Button from 'components/atoms/Button'
 import Logo from 'components/atoms/Logo'
+import Footer from '@components/layout/Footer'
 
 const config: DocsThemeConfig = {
   logo: <Logo />,
@@ -13,7 +14,8 @@ const config: DocsThemeConfig = {
   // },
   docsRepositoryBase: 'https://github.com/rasengan-dev/rasenganjs',
   footer: {
-    text: 'Rasenganjs © 2024',
+    // text: 'Rasenganjs © 2024',
+    component: <Footer />
   },
   useNextSeoProps() {
     return {
@@ -38,6 +40,11 @@ const config: DocsThemeConfig = {
         <Button text="Learn" className='hidden sm:block' />
       )
     }
+  },
+
+  // ThemeSwitch
+  themeSwitch: {
+    component: null
   }
 }
 
