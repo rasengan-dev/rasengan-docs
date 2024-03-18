@@ -37,6 +37,23 @@ export default defineConfig({
 
 And just run `rasengan dev` again.
 
+If you want to automatically open the browser after starting the development server, just enable the `server.development.open` property.
+
+```javascript filename="rasengan.config.js" copy {9}
+import { defineConfig } from 'rasengan';
+
+export default defineConfig({
+  reactStrictMode: true,
+
+  server: {
+    development: {
+      port: 3000,
+      open: true
+    }
+  },
+});
+```
+
 ## build
 
 `rasengan build` creates a production build of your application in the `dist` directory.

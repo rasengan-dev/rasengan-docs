@@ -6,6 +6,8 @@ import Icon from "@components/atoms/Icon";
 import { twMerge } from "tailwind-merge";
 import Link from "next/link";
 import Button from "@components/atoms/Button";
+import { useCallback, useEffect, useState } from "react";
+import sleep from "utils/sleep";
 
 export default function Footer() {
   const { isDark, theme, setTheme } = useTheme();
@@ -15,9 +17,9 @@ export default function Footer() {
     setTheme(newTheme);
   };
 
-  const isActive = (themeName: string) => {
+  const isActive = useCallback((themeName: string) => {
     return theme === themeName;
-  };
+  }, [theme, isDark]);
 
   return (
     <footer
