@@ -7,6 +7,7 @@ import Image from "next/image";
 import LogoWhite from "assets/images/logo/logo-white.svg";
 import LogoBlack from "assets/images/logo/logo-black.svg";
 import useTheme from "hooks/useTheme";
+import Link from "next/link";
 
 export default function Hero() {
   // Local State
@@ -62,17 +63,21 @@ export default function Hero() {
 
       <div className="mt-8 flex flex-col items-center gap-2">
         {/* <div className="flex flex-col sm:flex-row items-center gap-2">
-          <Button text="Get Started" className="w-[250px] sm:w-auto" />
+          <Link href="/docs">
+            <Button text="Get Started" className="w-[250px] sm:w-auto" />
+          </Link>
 
-          <Button
-            text="Learn Rasengan.js"
-            className={twMerge(
-              "w-[250px] sm:w-auto",
-              isDark
-                ? " bg-primary text-white border-primary hover:bg-primary-600 hover:border-primary-600"
-                : "bg-white text-black border-gray hover:border-gray hover:bg-[#eee]"
-            )}
-          />
+          <Link href="/learn">
+            <Button
+              text="Learn Rasengan.js"
+              className={twMerge(
+                "w-[250px] sm:w-auto",
+                isDark
+                  ? " bg-primary text-white border-primary hover:bg-primary-600 hover:border-primary-600"
+                  : "bg-white text-black border-gray hover:border-gray hover:bg-[#eee]"
+              )}
+            />
+          </Link>
         </div>
 
         <div
@@ -121,12 +126,14 @@ export default function Hero() {
         </div> */}
 
         <div className="flex flex-col sm:flex-row items-center gap-2">
-          <Button
-            text="Get Started"
-            className={twMerge(
-              "w-[250px] sm:w-auto bg-primary text-white border-primary hover:bg-primary-600 hover:border-primary-600"
-            )}
-          />
+          <Link href="/docs">
+            <Button
+              text="Get Started"
+              className={twMerge(
+                "w-[250px] sm:w-auto bg-primary text-white border-primary hover:bg-primary-600 hover:border-primary-600"
+              )}
+            />
+          </Link>
 
           <div
             onMouseEnter={() => setIsHover(true)}
