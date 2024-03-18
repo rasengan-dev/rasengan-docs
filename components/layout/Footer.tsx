@@ -20,14 +20,21 @@ export default function Footer() {
   };
 
   return (
-    <footer className={twMerge("w-full px-[20px] md:px-[50px] py-8 border-t-[1px]", isDark ? "border-t-gray-900" : "border-t-gray-200")}>
+    <footer
+      className={twMerge(
+        "w-full px-[20px] md:px-[50px] py-8 border-t-[1px]",
+        isDark ? "border-t-gray-900" : "border-t-gray-200"
+      )}
+    >
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-2 gap-y-8">
         <div>
-          <Image
-            src={isDark ? LogoWhite : LogoBlack}
-            alt="Rasengan Logo"
-            width={120}
-          />
+          <Link href="/">
+            <Image
+              src={isDark ? LogoWhite : LogoBlack}
+              alt="Rasengan Logo"
+              width={120}
+            />
+          </Link>
         </div>
 
         <div>
@@ -69,11 +76,23 @@ export default function Footer() {
         <div>
           <h3 className="text-lg">Subscribe to the Newsletter</h3>
 
-          <p className="mt-4 text-sm">Stay informed to the news about rasengan.js including new releases, events, etc...</p>
+          <p className="mt-4 text-sm">
+            Stay informed to the news about rasengan.js including new releases,
+            events, etc...
+          </p>
 
           <div className="w-full mt-4 flex gap-2">
-            <input className={twMerge("w-full rounded-md p-2 outline-none outline-0 border-[1px] ", isDark ? "border-gray-900 bg-transparent" : "border-gray-200")} placeholder="yourname@domain.com" />
-            <Button text="subscribe" className="bg-primary hover:bg-primary-600 text-white" />
+            <input
+              className={twMerge(
+                "w-full rounded-md p-2 outline-none outline-0 border-[1px] ",
+                isDark ? "border-gray-900 bg-transparent" : "border-gray-200"
+              )}
+              placeholder="yourname@domain.com"
+            />
+            <Button
+              text="subscribe"
+              className="bg-primary hover:bg-primary-600 text-white"
+            />
           </div>
         </div>
       </div>
