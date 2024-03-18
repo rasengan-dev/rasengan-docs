@@ -17,7 +17,7 @@ export default function Button({ text, className }: Props) {
   return (
     <button
       className={twMerge(
-        "px-3 py-2 rounded-lg font-urbanistBold capitalize text-md lg:text-lg xl:text-[20px] xl:py-4 xl:px-6",
+        "px-3 py-2 rounded-lg font-urbanistBold capitalize",
         themeStyle,
         className
       )}

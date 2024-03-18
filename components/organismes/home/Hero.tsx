@@ -49,7 +49,7 @@ export default function Hero() {
       )}
     >
       <div className="max-w-[90rem] mx-auto max-h-[50rem] h-hero flex flex-col items-center justify-center">
-        <h1 className="text-[50px] leading-[50px] md:text-[60px] md:leading-[60px] lg:text-[70px] lg:leading-[70px] xl:text-[90px] xl:leading-[90px] 2xl:text-[110px] 2xl:leading-[110px] font-urbanistBlack text-center">
+        <h1 className="text-[50px] leading-[50px] md:text-[60px] md:leading-[60px] lg:text-[70px] lg:leading-[70px]  2xl:text-[110px] 2xl:leading-[110px] font-urbanistBlack text-center">
           <span
             className={twMerge("", isDark ? "text-primary" : "text-primary")}
           >
@@ -58,7 +58,7 @@ export default function Hero() {
           , the modern React Framework
         </h1>
 
-        <p className="mt-8 text-lg md:text-xl w-full md:w-[700px] lg:w-[900px] xl:w-[1100px] text-center lg:text-[25px] lg:leading-[35px] xl:text-[30px] xl:leading-[40px] 2xl:text-[35px] 2xl:leading-[50px]">
+        <p className="mt-8 text-lg md:text-xl w-full md:w-[900px] 2xl:w-[1100px] text-center lg:text-[20px] lg:leading-[30px] xl:text-[25px] xl:leading-[35px] 2xl:text-[30px] 2xl:leading-[45px]">
           Based on modern tools, Rasengan.js will help you to create{" "}
           <span className="font-bold">high-quality web applications</span> with
           the benefit of React components.
@@ -143,7 +143,7 @@ export default function Hero() {
               onMouseLeave={() => setIsHover(false)}
               onClick={handleCopyToClipboard}
               className={twMerge(
-                "relative w-[250px] sm:w-auto px-3 py-2 lg:text-lg xl:text-[20px] xl:py-4 xl:px-6 rounded-lg border-[1px] flex items-center justify-center cursor-copy transition-all",
+                "relative w-[250px] sm:w-auto px-3 py-2 rounded-lg border-[1px] flex items-center justify-center cursor-copy transition-all",
                 isDark
                   ? " hover:bg-white hover:text-black text-white bg-transparent border-gray-900"
                   : "border-gray text-black hover:bg-[#eee]"
