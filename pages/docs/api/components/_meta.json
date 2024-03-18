@@ -1,6 +1,9 @@
 {
   "routing": {
-    "title": "Routing",
-    "position": 3
-  }
+    "title": "Routing"
+  },
+  "component": "Component",
+  "layout-component": "LayoutComponent",
+  "page-component": "PageComponent",
+  "router-component": "RouterComponent"
 }

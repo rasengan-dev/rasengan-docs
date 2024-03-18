@@ -9,18 +9,19 @@ export default function Foundations() {
   return (
     <section
       className={twMerge(
-        "w-full px-[20px] md:px-[50px] flex-col items-center py-20 border-b-[1px] border-b-gray-200",
-        isDark ? "border-b-gray-900" : "border-b-gray-200"
+        "w-full px-[20px] md:px-[50px] py-20"
       )}
     >
-      <h1 className="text-[30px] leading-[30px] text-center">
-        Build on top of a great foundation
-      </h1>
+      <div className="max-w-[90rem] mx-auto flex flex-col items-center">
+        <h1 className="text-[30px] leading-[30px] text-center">
+          Built on top of a great foundation
+        </h1>
 
-      <div className="w-full grid grid-cols-1 xl:grid-cols-3 sm:grid-cols-2 gap-4 mt-12">
-        {FoundationsData.map((foundation) => (
-          <FeatureCard key={foundation.id} data={foundation} />
-        ))}
+        <div className="w-full grid grid-cols-1 xl:grid-cols-3 sm:grid-cols-2 gap-4 mt-12">
+          {FoundationsData.map((foundation) => (
+            <FeatureCard key={foundation.id} data={foundation} />
+          ))}
+        </div>
       </div>
     </section>
   );
