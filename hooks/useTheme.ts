@@ -13,9 +13,9 @@ export default function useTheme() {
   const [refresh, setRefresh] = useState(false);
 
   useEffect(() => {
-    if (theme === "dark" || theme === "light") setTheme("system");
+    if (theme === "light" || theme === "system") setTheme("dark");
     else setTheme("light");
-  }, []);
+  }, [refresh]);
 
   const isDark = useMemo(() => {
     return theme === "dark";

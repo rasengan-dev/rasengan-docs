@@ -49,7 +49,7 @@ export default function Hero() {
       )}
     >
       <div className="max-w-[90rem] mx-auto max-h-[50rem] h-hero flex flex-col items-center justify-center">
-        <h1 className="text-[50px] leading-[50px] md:text-[60px] md:leading-[60px] lg:text-[70px] lg:leading-[70px]  2xl:text-[110px] 2xl:leading-[110px] font-urbanistBlack text-center">
+        <h1 className="text-[50px] leading-[50px] md:text-[60px] md:leading-[60px] lg:text-[70px] lg:leading-[70px] 2xl:text-[90px] 2xl:leading-[90px] font-urbanistBlack text-center">
           <span
             className={twMerge("", isDark ? "text-primary" : "text-primary")}
           >
@@ -58,7 +58,7 @@ export default function Hero() {
           , the modern React Framework
         </h1>
 
-        <p className="mt-8 text-lg md:text-xl w-full md:w-[900px] 2xl:w-[1100px] text-center lg:text-[20px] lg:leading-[30px] xl:text-[25px] xl:leading-[35px] 2xl:text-[30px] 2xl:leading-[45px]">
+        <p className="mt-8 text-lg lg:text-xl w-full md:w-[900px] 2xl:w-[1100px] text-center 2xl:text-[25px] 2xl:leading-[32px]">
           Based on modern tools, Rasengan.js will help you to create{" "}
           <span className="font-bold">high-quality web applications</span> with
           the benefit of React components.

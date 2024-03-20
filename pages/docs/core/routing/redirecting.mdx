@@ -3,14 +3,14 @@ import AlertBox from "@components/atoms/Alert";
 
 # Redirecting
 
-There are a few ways you can handle redirects in Rasengan.js. 
+There are a few ways you can handle redirects in Rasengan.js.
 This page will go through each available option, use cases, and how to manage large numbers of redirects.
 
-| Api                        | Description                              | Where to use                              |
-|----------------------------|------------------------------------------|-------------------------------------------|
-| `useNavigate`              | Perform a client-side redirection        | Event Handlers in Client Components       |
-| `PageComponent.loader()`   | Enable redirection on the server.        | During the server-side rendering process. |
-| `LayoutComponent.loader()` | Enable redirection on the server.        | During the server-side rendering process. |
+| Api                        | Description                       | Where to use                              |
+| -------------------------- | --------------------------------- | ----------------------------------------- |
+| `useNavigate`              | Perform a client-side redirection | Event Handlers in Client Components       |
+| `PageComponent.loader()`   | Enable redirection on the server. | During the server-side rendering process. |
+| `LayoutComponent.loader()` | Enable redirection on the server. | During the server-side rendering process. |
 
 ## `useNavigate` hook
 
@@ -40,6 +40,7 @@ The `useNavigate` hook is used to perform client-side redirections.
       )
     }
     ```
+
   </Tabs.Tab>
   <Tabs.Tab>
     ```jsx filename="src/components/LogoutButton.tsx" {2,5,11} showLineNumbers copy
@@ -64,12 +65,14 @@ The `useNavigate` hook is used to perform client-side redirections.
       )
     }
     ```
+
   </Tabs.Tab>
 </Tabs>
 
 <AlertBox>
-The `useNavigate` hook is used in event handlers in client components to perform client-side redirections.
-After the logout logic is executed, the `navigate` function is called with the path to redirect to.
+  The `useNavigate` hook is used in event handlers in client components to
+  perform client-side redirections. After the logout logic is executed, the
+  `navigate` function is called with the path to redirect to.
 </AlertBox>
 
 ## `PageComponent.loader()` method
@@ -99,7 +102,7 @@ So, you can perform server-side redirections using this method and it can only b
          * You have the possibility to perform some logic here for example, making API calls
          * checking if the user is authenticated, etc.
          */
-        
+
         return {
           redirect: "/destination"
         }
@@ -112,6 +115,7 @@ So, you can perform server-side redirections using this method and it can only b
       description: "Redirecting to somewhere",
     })(SomeWhere);
     ```
+
   </Tabs.Tab>
   <Tabs.Tab>
     ```tsx filename="src/pages/redirect.jsx" {14-23} showLineNumbers copy
@@ -133,7 +137,7 @@ So, you can perform server-side redirections using this method and it can only b
          * You have the possibility to perform some logic here for example, making API calls
          * checking if the user is authenticated, etc.
          */
-        
+
         return {
           redirect: "/destination"
         }
@@ -146,15 +150,19 @@ So, you can perform server-side redirections using this method and it can only b
       description: "Redirecting to somewhere",
     })(SomeWhere);
     ```
+
   </Tabs.Tab>
 </Tabs>
 
 <AlertBox type="tip">
-The `loader` method is not only used for redirections, but it can also be used to perform server-side operations like making API calls, checking if the user is authenticated, etc.
-and it can pass data to the `PageComponent.render` method as props. Read more about it [here](/docs/api/components/page-component#loader).
+  The `loader` method is not only used for redirections, but it can also be used
+  to perform server-side operations like making API calls, checking if the user
+  is authenticated, etc. and it can pass data to the `PageComponent.render`
+  method as props. Read more about it
+  [here](/docs/api-reference/components/page-component#loader).
 </AlertBox>
 
-The `loader` method can receive an object argument containing: 
+The `loader` method can receive an object argument containing:
 
 - a `request` instance: The request object from the server.
 - a `param` object: The parameters from the URL.
@@ -182,7 +190,7 @@ The `loader` method can receive an object argument containing:
          *
          * You can also access the request object from the server and the params object
          */
-        
+
         return {
           redirect: "/destination"
         }
@@ -195,6 +203,7 @@ The `loader` method can receive an object argument containing:
       description: "Redirecting to somewhere",
     })(SomeWhere);
     ```
+
   </Tabs.Tab>
   <Tabs.Tab>
     ```tsx filename="src/pages/redirect.jsx" {14} showLineNumbers copy
@@ -218,7 +227,7 @@ The `loader` method can receive an object argument containing:
          *
          * You can also access the request object from the server and the params object
          */
-        
+
         return {
           redirect: "/destination"
         }
@@ -231,6 +240,7 @@ The `loader` method can receive an object argument containing:
       description: "Redirecting to somewhere",
     })(SomeWhere);
     ```
+
   </Tabs.Tab>
 </Tabs>
 

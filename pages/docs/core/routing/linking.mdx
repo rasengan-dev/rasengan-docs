@@ -12,7 +12,7 @@ This page will go through how to use each of these options, and dive deeper into
 
 ## Using the `<Link>` Component[#link-component]
 
-The `<Link>` component is a React component that allows you to navigate between routes in your application. 
+The `<Link>` component is a React component that allows you to navigate between routes in your application.
 It is the recommended way to navigate between routes in Rasengan.js.
 
 Here's an example of how to use the `<Link>` component:
@@ -35,11 +35,12 @@ Here's an example of how to use the `<Link>` component:
     }
 
     export default defineRoutePage({
-      path: "/", 
+      path: "/",
       title: "Home",
       description: "Home Page",
     })(Home);
     ```
+
   </Tabs.Tab>
   <Tabs.Tab>
     ```jsx filename="src/pages/home.page.jsx" showLineNumbers copy
@@ -58,20 +59,23 @@ Here's an example of how to use the `<Link>` component:
     }
 
     export default defineRoutePage({
-      path: "/", 
+      path: "/",
       title: "Home",
       description: "Home Page",
     })(Home);
     ```
+
   </Tabs.Tab>
 </Tabs>
 
 <AlertBox>
-To handle `Routing` in Rasengan.js, we have based our routing on the `react-router` library. So, you can learn more about 
-the [`Link Component`](https://reactrouter.com/en/main/components/link) from the `react-router` documentation.
+  To handle `Routing` in Rasengan.js, we have based our routing on the
+  `react-router` library. So, you can learn more about the [`Link
+  Component`](https://reactrouter.com/en/main/components/link) from the
+  `react-router` documentation.
 </AlertBox>
 
-There are other option props available to `<Link />`, see the [`API Reference`](/docs/api/components/link-component) for more details.
+There are other option props available to `<Link />`, see the [`API Reference`](/docs/api-reference/components/link-component) for more details.
 
 ### Examples
 
@@ -104,6 +108,7 @@ You can use the `to` prop to navigate to a dynamic route. For example, if you ha
       );
     };
     ```
+
   </Tabs.Tab>
   <Tabs.Tab>
     ```tsx filename="src/components/Posts.jsx" showLineNumbers copy
@@ -122,6 +127,7 @@ You can use the `to` prop to navigate to a dynamic route. For example, if you ha
       );
     };
     ```
+
   </Tabs.Tab>
 </Tabs>
 
@@ -150,6 +156,7 @@ You can use the `useLocation` hook to have access to the current `pathname` of t
       );
     }
     ```
+
   </Tabs.Tab>
   <Tabs.Tab>
     ```jsx filename="src/components/ActiveLink.jsx" showLineNumbers copy
@@ -165,6 +172,7 @@ You can use the `useLocation` hook to have access to the current `pathname` of t
       );
     }
     ```
+
   </Tabs.Tab>
 </Tabs>
 
@@ -174,7 +182,7 @@ The default behavior of a Rasengan.js Routing system is to navigate to the top o
 
 If you want to scroll to a specific `id` on the page, you can use the `to` prop with the `hash` value.
 
-<Tabs items={['TypeScript', 'JavaScript']} defaultIndex="1">
+<Tabs items={["TypeScript", "JavaScript"]} defaultIndex="1">
   <Tabs.Tab>
     ```tsx copy showLineNumbers
     <Link to="/admin/dashboard#statistics">Statistics</Link>
@@ -187,9 +195,9 @@ If you want to scroll to a specific `id` on the page, you can use the `to` prop 
   </Tabs.Tab>
 </Tabs>
 
-## `useNavigate` hook 
+## `useNavigate` hook
 
-The `useNavigate` hook is used to change the current route in your application. 
+The `useNavigate` hook is used to change the current route in your application.
 It returns a function that you can call to navigate to a different route.
 
 Here's an example of how to use the `useNavigate` hook:
@@ -214,11 +222,12 @@ Here's an example of how to use the `useNavigate` hook:
     }
 
     export default defineRoutePage({
-      path: "/", 
+      path: "/",
       title: "Home",
       description: "Home Page",
     })(Home);
     ```
+
   </Tabs.Tab>
   <Tabs.Tab>
     ```jsx filename="src/pages/home.page.jsx" showLineNumbers copy
@@ -239,18 +248,20 @@ Here's an example of how to use the `useNavigate` hook:
     }
 
     export default defineRoutePage({
-      path: "/", 
+      path: "/",
       title: "Home",
       description: "Home Page",
     })(Home);
     ```
+
   </Tabs.Tab>
 </Tabs>
 
 For a full list of `useNavigate` options, see the [API reference](https://reactrouter.com/en/main/hooks/use-navigate) on the documentation of `React Router`.
 
 <AlertBox type="tip">
-`useNavigate` is useful when you want to do something before navigating to the new page. 
+  `useNavigate` is useful when you want to do something before navigating to the
+  new page.
 </AlertBox>
 
 <Tabs items={['TypeScript', 'JavaScript']} defaultIndex="1">
@@ -277,6 +288,7 @@ For a full list of `useNavigate` options, see the [API reference](https://reactr
       )
     }
     ```
+
   </Tabs.Tab>
   <Tabs.Tab>
     ```jsx filename="src/components/LogoutButton.tsx" showLineNumbers copy
@@ -301,6 +313,7 @@ For a full list of `useNavigate` options, see the [API reference](https://reactr
       )
     }
     ```
+
   </Tabs.Tab>
 </Tabs>
 
