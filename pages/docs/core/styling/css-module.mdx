@@ -1,0 +1,145 @@
+import { Tabs } from "nextra/components";
+import AlertBox from '@components/atoms/Alert';
+
+# CSS Modules
+
+Rasengan.js has built-in support for CSS Modules using the `.module.css` extension.
+
+CSS Modules locally scope CSS by automatically creating a unique class name. 
+This allows you to use the same class name in different files without worrying about collisions. 
+This behavior makes CSS Modules the ideal way to include component-level CSS.
+
+## Example
+
+CSS Modules can be imported into any file inside the `src` directory to be used to style components.
+
+<Tabs items={['TypeScript', 'JavaScript']} defaultIndex="1">
+  <Tabs.Tab>
+    ```tsx filename="src/pages/app.layout.tsx" {2,7-8} showLineNumbers copy
+    import { LayoutComponent, defineRouteLayout, Outlet } from "rasengan";
+    import styles from "./layout.module.css";
+
+    class AppLayout extends LayoutComponent {
+      render() {
+        return (
+          <div className={styles.container}>
+            <h1 className={styles.title}>App Layout</h1>
+
+            <Outlet />
+          </div>
+        )
+      }
+    }
+
+    export default defineRouteLayout({
+      path: "/",
+    })(AppLayout);
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```jsx filename="src/pages/app.layout.jsx" {2,7-8} showLineNumbers copy
+    import { LayoutComponent, defineRouteLayout, Outlet } from "rasengan";
+    import styles from "./layout.module.css";
+
+    class AppLayout extends LayoutComponent {
+      render() {
+        return (
+          <div className={styles.container}>
+            <h1 className={styles.title}>App Layout</h1>
+
+            <Outlet />
+          </div>
+        )
+      }
+    }
+
+    export default defineRouteLayout({
+      path: "/",
+    })(AppLayout);
+    ```
+  </Tabs.Tab>
+</Tabs>
+
+## Global Styles
+
+Global styles can be added to the `src/styles` directory and imported into the [`src/main.tsx`](/docs/api-reference/file-conventions/main) file.
+
+### `styles/index.css` 
+
+```css filename="src/styles/index.css" showLineNumbers copy
+body,
+html {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+}
+```
+
+### `src/main.tsx`
+
+Now you have to import your global style into the `src/main.tsx` file.
+
+<Tabs items={['TypeScript', 'JavaScript']}>
+  <Tabs.Tab>
+    ```tsx filename="src/main.tsx" {2} showLineNumbers copy
+    // These styles apply to every route in the application
+    import "@/styles/index.css";
+
+    import { type AppProps } from "rasengan";
+    import AppRouter from "@/pages/app.router";
+
+    export default function App({ Component, children }: AppProps) {
+      return <Component router={AppRouter}>{children}</Component>;
+    }
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```jsx filename="src/main.jsx" {2} showLineNumbers copy
+    // These styles apply to every route in the application
+    import "@/styles/index.css";
+
+    import AppRouter from "@/pages/app.router";
+
+    export default function App({ Component, children }) {
+      return <Component router={AppRouter}>{children}</Component>;
+    }
+    ```
+  </Tabs.Tab>
+</Tabs>
+
+## External Stylesheets
+
+Stylesheets published by external packages can be imported in the `src/main.tsx` file or anywhere else.
+
+<Tabs items={['TypeScript', 'JavaScript']}>
+  <Tabs.Tab>
+    ```tsx filename="src/main.tsx" {1} showLineNumbers copy
+    import "@rasenganjs/image/lib/styles/index.css";
+
+    import { type AppProps } from "rasengan";
+    import AppRouter from "@/pages/app.router";
+
+    export default function App({ Component, children }: AppProps) {
+      return <Component router={AppRouter}>{children}</Component>;
+    }
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```jsx filename="src/main.jsx" {1} showLineNumbers copy
+    import "@rasenganjs/image/lib/styles/index.css";
+
+    import AppRouter from "@/pages/app.router";
+
+    export default function App({ Component, children }) {
+      return <Component router={AppRouter}>{children}</Component>;
+    }
+    ```
+  </Tabs.Tab>
+</Tabs>

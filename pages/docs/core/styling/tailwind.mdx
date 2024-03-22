@@ -1,0 +1,141 @@
+import { Tabs } from "nextra/components";
+import AlertBox from '@components/atoms/Alert';
+
+# Tailwind CSS
+
+[Tailwind CSS](https://tailwindcss.com) is an utility-first CSS framework that works exceptionally well with Rasengan.js.
+
+## Installing Tailwind CSS
+
+Install the Tailwind CSS packages and run the `init` command to generate both the `tailwind.config.js` and `postcss.config.js` files. 
+Or if you prefer, you can create these files manually.
+
+```bash filename="Terminal" showLineNumbers copy 
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
+```
+
+<AlertBox>
+Instead of manually install and configure tailwind, when you generate a new project by using the [`Rasengan CLI`](/docs/api-reference/cli) you have the possibility to use the `tailwind template` directly.
+</AlertBox>
+
+## Configuring Tailwind CSS
+
+Inside `tailwind.config.js`, add paths to the files that will use Tailwind CSS class names. But make sure to use the [`adaptPath`](/docs/api-reference/functions/adapt-path) utility function to generate the correct path.
+
+```javascript filename="tailwind.config.js" showLineNumbers copy 
+import { adaptPath } from "rasengan";
+
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: adaptPath(["./index.html", "./src/**/*.{ts,tsx,js,jsx}"]),
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+```
+
+Inside the `postcss.config.js`, specify the path to the `tailwind.config.js` file using the [`adaptPath`](/docs/api-reference/functions/adapt-path) utility function again.
+
+```javascript filename="postcss.config.js" showLineNumbers copy
+import { adaptPath } from "rasengan";
+
+export default {
+  plugins: {
+    tailwindcss: {
+      config: adaptPath("./tailwind.config"),
+    },
+    autoprefixer: {},
+  },
+};
+``` 
+
+## Importing Styles 
+
+Add the [Tailwind CSS directives](https://tailwindcss.com/docs/functions-and-directives#directives) that `Tailwind` will use to inject its generated styles to a [`Global Stylesheet`](/docs/core/styling/css-module#stylesindexcss) in your application, for example:
+
+```css filename="styles/index.css" showLineNumbers copy
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
+Then import the `index.css` file in your application entry point.
+
+<Tabs items={['TypeScript', 'JavaScript']}>
+  <Tabs.Tab>
+    ```tsx filename="src/main.tsx" {2} showLineNumbers copy
+    // These styles apply to every route in the application
+    import "@/styles/index.css";
+
+    import { type AppProps } from "rasengan";
+    import AppRouter from "@/pages/app.router";
+
+    export default function App({ Component, children }: AppProps) {
+      return <Component router={AppRouter}>{children}</Component>;
+    }
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```jsx filename="src/main.jsx" {2} showLineNumbers copy
+    // These styles apply to every route in the application
+    import "@/styles/index.css";
+
+    import AppRouter from "@/pages/app.router";
+
+    export default function App({ Component, children }) {
+      return <Component router={AppRouter}>{children}</Component>;
+    }
+    ```
+  </Tabs.Tab>
+</Tabs>
+
+## Using Tailwind CSS Classes
+
+After installing Tailwind CSS and adding the global styles, you can use Tailwind's utility classes in your application.
+
+<Tabs items={['TypeScript', 'JavaScript']} defaultIndex="1">
+  <Tabs.Tab>
+    ```tsx filename="src/pages/home.page.tsx" showLineNumbers copy
+    import { PageComponent, defineRoutePage } from "rasengan";
+
+    class Home extends PageComponent {
+      render() {
+        return (
+          <div className="w-full px-8 py-4">
+            <h1 className="text-3xl font-bold capitalize">Home</h1>
+          </div>
+        )
+      }
+    }
+
+    export default defineRoutePage({
+      path: "/",
+      title: "Home",
+      description: "Home page description"
+    })(Home);
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```jsx filename="src/pages/home.page.jsx" showLineNumbers copy
+    import { PageComponent, defineRoutePage } from "rasengan";
+
+    class Home extends PageComponent {
+      render() {
+        return (
+          <div className="w-full px-8 py-4">
+            <h1 className="text-3xl font-bold capitalize">Home</h1>
+          </div>
+        )
+      }
+    }
+
+    export default defineRoutePage({
+      path: "/",
+      title: "Home",
+      description: "Home page description"
+    })(Home);
+    ```
+  </Tabs.Tab>
+</Tabs>
