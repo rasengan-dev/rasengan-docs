@@ -6,6 +6,10 @@
     "title": "Tailwind CSS"
   },
   "css-in-js": {
-    "title": "CSS-in-JS"
+    "title": "CSS-in-JS",
+    "display": "hidden"
+  },
+  "preprocessors": {
+    "title": "CSS Preprocessors"
   }
 }

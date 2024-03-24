@@ -1,0 +1,123 @@
+# CSS Preprocessors
+
+Rasengan.js supports CSS preprocessors like `Sass`, `Less`, and `Stylus`. You can use them by adding the corresponding file extension to your CSS file.
+
+## Sass 
+
+Rasengan.js has built-in support for integrating with `Sass` after the package is installed using both the `.scss` and `.sass` extensions. 
+You can use component-level Sass via CSS Modules and the `.module.scss` or `.module.sass` extension.
+
+First, you need to install [`sass`](https://github.com/sass/sass):
+
+```bash filename="Terminal" copy 
+npm install --save-dev sass
+```
+
+Then, you can create a `.scss` or `.sass` file and import it into your component:
+
+```scss filename="src/components/MyComponent.scss" showLineNumbers copy
+$primary-color: #333;
+
+.my-component {
+  color: $primary-color;
+}
+```
+
+```jsx filename="src/components/MyComponent.jsx" showLineNumbers copy
+import React from 'react';
+
+import './MyComponent.scss';
+
+const MyComponent = () => {
+  return <div className="my-component">Hello, world!</div>;
+};
+
+export default MyComponent;
+```
+
+And with [`CSS Modules`](/docs/core/styling/css-module):
+
+```scss filename="src/components/MyComponent.module.scss" showLineNumbers copy
+$primary-color: #333;
+
+.component {
+  color: $primary-color;
+}
+```
+
+```jsx filename="src/components/MyComponent.jsx" showLineNumbers copy
+import React from 'react';
+
+import styles from './MyComponent.module.scss';
+
+const MyComponent = () => {
+  return <div className={styles.component}>Hello, world!</div>;
+};
+
+export default MyComponent;
+```
+
+## Less
+
+Rasengan.js has built-in support for integrating with `Less` after the package is installed using the `.less` extension.
+You can use component-level Less via CSS Modules and the `.module.less` extension.
+
+First, you need to install [`less`](https://lesscss.org/):
+
+```bash filename="Terminal" copy
+npm install --save-dev less
+```
+
+Then, you can create a `.less` file and import it into your component:
+
+```less filename="src/components/MyComponent.less" showLineNumbers copy
+@primary-color: #333;
+
+.my-component {
+  color: @primary-color;
+}
+```
+
+```jsx filename="src/components/MyComponent.jsx" showLineNumbers copy
+import React from 'react';
+
+import './MyComponent.less';
+
+const MyComponent = () => {
+  return <div className="my-component">Hello, world!</div>;
+};
+
+export default MyComponent;
+```
+
+## Stylus
+
+Rasengan.js has built-in support for integrating with `Stylus` after the package is installed using the `.styl` or `.stylus` extension.
+You can use component-level Stylus via CSS Modules and the `.module.styl` or `.module.stylus` extension.
+
+First, you need to install [`stylus`](https://stylus-lang.com/docs/executable.html):
+
+```bash filename="Terminal" copy
+npm install --save-dev stylus
+```
+
+Then, you can create a `.styl` file and import it into your component:
+
+```styl filename="src/components/MyComponent.styl" showLineNumbers copy
+primary-color = #333
+
+.my-component
+  color primary-color
+```
+
+```jsx filename="src/components/MyComponent.jsx" showLineNumbers copy
+import React from 'react';
+
+import './MyComponent.styl';
+
+const MyComponent = () => {
+  return <div className="my-component">Hello, world!</div>;
+};
+
+export default MyComponent;
+```
