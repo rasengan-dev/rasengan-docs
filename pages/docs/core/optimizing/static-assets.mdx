@@ -1,0 +1,20 @@
+import AlertBox from '@components/atoms/Alert';
+
+# Static Assets in `public`
+
+Rasengan.js can serve static files, like images, under a folder called `public` in the root directory. Files inside `public` can then be referenced by your code starting from the base URL (`/`).
+
+For example, the file `public/avatars/1.png` can be viewed by visiting the `/avatars/1.png` path. Here is an example of code to illustrate that:
+
+```jsx filename="src/components/Avatar.jsx" showLineNumbers copy 
+import { Image } from "@rasenganjs/image";
+
+export function Avatar({ id, alt }) {
+  return <Image src={`/avatars/${id}.png`} alt={alt} width={64} height={64} />;
+}
+```
+
+<AlertBox>
+The name of the folder has to be named `public`. The files inside `public` are served as-is.
+After the build, the files in the `public` folder are available at the root of the server.
+</AlertBox>

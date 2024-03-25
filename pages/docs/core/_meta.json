@@ -19,7 +19,8 @@
     "display": "hidden"
   },
   "authentication": {
-    "title": "Authentication"
+    "title": "Authentication",
+    "display": "hidden"
   },
   "internationalization": {
     "title": "Internationalization",

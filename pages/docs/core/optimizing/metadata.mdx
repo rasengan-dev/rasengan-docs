@@ -1,0 +1,160 @@
+import { Tabs } from "nextra/components";
+import AlertBox from '@components/atoms/Alert';
+
+# Metadata
+
+Rasengan.js has a Metadata API that can be used to define your application metadata (e.g. `meta` and `link` tags inside your HTML `head` element) for improved SEO and web shareability.
+
+## Usage
+
+<Tabs items={["TypeScript", "JavaScript"]}>
+  <Tabs.Tab>
+    ```typescript filename="src/pages/home.page.tsx" {36} showLineNumbers copy
+    import { Metadata, defineRoutePage } from "rasengan";
+
+    const metadata: Metadata = {
+      // Defines the meta tags to be added to the head element
+      metadataTags: [{
+        name: "description",
+        content: "Rasengan.js
+      }],
+
+      // Defines the link tags to be added to the head element
+      links: [{
+        rel: "icon",
+        href: "/favicon.ico",
+      }],
+
+      // Used for link previews on social media
+      openGraph: {
+        title: "Rasengan.js",
+        description: "Rasengan
+        image: "https://example.com/image.jpg",
+        url: "https://example.com",
+      },
+
+      // Used for Twitter link previews
+      twitter: {
+        title: "Rasengan.js",
+        description: "Rasengan.js",
+        image: "https://example.com/image.jpg",
+        card: "summary_large_image",
+      },
+    }
+
+    export default defineRoutePage({
+      title: "Home",
+      description: "Home page",
+      metadata,
+    })
+    ```
+  </Tabs.Tab>
+
+  <Tabs.Tab>
+    ```javascript filename="src/pages/home.page.jsx" {36} showLineNumbers copy
+    import { Metadata, defineRoutePage } from "rasengan";
+
+    const metadata = {
+      // Defines the meta tags to be added to the head element
+      metadataTags: [{
+        name: "description",
+        content: "Rasengan.js
+      }],
+
+      // Defines the link tags for icons to be added to the head element
+      links: [{
+        rel: "icon",
+        href: "/favicon.ico",
+      }],
+
+      // Used for link previews on social media
+      openGraph: {
+        title: "Rasengan.js",
+        description: "Rasengan
+        image: "https://example.com/image.jpg",
+        url: "https://example.com",
+      },
+
+      // Used for Twitter link previews
+      twitter: {
+        title: "Rasengan.js",
+        description: "Rasengan.js",
+        image: "https://example.com/image.jpg",
+        card: "summary_large_image",
+      },
+    }
+
+    export default defineRoutePage({
+      title: "Home",
+      description: "Home page",
+      metadata,
+    })
+    ```
+  </Tabs.Tab>
+</Tabs>
+
+## API
+
+### `Metadata.metadataTags`[#tags]
+
+An array of meta tags to be added to the head element.
+
+| Property   | Type     | Description                                                             | Optional  |
+| ---------- | -------- | ----------------------------------------------------------------------- | --------- |
+| `name`     | `string` | The name of the meta tag.                                               | true      |
+| `property` | `string` | The property of the meta tag. Can replace the `name` property sometimes | true      |
+| `content`  | `string` | The content of the meta tag.                                            | false     |
+
+<AlertBox type="tip">
+don't use `name` and `property` at the same time, juste one depending on what you want to achieve.
+</AlertBox>
+
+### `Metadata.links`[#links]
+
+An array of link tags to be added to the head element.
+
+| Property   | Type     | Description                           | Default       | Optional    |
+| ---------- | -------- | ------------------------------------- | ------------- | ----------- |
+| `rel`      | `string` | The relationship of the link tag.     | "icon"        | false       |
+| `href`     | `string` | The href of the link tag.             | -             | false       |
+| `type`     | `string` | The type of the link tag.             | "image/png"   | true        |
+| `sizes`    | `string` | The sizes of the link tag.            | "32x32"       | true        | 
+
+<AlertBox type="tip">
+`href` can be an absolute path of the icon you want to display, or also a relative path to the one stored inside the [`public`](/docs/core/optimizing/static-assets) directory
+</AlertBox>
+
+### `Metadata.openGraph`[#openGraph]
+
+An object containing the Open Graph metadata for link previews on social media.
+
+| Property     | Type     | Description                           | Default      | Optional   |
+| ------------ | -------- | ------------------------------------- | ------------ | ---------- |
+| `title`      | `string` | The title of the link preview.        | -            | false      |
+| `description`| `string` | The description of the link preview.  | -            | false      |
+| `image`      | `string` | The image of the link preview.        | -            | true       |
+| `url`        | `string` | The URL of the link preview.          | -            | true       |
+| `type`       | `string` | The type of the link preview.         | "website"    | false      |
+| `width`      | `number` | The width of the image.               | -            | false      |
+| `height`     | `number` | The height of the image.              | -            | false      |
+
+<AlertBox type="tip">
+`image` has to be an absolute path of the image you want to display in the link preview
+</AlertBox>
+
+### `Metadata.twitter`[#twitter]
+
+An object containing the Twitter metadata for link previews.
+
+| Property     | Type     | Description                           | Default                  | Optional   |
+| ------------ | -------- | ------------------------------------- | ------------------------ | ---------- |
+| `title`      | `string` | The title of the link preview.        | -                        | true       |
+| `description`| `string` | The description of the link preview.  | -                        | false      |
+| `image`      | `string` | The image of the link preview.        | -                        | true       |
+| `card`       | `string` | The type of the link preview.         | "summary_large_image"    | true       |
+| `site`       | `string` | The site of the link preview.         | -                        | false      |
+| `creator`    | `string` | The creator of the link preview.      | -                        | false      |
+
+<AlertBox type="tip">
+`image` has to be an absolute path of the image you want to display in the link preview
+</AlertBox>
