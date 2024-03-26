@@ -1,0 +1,46 @@
+import AlertBox from "@components/atoms/Alert";
+
+
+# Modules Aliases
+
+To configure aliases for modules, you have to define first `paths` in `tsconfig.json` or `jsconfig.json` file.:
+
+```json showLineNumbers copy
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@app/*": ["src/app/*"]
+    }
+  }
+}
+```
+
+This first configuration is for intellisense and code navigation. To make it work in runtime, you have to configure `aliases` inside the `rasengan.config.js` file.
+
+```javascript filename="rasengan.config.js" showLineNumbers copy
+import { defineConfig } from "rasengan";
+
+export default defineConfig({
+  vite: {
+    resolve: {
+      alias: [
+        {
+          find: "@app",
+          replacement: "src/app",
+        },
+      ],
+    },
+  },
+});
+```
+
+Now you can import modules using the alias:
+
+```typescript showLineNumbers copy
+import Home from "@app/home.page.tsx";
+```
+
+<AlertBox>
+Learn more about [Modules aliases](/docs/api-reference/rasengan-config/aliases).
+</AlertBox>

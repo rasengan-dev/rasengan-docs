@@ -1,0 +1,74 @@
+# TypeScript
+
+Rasengan.js provides a TypeScript-first development experience for building your React application.
+
+It comes with built-in TypeScript support for automatically installing the necessary packages and configuring the proper settings.
+
+## New Project
+
+`create-rasengan` CLI can be used to create a new TypeScript project.
+
+```bash filename="Terminal" copy 
+npx create-rasengan my-app
+```
+
+During the project creation, you will be prompted to choose the language for your project. Select `TypeScript` to create a TypeScript project.
+
+## Existing Project
+
+If you have an existing project and want to add TypeScript support, you have first to rename your files to `.tsx` and `.ts` extensions.
+
+Then, you can run the following command to install the necessary packages and configure the TypeScript settings.
+
+```bash filename="Terminal" copy
+npm install --save-dev typescript @types/react @types/react-dom
+```
+
+Then add the following `tsconfig.json` file to the root of your project.
+
+```json filename="tsconfig.json" showLineNumbers copy
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+    "experimentalDecorators": true,
+
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+
+    /* Linting */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+
+    /* Aliases for intellisence */
+    "paths": {
+      "@/*": ["src/*"],
+      "@app/*": ["src/app/*"],
+      "@components/*": ["src/components/*"],
+      "@assets/*": ["src/assets/*"],
+      "@styles/*": ["src/styles/*"]
+    }
+  },
+  "include": ["src", "rasengan-env.d.ts"]
+}
+```
+
+Finally, add the following `rasengan-env.d.ts` file to the root of your project.
+
+```typescript filename="rasengan-env.d.ts" showLineNumbers copy
+/// <reference types="rasengan/types/image" />
+/// <reference types="rasengan/types/style" />
+```
+
+Run `npm run dev` to start the development server.

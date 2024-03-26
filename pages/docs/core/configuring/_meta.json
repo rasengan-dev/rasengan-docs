@@ -1,3 +1,13 @@
 {
-  
+  "typescript": {
+    "title": "TypeScript"
+  },
+  "eslint": {
+    "title": "ESLint",
+    "display": "hidden"
+  },
+  "env": {
+    "title": "Environment Variables"
+  },
+  "aliases": "Modules Aliases"
 }
