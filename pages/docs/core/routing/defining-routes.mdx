@@ -1,16 +1,17 @@
-import { Tabs } from 'nextra/components'
+import { Tabs } from "nextra/components";
 import AlertBox from "@components/atoms/Alert";
 
-# Defining Routes 
+# Defining Routes
 
 <AlertBox type="success">
-Before starting reading this documentation, make sure you have read the [Routing Base Concepts](/docs/core/routing/base-concepts) guide.
+  Before starting reading this documentation, make sure you have read the
+  [Routing Base Concepts](/docs/core/routing/base-concepts) guide.
 </AlertBox>
 
-Rasengan.js uses a declarative approach to define routes. As mentioned in the [Routing Base Concepts](/docs/core/routing/base-concepts) guide, 
+Rasengan.js uses a declarative approach to define routes. As mentioned in the [Routing Base Concepts](/docs/core/routing/base-concepts) guide,
 you have to define a `Router` and a `Page` to create a route.
 
-## Create a Page 
+## Create a Page
 
 To create a `Page` you have to create a class that extends `PageComponent` and then use the `defineRoutePage` function to set the `path` that will be used by the `Page` as base URL and some `metadata`.
 
@@ -18,7 +19,7 @@ Let's assume that you have a `Home` page that should be accessible at the `/` pa
 
 <Tabs items={['TypeScript', 'JavaScript']} defaultIndex="1">
   <Tabs.Tab>
-    ```typescript filename="src/pages/home.page.tsx" showLineNumbers copy
+    ```typescript filename="src/app/home.page.tsx" showLineNumbers copy
     import { PageComponent, defineRoutePage } from "rasengan";
 
     class Home extends PageComponent {
@@ -34,9 +35,10 @@ Let's assume that you have a `Home` page that should be accessible at the `/` pa
       description: "This is the home page"
     })(Home);
     ```
+
   </Tabs.Tab>
   <Tabs.Tab>
-    ```javascript filename="src/pages/home.page.jsx" showLineNumbers copy
+    ```javascript filename="src/app/home.page.jsx" showLineNumbers copy
     import { PageComponent, defineRoutePage } from "rasengan";
 
     class Home extends PageComponent {
@@ -52,21 +54,23 @@ Let's assume that you have a `Home` page that should be accessible at the `/` pa
       description: "This is the home page"
     })(Home);
     ```
+
   </Tabs.Tab>
 </Tabs>
 
 <AlertBox>
-The `defineRoutePage` function is a higher-order function that receives a `metadata` object and returns a function that receives the `Page` class. 
-This is a common pattern used in Rasengan.js to define metadata for components.
+  The `defineRoutePage` function is a higher-order function that receives a
+  `metadata` object and returns a function that receives the `Page` class. This
+  is a common pattern used in Rasengan.js to define metadata for components.
 </AlertBox>
 
-## Create a Router 
+## Create a Router
 
 <Tabs items={['TypeScript', 'JavaScript']} defaultIndex="1">
   <Tabs.Tab>
-    ```typescript filename="src/pages/app.router.ts" showLineNumbers copy
+    ```typescript filename="src/app/app.router.ts" showLineNumbers copy
     import { RouterComponent, defineRouter } from "rasengan";
-    import Home from "@/pages/home.page";
+    import Home from "@/app/home.page";
 
     class AppRouter extends RouterComponent {}
 
@@ -75,11 +79,12 @@ This is a common pattern used in Rasengan.js to define metadata for components.
       pages: [Home]
     })(AppRouter);
     ```
+
   </Tabs.Tab>
   <Tabs.Tab>
-    ```javascript filename="src/pages/app.router.js" showLineNumbers copy
+    ```javascript filename="src/app/app.router.js" showLineNumbers copy
     import { RouterComponent, defineRouter } from "rasengan";
-    import Home from "@/pages/home.page";
+    import Home from "@/app/home.page";
 
     class AppRouter extends RouterComponent {}
 
@@ -88,17 +93,20 @@ This is a common pattern used in Rasengan.js to define metadata for components.
       pages: [Home]
     })(AppRouter);
     ```
+
   </Tabs.Tab>
 </Tabs>
 
 <AlertBox>
-A Rasengan.js application can have multiple routers, but only one can be the default router. The default router is the one that will be used to render the application
-and it should be defined in the `app.router` file in the root of the `pages` folder.
+  A Rasengan.js application can have multiple routers, but only one can be the
+  default router. The default router is the one that will be used to render the
+  application and it should be defined in the `app.router` file in the root of
+  the `app` folder.
 </AlertBox>
 
 Note that, here we are using the `Home Page` that we defined in the previous section. Also, we haven't defined any `Layout` for this `Router`, so it will use the default `Layout` predifined by Rasengan.js responding to the path `/`.
 
-## Use the Router 
+## Use the Router
 
 In order to have your routing system working, you have to use the `Router` component in your application. To do that, you have to import the `AppRouter` into your `App` component in the `main.tsx` file.
 
@@ -106,7 +114,7 @@ In order to have your routing system working, you have to use the `Router` compo
   <Tabs.Tab>
     ```tsx filename="src/main.tsx" showLineNumbers copy
     import { type AppProps } from "rasengan";
-    import AppRouter from "@/pages/app.router";
+    import AppRouter from "@/app/app.router";
 
     export default function App({ Component, children }: AppProps) {
       return <Component router={AppRouter}>{children}</Component>;
@@ -116,10 +124,11 @@ In order to have your routing system working, you have to use the `Router` compo
     <AlertBox>
       The `App` component is a special component that is used to render the application. Make sure to import the `AppProps` type from `rasengan` and use it as the type of the `App` component props.
     </AlertBox>
+
   </Tabs.Tab>
   <Tabs.Tab>
     ```jsx filename="src/main.jsx" showLineNumbers copy
-    import AppRouter from "@/pages/app.router";
+    import AppRouter from "@/app/app.router";
 
     export default function App({ Component, children }) {
       return <Component router={AppRouter}>{children}</Component>;
@@ -129,25 +138,26 @@ In order to have your routing system working, you have to use the `Router` compo
     <AlertBox>
       The `App` component is a special component that is used to render the application.
     </AlertBox>
+
   </Tabs.Tab>
 </Tabs>
 
 Now you can run your application and access the `/` path to see the `Home` page being rendered.
 
-<Tabs items={['npm', 'yarn', 'pnpm']} defaultIndex="0">
+<Tabs items={["npm", "yarn", "pnpm"]} defaultIndex="0">
   <Tabs.Tab>
-    ```bash filename="terminal" copy
-    npm run dev
+    ```bash filename="terminal" copy 
+    npm run dev 
     ```
   </Tabs.Tab>
   <Tabs.Tab>
-    ```bash filename="terminal" copy
-    yarn dev
+    ```bash filename="terminal" copy 
+    yarn dev 
     ```
   </Tabs.Tab>
   <Tabs.Tab>
-    ```bash filename="terminal" copy
-    pnpm run dev
+    ```bash filename="terminal" copy 
+    pnpm run dev 
     ```
   </Tabs.Tab>
 </Tabs>

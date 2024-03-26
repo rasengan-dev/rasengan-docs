@@ -1,7 +1,6 @@
 import { Tabs } from "nextra/components";
 import AlertBox from "@components/atoms/Alert";
 
-
 # Project organization
 
 Having a clear project organization is key to maintain a clean and scalable codebase. Rasengan.js recommend a specific project structure to help you organize your code in a way that is easy to understand and navigate.
@@ -14,9 +13,9 @@ There are some files and directories that are required in the `src` directory an
 
 ### Required files and directories
 
-- `pages`: This directory contains all the pages of your project. Each file in this directory represents generally either a [`Page`](/docs/core/routing/base-concepts#page), or a [`Router`](/docs/core/routing/base-concepts#router) or a [`Layout`](/docs/core/routing/base-concepts#layout).
-- `main.ts`: This file is the entry point of your project. It is the first file that is executed when your project starts.
-- `pages/app.router.ts`: This file is the main router of your project. It is the file that contains the routes of your project.
+- `app`: This directory contains all the pages of your project. Each file in this directory represents generally either a [`Page`](/docs/core/routing/base-concepts#page), or a [`Router`](/docs/core/routing/base-concepts#router) or a [`Layout`](/docs/core/routing/base-concepts#layout).
+- [`main.js`](/docs/api-reference/file-conventions/main): This file is the entry point of your project. It is the first file that is executed when your project starts.
+- [`app/app.router.js`](/docs/api-reference/file-conventions/router): This file is the main router of your project. It is the file that contains the routes of your project.
 
 ### Optional files and directories
 
@@ -26,14 +25,15 @@ There are some files and directories that are required in the `src` directory an
 
 You can create as many directories and files as you want in the `src` directory. The only required files and directories are the ones mentioned above.
 
-## `pages` directory
+## `app` directory
 
-The `pages` directory is used to organize your pages, routers and layouts in order to create a Routing system. 
+The `app` directory is used to organize your pages, routers and layouts in order to create a Routing system.
 
 A routing system in a Rasengan.js app is made from a simple configuration which turn around `Routers`, `Pages` and `Layouts`. So to well organize your project, you should create a folder for each `Router` and put their `Pages` and `Layouts` inside.
 
 <AlertBox>
-Note that, the base `Router` of your app should be placed in the `src/pages` directory and should be named `app.router.ts`.
+  Note that, the base `Router` of your app should be placed in the `src/app`
+  directory and should be named `app.router.ts`.
 </AlertBox>
 
 ### Example
@@ -44,12 +44,12 @@ Assuming you want to create a simple blog app with a front office and a back off
 - `Admin router`: This router will contain the pages of the admin system.
 - `Auth router`: This router will contain the pages of the authentication system.
 
-Here is how you should organize your `pages` directory:
+Here is how you should organize your `app` directory:
 
 ```txt
 src
 ├── main.ts (entry point of your app)
-└── pages
+└── app
     ├── app.router.ts (main router of your app)
     ├── admin
     │   ├── admin.router.ts

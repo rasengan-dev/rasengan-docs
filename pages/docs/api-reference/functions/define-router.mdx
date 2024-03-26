@@ -8,9 +8,9 @@ import { Tabs } from "nextra/components";
   <Tabs.Tab>
     ```tsx filename="app.router.tsx" {8-12} showLineNumbers copy
     import { RouterComponent, defineRouter } from "rasengan";
-    import AppLayout from "@pages/app.layout";
-    import Home from "@pages/home.page";
-    import About from "@pages/about.page";
+    import AppLayout from "@app/app.layout";
+    import Home from "@app/home.page";
+    import About from "@app/about.page";
 
     class AppRouter extends RouterComponent {}
 
@@ -20,13 +20,14 @@ import { Tabs } from "nextra/components";
       pages: [Home, About],
     })(AppRouter);
     ```
+
   </Tabs.Tab>
   <Tabs.Tab>
     ```jsx filename="app.router.jsx" {8-12} showLineNumbers copy
     import { RouterComponent, defineRouter } from "rasengan";
-    import AppLayout from "@pages/app.layout";
-    import Home from "@pages/home.page";
-    import About from "@pages/about.page";
+    import AppLayout from "@app/app.layout";
+    import Home from "@app/home.page";
+    import About from "@app/about.page";
 
     class AppRouter extends RouterComponent {}
 
@@ -36,6 +37,7 @@ import { Tabs } from "nextra/components";
       pages: [Home, About],
     })(AppRouter);
     ```
+
   </Tabs.Tab>
 </Tabs>
 

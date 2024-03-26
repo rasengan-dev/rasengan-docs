@@ -37,22 +37,22 @@ module.exports = {
           info: {
             DEFAULT: "#6BA4FA",
             light: "#f2f6fc",
-            dark: "#1d2529"
+            dark: "#1d2529",
           },
           success: {
             DEFAULT: "#0F9D58",
             light: "#f2f6fc",
-            dark: "#1d2529"
+            dark: "#1d2529",
           },
           warning: {
             DEFAULT: "#F2B200",
             light: "#f2f6fc",
-            dark: "#1d2529"
+            dark: "#1d2529",
           },
           error: {
             DEFAULT: "#FF6666",
             light: "#f2f6fc",
-            dark: "#1d2529"
+            dark: "#1d2529",
           },
         },
 
@@ -61,12 +61,12 @@ module.exports = {
           200: "#EEEEEE",
           500: "#AAAAAA",
           800: "#888888",
-          900: "#333333"
+          900: "#333333",
         },
       },
 
       height: {
-        hero: "calc(100vh - 64px)"
+        hero: "calc(100vh - 64px)",
       },
 
       fontFamily: {

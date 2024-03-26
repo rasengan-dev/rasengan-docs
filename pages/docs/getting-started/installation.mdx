@@ -1,5 +1,5 @@
 import AlertBox from "@components/atoms/Alert";
-import { Tabs } from 'nextra/components'
+import { Tabs } from "nextra/components";
 
 # Installation
 
@@ -8,25 +8,23 @@ System Requirements:
 - [Node.js 18.19](https://nodejs.org) or later.
 - macOS, Windows, and Linux are supported.
 
-
 ## Automatic Installation
 
-We recommend starting a new Rasengan.js app using [create-rasengan](/docs/api-reference/create-rasengan-app), which sets up everything automatically for you. 
+We recommend starting a new Rasengan.js app using [create-rasengan](/docs/api-reference/create-rasengan-app), which sets up everything automatically for you.
 To create a project, run:
 
-<Tabs items={['npm', 'yarn']}>
+<Tabs items={["npm", "yarn"]}>
   <Tabs.Tab>
-    ```bash filename="Terminal" copy
-    npx create-rasengan@latest
+    ```bash filename="Terminal" copy 
+    npx create-rasengan@latest 
     ```
   </Tabs.Tab>
   <Tabs.Tab>
-    ```bash filename="Terminal" copy
-    yarn create rasengan
+    ```bash filename="Terminal" copy 
+    yarn create rasengan 
     ```
   </Tabs.Tab>
 </Tabs>
-
 
 On the installation process, you will see the following prompts:
 
@@ -34,7 +32,6 @@ On the installation process, you will see the following prompts:
 You are using Create Rasengan CLI 🎉
 
 ? Enter the project name: my-app
-? Select a version: 1.0.0-beta.2
 ? Select a language: typescript
 ? Select a template: blank
 ```
@@ -75,7 +72,6 @@ These scripts refer to the different stages of developing an application:
 - [`build`](/docs/api-reference/cli#build): runs `rasengan build` to build the application for production usage.
 - [`prepare`](/docs/api-reference/cli#prepare): runs `rasengan prepare` to setup configuration needed for hosting your application.
 - [`start`](/docs/api-reference/cli#start): runs `rasengan start` to start a Rasengan.js production server.
-
 
 ### Creating root directories and root files
 
@@ -128,7 +124,7 @@ Then add the following content to the `index.html` file:
 And the following content to the `rasengan.config.js` file:
 
 ```javascript filename="rasengan.config.js" showLineNumbers copy
-import { defineConfig } from 'rasengan';
+import { defineConfig } from "rasengan";
 
 export default defineConfig({
   reactStrictMode: true,
@@ -142,16 +138,16 @@ See the [Configuration](/docs/api-reference/rasengan-config) section for more de
 
 ### Creating subdirectories and others files
 
-Inside the `src` directory, create a `pages` directory to store your application's pages.
+Inside the `src` directory, create an `app` folder to store your application's pages.
 
 ```bash filename="Terminal" copy
-mkdir src/pages
+mkdir src/app
 ```
 
-Then create a `home.page.tsx` and `app.router.ts` files inside the `pages` directory:
+Then create a `home.page.tsx` and `app.router.ts` files inside the `app` directory:
 
 ```bash filename="Terminal" copy
-touch src/pages/home.page.tsx src/pages/app.router.ts
+touch src/app/home.page.tsx src/app/app.router.ts
 ```
 
 The `home.page.tsx` file will define a [`page`](/docs/core/routing#pages), more precisely the home page,
@@ -178,6 +174,7 @@ After, copy and paste the following code into `home.page.tsx`
       description: "Home page",
     })(Home);
     ```
+
   </Tabs.Tab>
   <Tabs.Tab>
     ```jsx filename="home.page.jsx" showLineNumbers copy
@@ -197,9 +194,9 @@ After, copy and paste the following code into `home.page.tsx`
       description: "Home page",
     })(Home);
     ```
+
   </Tabs.Tab>
 </Tabs>
-
 
 Do the same for `app.router.js`
 
@@ -207,7 +204,7 @@ Do the same for `app.router.js`
   <Tabs.Tab>
     ```typescript filename="app.router.ts" showLineNumbers copy
     import { RouterComponent, defineRouter } from "rasengan";
-    import Home from "@/pages/home.page";
+    import Home from "@/app/home.page";
 
     class AppRouter extends RouterComponent {}
 
@@ -215,11 +212,12 @@ Do the same for `app.router.js`
       pages: [Home]
     })(AppRouter);
     ```
+
   </Tabs.Tab>
   <Tabs.Tab>
     ```javascript filename="app.router.js" showLineNumbers copy
     import { RouterComponent, defineRouter } from "rasengan";
-    import Home from "@/pages/home.page";
+    import Home from "@/app/home.page";
 
     class AppRouter extends RouterComponent {}
 
@@ -227,11 +225,14 @@ Do the same for `app.router.js`
       pages: [Home]
     })(AppRouter);
     ```
+
   </Tabs.Tab>
 </Tabs>
 
 <AlertBox type="info">
-The `app.router.ts` file is required and have to be located in the `pages` directory, because it's used by Rasengan.js to define routing for your app automatically.
+  The `app.router.ts` file is required and have to be located in the `app`
+  directory, because it's used by Rasengan.js to define routing for your app
+  automatically.
 </AlertBox>
 
 Finally, create the entry file called `main.tsx` inside the `src` folder.
@@ -246,32 +247,35 @@ Then add the following content in it:
   <Tabs.Tab>
     ```tsx filename="main.tsx" showLineNumbers copy
     import { type AppProps } from "rasengan";
-    import AppRouter from "@/pages/app.router";
+    import AppRouter from "@/app/app.router";
 
     export default function App({ Component, children }: AppProps) {
       return <Component router={AppRouter}>{children}</Component>;
     }
     ```
+
   </Tabs.Tab>
   <Tabs.Tab>
     ```jsx filename="main.jsx" showLineNumbers copy
-    import AppRouter from "@/pages/app.router";
+    import AppRouter from "@/app/app.router";
 
     export default function App({ Component, children }) {
       return <Component router={AppRouter}>{children}</Component>;
     }
     ```
+
   </Tabs.Tab>
 </Tabs>
 
 Learn more about [`main.tsx`](/docs/api-reference/file-conventions/main) file.
 
 <AlertBox>
-The `main.tsx` file is the entry file of a Rasengan.js application, so it is required.
+  The `main.tsx` file is the entry file of a Rasengan.js application, so it is
+  required.
 </AlertBox>
 
 ### Run the development server
 
 1. Execute `npm run dev` command.
 2. Open `http://localhost:5320` in the browser.
-3. Edit `src/pages/home.page.tsx` and save to reload automatically.
+3. Edit `src/app/home.page.tsx` and save to reload automatically.

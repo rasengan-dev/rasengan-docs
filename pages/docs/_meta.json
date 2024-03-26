@@ -12,7 +12,8 @@
     "title": "API Reference"
   },
   "extensions": {
-    "title": "Extensions Libraries"
+    "title": "Extensions Libraries",
+    "display": "hidden"
   },
   "community": {
     "title": "Community"

@@ -37,7 +37,7 @@ const config: DocsThemeConfig = {
   navbar: {
     extraContent: () => {
       return (
-        <Button text="Learn" className='hidden sm:block' />
+        <Button text="Learn" className="hidden" />
       )
     }
   },

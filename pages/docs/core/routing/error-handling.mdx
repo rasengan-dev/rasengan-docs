@@ -23,7 +23,7 @@ You can customize the 404 page by creating a simple `React Component` and passin
 
 <Tabs items={['TypeScript', 'JavaScript']} defaultIndex="1">
   <Tabs.Tab>
-    ```tsx filename="src/pages/_404.tsx" showLineNumbers copy
+    ```tsx filename="src/app/_404.tsx" showLineNumbers copy
     import { Link } from "rasengan";
 
     export default function NotFound() {
@@ -38,7 +38,7 @@ You can customize the 404 page by creating a simple `React Component` and passin
 
   </Tabs.Tab>
   <Tabs.Tab>
-    ```tsx filename="src/pages/_404.jsx" showLineNumbers copy
+    ```tsx filename="src/app/_404.jsx" showLineNumbers copy
     import { Link } from "rasengan";
 
     export default function NotFound() {
@@ -60,11 +60,11 @@ You now have to pass the 404 page component to the `AppRouter` configuration.
 
 <Tabs items={['TypeScript', 'JavaScript']} defaultIndex="1">
   <Tabs.Tab>
-    ```typescript filename="src/pages/app.router.ts" {4,12} showLineNumbers copy
+    ```typescript filename="src/app/app.router.ts" {4,12} showLineNumbers copy
     import { RouterComponent, defineRouter } from "rasengan";
-    import Home from "@/pages/home.page";
-    import AppLayout from "@/pages/app.layout";
-    import NotFound from "@/pages/_404";
+    import Home from "@/app/home.page";
+    import AppLayout from "@/app/app.layout";
+    import NotFound from "@/app/_404";
 
     class AppRouter extends RouterComponent {}
 
@@ -78,11 +78,11 @@ You now have to pass the 404 page component to the `AppRouter` configuration.
 
   </Tabs.Tab>
   <Tabs.Tab>
-    ```typescript filename="src/pages/app.router.js" {4,12} showLineNumbers copy
+    ```typescript filename="src/app/app.router.js" {4,12} showLineNumbers copy
     import { RouterComponent, defineRouter } from "rasengan";
-    import Home from "@/pages/home.page";
-    import AppLayout from "@/pages/app.layout";
-    import NotFound from "@/pages/_404";
+    import Home from "@/app/home.page";
+    import AppLayout from "@/app/app.layout";
+    import NotFound from "@/app/_404";
 
     class AppRouter extends RouterComponent {}
 
@@ -101,7 +101,7 @@ You now have to pass the 404 page component to the `AppRouter` configuration.
 
 Now, if you navigate to a page that doesn't exist, you should see the 404 page you created.
 
-With some simple styling, here is the result: 
+With some simple styling, here is the result:
 
 ![404 Page](@assets/images/renders/_404.png)
 
@@ -109,5 +109,4 @@ You can provide a better UI for the 404 page by adding some CSS to the page.
 
 </Steps>
 
-
-## Next Steps 
+## Next Steps

@@ -1,5 +1,5 @@
 import { Tabs } from "nextra/components";
-import AlertBox from '@components/atoms/Alert';
+import AlertBox from "@components/atoms/Alert";
 
 # main.js
 
@@ -13,7 +13,7 @@ The `main.js` is the entry point of your application, so it's required and has t
   <Tabs.Tab>
     ```tsx filename="src/main.tsx" showLineNumbers copy
     import { type AppProps } from "rasengan";
-    import AppRouter from "@/pages/app.router";
+    import AppRouter from "@/app/app.router";
 
     export default function App({ Component, children }: AppProps) {
       return <Component router={AppRouter}>{children}</Component>;
@@ -23,10 +23,11 @@ The `main.js` is the entry point of your application, so it's required and has t
     <AlertBox>
       The `App` component is a special component that is used to render the application. Make sure to import the `AppProps` type from `rasengan` and use it as the type of the `App` component props.
     </AlertBox>
+
   </Tabs.Tab>
   <Tabs.Tab>
     ```jsx filename="src/main.jsx" showLineNumbers copy
-    import AppRouter from "@/pages/app.router";
+    import AppRouter from "@/app/app.router";
 
     export default function App({ Component, children }) {
       return <Component router={AppRouter}>{children}</Component>;
@@ -36,11 +37,11 @@ The `main.js` is the entry point of your application, so it's required and has t
     <AlertBox>
       The `App` component is a special component that is used to render the application.
     </AlertBox>
+
   </Tabs.Tab>
 </Tabs>
 
-
-### Other case 
+### Other case
 
 In some case, you will want to wrap your application entirely with a component in order to share the same context or data to all your pages.
 To do that, just wrap the `Component` component with the one you want to use.
@@ -51,7 +52,7 @@ Let's take an example of [`GX State Management`](https://gx.dilane3.com). Assumi
   <Tabs.Tab>
     ```tsx filename="src/main.tsx" showLineNumbers copy
     import { type AppProps } from "rasengan";
-    import AppRouter from "@/pages/app.router";
+    import AppRouter from "@/app/app.router";
     import store from "@/gx/store";
     import GXProvider from "@dilane3/gx";
 
@@ -63,10 +64,11 @@ Let's take an example of [`GX State Management`](https://gx.dilane3.com). Assumi
       );
     }
     ```
+
   </Tabs.Tab>
   <Tabs.Tab>
     ```jsx filename="src/main.jsx" showLineNumbers copy
-    import AppRouter from "@/pages/app.router";
+    import AppRouter from "@/app/app.router";
     import store from "@/gx/store";
     import GXProvider from "@dilane3/gx";
 
@@ -78,11 +80,12 @@ Let's take an example of [`GX State Management`](https://gx.dilane3.com). Assumi
       );
     }
     ```
+
   </Tabs.Tab>
 </Tabs>
 
 <AlertBox type="tip">
-We assume that, we have created a `store` inside the `src/gx/store` folder.
+  We assume that, we have created a `store` inside the `src/gx/store` folder.
 </AlertBox>
 
 Now, all pages will have access to the store via `useSignal`, `useActions`, `userAsyncActions` and `useOperations` hooks.

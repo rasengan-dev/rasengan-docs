@@ -1,5 +1,5 @@
 import { Tabs } from "nextra/components";
-import AlertBox from '@components/atoms/Alert';
+import AlertBox from "@components/atoms/Alert";
 
 # Tailwind CSS
 
@@ -7,23 +7,25 @@ import AlertBox from '@components/atoms/Alert';
 
 ## Installing Tailwind CSS
 
-Install the Tailwind CSS packages and run the `init` command to generate both the `tailwind.config.js` and `postcss.config.js` files. 
+Install the Tailwind CSS packages and run the `init` command to generate both the `tailwind.config.js` and `postcss.config.js` files.
 Or if you prefer, you can create these files manually.
 
-```bash filename="Terminal" showLineNumbers copy 
+```bash filename="Terminal" showLineNumbers copy
 npm install -D tailwindcss postcss autoprefixer
 npx tailwindcss init -p
 ```
 
 <AlertBox>
-Instead of manually install and configure tailwind, when you generate a new project by using the [`Rasengan CLI`](/docs/api-reference/cli) you have the possibility to use the `tailwind template` directly.
+  Instead of manually install and configure tailwind, when you generate a new
+  project by using the [`Rasengan CLI`](/docs/api-reference/cli) you have the
+  possibility to use the `tailwind template` directly.
 </AlertBox>
 
 ## Configuring Tailwind CSS
 
 Inside `tailwind.config.js`, add paths to the files that will use Tailwind CSS class names. But make sure to use the [`adaptPath`](/docs/api-reference/functions/adapt-path) utility function to generate the correct path.
 
-```javascript filename="tailwind.config.js" showLineNumbers copy 
+```javascript filename="tailwind.config.js" showLineNumbers copy
 import { adaptPath } from "rasengan";
 
 /** @type {import('tailwindcss').Config} */
@@ -33,7 +35,7 @@ export default {
     extend: {},
   },
   plugins: [],
-}
+};
 ```
 
 Inside the `postcss.config.js`, specify the path to the `tailwind.config.js` file using the [`adaptPath`](/docs/api-reference/functions/adapt-path) utility function again.
@@ -49,9 +51,9 @@ export default {
     autoprefixer: {},
   },
 };
-``` 
+```
 
-## Importing Styles 
+## Importing Styles
 
 Add the [Tailwind CSS directives](https://tailwindcss.com/docs/functions-and-directives#directives) that `Tailwind` will use to inject its generated styles to a [`Global Stylesheet`](/docs/core/styling/css-module#index-css) in your application, for example:
 
@@ -70,24 +72,26 @@ Then import the `index.css` file in your application entry point.
     import "@/styles/index.css";
 
     import { type AppProps } from "rasengan";
-    import AppRouter from "@/pages/app.router";
+    import AppRouter from "@/app/app.router";
 
     export default function App({ Component, children }: AppProps) {
       return <Component router={AppRouter}>{children}</Component>;
     }
     ```
+
   </Tabs.Tab>
   <Tabs.Tab>
     ```jsx filename="src/main.jsx" {2} showLineNumbers copy
     // These styles apply to every route in the application
     import "@/styles/index.css";
 
-    import AppRouter from "@/pages/app.router";
+    import AppRouter from "@/app/app.router";
 
     export default function App({ Component, children }) {
       return <Component router={AppRouter}>{children}</Component>;
     }
     ```
+
   </Tabs.Tab>
 </Tabs>
 
@@ -97,7 +101,7 @@ After installing Tailwind CSS and adding the global styles, you can use Tailwind
 
 <Tabs items={['TypeScript', 'JavaScript']} defaultIndex="1">
   <Tabs.Tab>
-    ```tsx filename="src/pages/home.page.tsx" showLineNumbers copy
+    ```tsx filename="src/app/home.page.tsx" showLineNumbers copy
     import { PageComponent, defineRoutePage } from "rasengan";
 
     class Home extends PageComponent {
@@ -116,9 +120,10 @@ After installing Tailwind CSS and adding the global styles, you can use Tailwind
       description: "Home page description"
     })(Home);
     ```
+
   </Tabs.Tab>
   <Tabs.Tab>
-    ```jsx filename="src/pages/home.page.jsx" showLineNumbers copy
+    ```jsx filename="src/app/home.page.jsx" showLineNumbers copy
     import { PageComponent, defineRoutePage } from "rasengan";
 
     class Home extends PageComponent {
@@ -137,5 +142,6 @@ After installing Tailwind CSS and adding the global styles, you can use Tailwind
       description: "Home page description"
     })(Home);
     ```
+
   </Tabs.Tab>
 </Tabs>

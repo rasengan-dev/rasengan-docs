@@ -1,6 +1,5 @@
-import { Tabs } from 'nextra/components'
+import { Tabs } from "nextra/components";
 import AlertBox from "@components/atoms/Alert";
-
 
 # Routing Base Concepts
 
@@ -15,7 +14,7 @@ To configure the routing in Rasengan.js you need to create a `Router`, which is 
 
 Basically, `Routers` are way to group `Pages` together under a common `Layout`. Doing it like this, all pages will share the same layout and you can define a `Layout` for each `Router`.
 
-### Router 
+### Router
 
 A `Router` is a collection of `Pages` and to create one, you have to create a class that extends `RouterComponent` and then use the `defineRouter` function to define the `Router`'s property.
 
@@ -25,28 +24,30 @@ A `Router` is a collection of `Pages` and to create one, you have to create a cl
 
 <Tabs items={['TypeScript', 'JavaScript']} defaultIndex="1">
   <Tabs.Tab>
-    ```typescript filename="src/pages/app.router.ts" showLineNumbers copy
+    ```typescript filename="src/app/app.router.ts" showLineNumbers copy
     import { RouterComponent } from "rasengan";
 
     class AppRouter extends RouterComponent {}
     ```
+
   </Tabs.Tab>
   <Tabs.Tab>
-    ```javascript filename="src/pages/app.router.js" showLineNumbers copy /RouterComponent/
+    ```javascript filename="src/app/app.router.js" showLineNumbers copy /RouterComponent/
     import { RouterComponent } from "rasengan";
 
     class AppRouter extends RouterComponent {}
     ```
+
   </Tabs.Tab>
 </Tabs>
 
-#### defineRouter 
+#### defineRouter
 
 `defineRouter` is a function provided by Rasengan.js to configure a `Router` with a configuration option object.
 
 <Tabs items={['TypeScript', 'JavaScript']} defaultIndex="1">
   <Tabs.Tab>
-    ```typescript filename="src/pages/app.router.ts" showLineNumbers copy /defineRouter/
+    ```typescript filename="src/app/app.router.ts" showLineNumbers copy /defineRouter/
     export default defineRouter({
       import: [], // import other routers
       layout: null, // set a layout
@@ -55,7 +56,7 @@ A `Router` is a collection of `Pages` and to create one, you have to create a cl
     ```
   </Tabs.Tab>
   <Tabs.Tab>
-    ```javascript filename="src/pages/app.router.js" showLineNumbers copy /defineRouter/
+    ```javascript filename="src/app/app.router.js" showLineNumbers copy /defineRouter/
     export default defineRouter({
       import: [], // import other routers
       layout: null, // set a layout
@@ -65,21 +66,20 @@ A `Router` is a collection of `Pages` and to create one, you have to create a cl
   </Tabs.Tab>
 </Tabs>
 
-| Property    | Description             | Type                 |            |
-|-------------|-------------------------|----------------------|------------|
-| `import`    | import other routers    | `RouterComponent[]`  | `optional` |
-| `layout`    | set a layout            | `LayoutComponent`    | `optional` |
-| `pages`     | list of pages           | `PageComponent[]`    | `required` |
-
+| Property | Description          | Type                |            |
+| -------- | -------------------- | ------------------- | ---------- |
+| `import` | import other routers | `RouterComponent[]` | `optional` |
+| `layout` | set a layout         | `LayoutComponent`   | `optional` |
+| `pages`  | list of pages        | `PageComponent[]`   | `required` |
 
 ### Layout
 
 A `Layout` is a component that will be used to wrap the `Pages` and should be added to the `Router` configuration.
 
-Defining a `Layout` is optional, but it's a good practice to have one, so you can have a common structure for all pages. 
+Defining a `Layout` is optional, but it's a good practice to have one, so you can have a common structure for all pages.
 
 To create a `Layout` you have to define a class that extends `LayoutComponent` and you should implement the `render` function to return a `JSX` element.
-Also, you have to use the `<Outlet />` component provided by Rasengan.js to render the `Pages` inside the `Layout`, 
+Also, you have to use the `<Outlet />` component provided by Rasengan.js to render the `Pages` inside the `Layout`,
 and after you should use the `defineLayout` function to define the base URL path that all your pages will use.
 
 #### LayoutComponent
@@ -102,6 +102,7 @@ and after you should use the `defineLayout` function to define the base URL path
       }
     }
     ```
+
   </Tabs.Tab>
   <Tabs.Tab>
     ```javascript filename="app.layout.jsx" copy showLineNumbers
@@ -118,6 +119,7 @@ and after you should use the `defineLayout` function to define the base URL path
       }
     }
     ```
+
   </Tabs.Tab>
 </Tabs>
 
@@ -127,14 +129,14 @@ and after you should use the `defineLayout` function to define the base URL path
 
 <Tabs items={['TypeScript', 'JavaScript']} defaultIndex="1">
   <Tabs.Tab>
-    ```typescript filename="src/pages/app.layout.tsx" showLineNumbers copy /defineRouteLayout/
+    ```typescript filename="src/app/app.layout.tsx" showLineNumbers copy /defineRouteLayout/
     export default defineRouteLayout({
       path: "/", // set a base URL path for all pages
     })(Home);
     ```
   </Tabs.Tab>
   <Tabs.Tab>
-    ```javascript filename="src/pages/app.layout.jsx" showLineNumbers copy /defineRouteLayout/
+    ```javascript filename="src/app/app.layout.jsx" showLineNumbers copy /defineRouteLayout/
     export default defineRouteLayout({
       path: "/", // set a base URL path for all pages
     })(Home);
@@ -142,10 +144,9 @@ and after you should use the `defineLayout` function to define the base URL path
   </Tabs.Tab>
 </Tabs>
 
-| Property      | Description                    | Type      |            |
-|---------------|--------------------------------|-----------|------------|
-| `path`        | base URL path for all pages    | `string`  | `required` |
-
+| Property | Description                 | Type     |            |
+| -------- | --------------------------- | -------- | ---------- |
+| `path`   | base URL path for all pages | `string` | `required` |
 
 ### Page
 
@@ -161,7 +162,7 @@ like `title` and `description`.
 
 <Tabs items={['TypeScript', 'JavaScript']} defaultIndex="1">
   <Tabs.Tab>
-    ```javascript filename="index.page.tsx" copy showLineNumbers
+    ```javascript filename="home.page.tsx" copy showLineNumbers
     import { PageComponent } from "rasengan";
 
     class Home extends PageComponent {
@@ -172,9 +173,10 @@ like `title` and `description`.
       }
     }
     ```
+
   </Tabs.Tab>
   <Tabs.Tab>
-    ```javascript filename="index.page.jsx" copy showLineNumbers
+    ```javascript filename="home.page.jsx" copy showLineNumbers
     import { PageComponent } from "rasengan";
 
     class Home extends PageComponent {
@@ -185,11 +187,13 @@ like `title` and `description`.
       }
     }
     ```
+
   </Tabs.Tab>
 </Tabs>
 
 <AlertBox type="tip">
-the `render` method of the `PageComponent` class behaves like a `Functional Component`, so you can use `hooks` inside.
+  the `render` method of the `PageComponent` class behaves like a `Functional
+  Component`, so you can use `hooks` inside.
 </AlertBox>
 
 #### defineRoutePage
@@ -198,7 +202,7 @@ the `render` method of the `PageComponent` class behaves like a `Functional Comp
 
 <Tabs items={['TypeScript', 'JavaScript']} defaultIndex="1">
   <Tabs.Tab>
-    ```typescript filename="src/pages/home.page.tsx" showLineNumbers copy /defineRoutePage/
+    ```typescript filename="src/app/home.page.tsx" showLineNumbers copy /defineRoutePage/
     export default defineRoutePage({
       path: "/", // set a path to the page
       title: "Home", // set a title
@@ -207,7 +211,7 @@ the `render` method of the `PageComponent` class behaves like a `Functional Comp
     ```
   </Tabs.Tab>
   <Tabs.Tab>
-    ```javascript filename="src/pages/home.page.jsx" showLineNumbers copy /defineRoutePage/
+    ```javascript filename="src/app/home.page.jsx" showLineNumbers copy /defineRoutePage/
     export default defineRoutePage({
       path: "/", // set a path to the page
       title: "Home", // set a title
@@ -217,10 +221,10 @@ the `render` method of the `PageComponent` class behaves like a `Functional Comp
   </Tabs.Tab>
 </Tabs>
 
-| Property      | Description                | Type      |            |
-|---------------|----------------------------|-----------|------------|
-| `path`        | define a path to a page    | `string`  | `required` |
-| `title`       | set a title                | `string`  | `optional` |
-| `description` | set a description          | `string`  | `optional` |
+| Property      | Description             | Type     |            |
+| ------------- | ----------------------- | -------- | ---------- |
+| `path`        | define a path to a page | `string` | `required` |
+| `title`       | set a title             | `string` | `optional` |
+| `description` | set a description       | `string` | `optional` |
 
 ## Next Steps

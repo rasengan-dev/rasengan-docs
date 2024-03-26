@@ -1,12 +1,12 @@
 import { Tabs } from "nextra/components";
-import AlertBox from '@components/atoms/Alert';
+import AlertBox from "@components/atoms/Alert";
 
 # CSS Modules
 
 Rasengan.js has built-in support for CSS Modules using the `.module.css` extension.
 
-CSS Modules locally scope CSS by automatically creating a unique class name. 
-This allows you to use the same class name in different files without worrying about collisions. 
+CSS Modules locally scope CSS by automatically creating a unique class name.
+This allows you to use the same class name in different files without worrying about collisions.
 This behavior makes CSS Modules the ideal way to include component-level CSS.
 
 ## Example
@@ -15,7 +15,7 @@ CSS Modules can be imported into any file inside the `src` directory to be used 
 
 <Tabs items={['TypeScript', 'JavaScript']} defaultIndex="1">
   <Tabs.Tab>
-    ```tsx filename="src/pages/app.layout.tsx" {2,7-8} showLineNumbers copy
+    ```tsx filename="src/app/app.layout.tsx" {2,7-8} showLineNumbers copy
     import { LayoutComponent, defineRouteLayout, Outlet } from "rasengan";
     import styles from "./layout.module.css";
 
@@ -35,9 +35,10 @@ CSS Modules can be imported into any file inside the `src` directory to be used 
       path: "/",
     })(AppLayout);
     ```
+
   </Tabs.Tab>
   <Tabs.Tab>
-    ```jsx filename="src/pages/app.layout.jsx" {2,7-8} showLineNumbers copy
+    ```jsx filename="src/app/app.layout.jsx" {2,7-8} showLineNumbers copy
     import { LayoutComponent, defineRouteLayout, Outlet } from "rasengan";
     import styles from "./layout.module.css";
 
@@ -57,6 +58,7 @@ CSS Modules can be imported into any file inside the `src` directory to be used 
       path: "/",
     })(AppLayout);
     ```
+
   </Tabs.Tab>
 </Tabs>
 
@@ -93,24 +95,26 @@ Now you have to import your global style into the `src/main.tsx` file.
     import "@/styles/index.css";
 
     import { type AppProps } from "rasengan";
-    import AppRouter from "@/pages/app.router";
+    import AppRouter from "@/app/app.router";
 
     export default function App({ Component, children }: AppProps) {
       return <Component router={AppRouter}>{children}</Component>;
     }
     ```
+
   </Tabs.Tab>
   <Tabs.Tab>
     ```jsx filename="src/main.jsx" {2} showLineNumbers copy
     // These styles apply to every route in the application
     import "@/styles/index.css";
 
-    import AppRouter from "@/pages/app.router";
+    import AppRouter from "@/app/app.router";
 
     export default function App({ Component, children }) {
       return <Component router={AppRouter}>{children}</Component>;
     }
     ```
+
   </Tabs.Tab>
 </Tabs>
 
@@ -124,22 +128,24 @@ Stylesheets published by external packages can be imported in the `src/main.tsx`
     import "@rasenganjs/image/lib/styles/index.css";
 
     import { type AppProps } from "rasengan";
-    import AppRouter from "@/pages/app.router";
+    import AppRouter from "@/app/app.router";
 
     export default function App({ Component, children }: AppProps) {
       return <Component router={AppRouter}>{children}</Component>;
     }
     ```
+
   </Tabs.Tab>
   <Tabs.Tab>
     ```jsx filename="src/main.jsx" {1} showLineNumbers copy
     import "@rasenganjs/image/lib/styles/index.css";
 
-    import AppRouter from "@/pages/app.router";
+    import AppRouter from "@/app/app.router";
 
     export default function App({ Component, children }) {
       return <Component router={AppRouter}>{children}</Component>;
     }
     ```
+
   </Tabs.Tab>
 </Tabs>

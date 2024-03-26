@@ -1,6 +1,6 @@
 import { Tabs } from "nextra/components";
 import AlertBox from "@components/atoms/Alert";
-import { Steps } from 'nextra/components'
+import { Steps } from "nextra/components";
 
 # Setting Layout
 
@@ -24,7 +24,7 @@ Now let's see how to create a `Layout`:
 
 <Tabs items={['TypeScript', 'JavaScript']} defaultIndex="1">
   <Tabs.Tab>
-    ```typescript filename="src/pages/app.layout.tsx" showLineNumbers copy
+    ```typescript filename="src/app/app.layout.tsx" showLineNumbers copy
     import React from "react";
     import { LayoutComponent, Outlet, defineRouteLayout } from "rasengan";
 
@@ -46,7 +46,7 @@ Now let's see how to create a `Layout`:
 
   </Tabs.Tab>
   <Tabs.Tab>
-    ```javascript filename="src/pages/app.layout.jsx" showLineNumbers copy
+    ```javascript filename="src/app/app.layout.jsx" showLineNumbers copy
     import React from "react";
     import { LayoutComponent, Outlet, defineRouteLayout } from "rasengan";
 
@@ -83,7 +83,7 @@ where you group all your `Pages`, you just have to set the `Layout` there and al
 
 <Tabs items={['TypeScript', 'JavaScript']} defaultIndex="1">
   <Tabs.Tab>
-    ```typescript filename="src/pages/app.router.tsx" {3,9} showLineNumbers copy
+    ```typescript filename="src/app/app.router.tsx" {3,9} showLineNumbers copy
     import { RouterComponent, defineRouter } from "rasengan";
     import Home from "./home.page";
     import AppLayout from "./app.layout";
@@ -99,7 +99,7 @@ where you group all your `Pages`, you just have to set the `Layout` there and al
 
   </Tabs.Tab>
   <Tabs.Tab>
-    ```javascript filename="src/pages/app.router.jsx" {3,9} showLineNumbers copy
+    ```javascript filename="src/app/app.router.jsx" {3,9} showLineNumbers copy
     import { RouterComponent, defineRouter } from "rasengan";
     import Home from "./home.page";
     import AppLayout from "./app.layout";
@@ -123,13 +123,13 @@ In a Rasengan.js application, you can have multiple `Layouts` and use them in di
 ### Example
 
 <Steps>
-### Create a Layout 
+### Create a Layout
 
 Let's create a `Layout` that will be used in the `/admin` part of the application.
 
 <Tabs items={['TypeScript', 'JavaScript']} defaultIndex="1">
   <Tabs.Tab>
-    ```typescript filename="src/pages/admin.layout.tsx" showLineNumbers copy
+    ```typescript filename="src/app/admin.layout.tsx" showLineNumbers copy
     import React from "react";
     import { LayoutComponent, Outlet, defineRouteLayout } from "rasengan";
 
@@ -151,7 +151,7 @@ Let's create a `Layout` that will be used in the `/admin` part of the applicatio
 
   </Tabs.Tab>
   <Tabs.Tab>
-    ```javascript filename="src/pages/admin.layout.jsx" showLineNumbers copy
+    ```javascript filename="src/app/admin.layout.jsx" showLineNumbers copy
     import React from "react";
     import { LayoutComponent, Outlet, defineRouteLayout } from "rasengan";
 
@@ -180,7 +180,7 @@ Now let's create another `Page` called `Dashboard` that will use the `AdminLayou
 
 <Tabs items={['TypeScript', 'JavaScript']} defaultIndex="1">
   <Tabs.Tab>
-    ```typescript filename="src/pages/dashboard.page.tsx" showLineNumbers copy
+    ```typescript filename="src/app/dashboard.page.tsx" showLineNumbers copy
     import React from "react";
     import { PageComponent, defineRoutePage } from "rasengan";
 
@@ -201,7 +201,7 @@ Now let's create another `Page` called `Dashboard` that will use the `AdminLayou
 
   </Tabs.Tab>
   <Tabs.Tab>
-    ```javascript filename="src/pages/dashboard.page.jsx" showLineNumbers copy
+    ```javascript filename="src/app/dashboard.page.jsx" showLineNumbers copy
     import React from "react";
     import { PageComponent, defineRoutePage } from "rasengan";
 
@@ -229,7 +229,7 @@ Then we have to create a `Router` that will use the `AdminLayout` and the `Dashb
 
 <Tabs items={['TypeScript', 'JavaScript']} defaultIndex="1">
   <Tabs.Tab>
-    ```typescript filename="src/pages/admin.router.ts" {2-3,9-10} showLineNumbers copy
+    ```typescript filename="src/app/admin.router.ts" {2-3,9-10} showLineNumbers copy
     import { RouterComponent, defineRouter } from "rasengan";
     import Dashboard from "./dashboard.page";
     import AdminLayout from "./admin.layout";
@@ -245,7 +245,7 @@ Then we have to create a `Router` that will use the `AdminLayout` and the `Dashb
 
   </Tabs.Tab>
   <Tabs.Tab>
-    ```javascript filename="src/pages/admin.router.js" {2-3,9-10} showLineNumbers copy
+    ```javascript filename="src/app/admin.router.js" {2-3,9-10} showLineNumbers copy
     import { RouterComponent, defineRouter } from "rasengan";
     import Dashboard from "./dashboard.page";
     import AdminLayout from "./admin.layout";
@@ -268,7 +268,7 @@ Finally we have to set the `AdminRouter` in the main `Router` of the application
 
 <Tabs items={['TypeScript', 'JavaScript']} defaultIndex="1">
   <Tabs.Tab>
-    ```typescript filename="src/pages/app.router.ts" {4,9} showLineNumbers copy
+    ```typescript filename="src/app/app.router.ts" {4,9} showLineNumbers copy
     import { RouterComponent, defineRouter } from "rasengan";
     import Home from "./home.page";
     import AppLayout from "./app.layout";
@@ -285,7 +285,7 @@ Finally we have to set the `AdminRouter` in the main `Router` of the application
 
   </Tabs.Tab>
   <Tabs.Tab>
-    ```javascript filename="src/pages/app.router.js" {4,9} showLineNumbers copy
+    ```javascript filename="src/app/app.router.js" {4,9} showLineNumbers copy
     import { RouterComponent, defineRouter } from "rasengan";
     import Home from "./home.page";
     import AppLayout from "./app.layout";

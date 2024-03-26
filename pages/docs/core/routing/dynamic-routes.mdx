@@ -3,16 +3,16 @@ import AlertBox from "@components/atoms/Alert";
 
 # Dynamic Routes
 
-`Dynamic Routes` are routes that are generated at runtime. This is useful when you have a large number of pages that are similar, but not exactly the same. 
+`Dynamic Routes` are routes that are generated at runtime. This is useful when you have a large number of pages that are similar, but not exactly the same.
 For example, you might want to create a page for each user on your website. Instead of creating a page for each user, you can create a single page that uses a dynamic route to load the user's data.
 
-## Example 
+## Example
 
 Here is an example of a `Dynamic Route` to display a user's profile page.
 
 <Tabs items={['TypeScript', 'JavaScript']} defaultIndex="1">
   <Tabs.Tab>
-    ```tsx filename="src/pages/profile.page.tsx" {14} showLineNumbers copy
+    ```tsx filename="src/app/profile.page.tsx" {14} showLineNumbers copy
     import { PageComponent, defineRoutePage } from "rasengan";
 
     class Profile extends PageComponent {
@@ -31,9 +31,10 @@ Here is an example of a `Dynamic Route` to display a user's profile page.
       description: "User Profile",
     })(Profile);
     ```
+
   </Tabs.Tab>
   <Tabs.Tab>
-    ```tsx filename="src/pages/profile.page.jsx" {14} showLineNumbers copy
+    ```tsx filename="src/app/profile.page.jsx" {14} showLineNumbers copy
     import { PageComponent, defineRoutePage } from "rasengan";
 
     class Profile extends PageComponent {
@@ -52,10 +53,11 @@ Here is an example of a `Dynamic Route` to display a user's profile page.
       description: "User Profile",
     })(Profile);
     ```
+
   </Tabs.Tab>
 </Tabs>
 
-In the example above, we have created a `Dynamic Route` to display a user's profile page. 
+In the example above, we have created a `Dynamic Route` to display a user's profile page.
 The `:id` in the route path is a dynamic parameter that can be used to load the user's data based on his `userId`.
 
 ## Accessing Dynamic Route Parameters
@@ -64,7 +66,7 @@ To access the dynamic route parameters, you can use the `useParams` hook.
 
 <Tabs items={['TypeScript', 'JavaScript']} defaultIndex="1">
   <Tabs.Tab>
-    ```tsx filename="src/pages/profile.page.tsx" {5,10,17} showLineNumbers /useParams/  copy
+    ```tsx filename="src/app/profile.page.tsx" {5,10,17} showLineNumbers /useParams/  copy
     import { PageComponent, defineRoutePage, useParams } from "rasengan";
 
     class Profile extends PageComponent {
@@ -86,9 +88,10 @@ To access the dynamic route parameters, you can use the `useParams` hook.
       description: "User Profile",
     })(Profile);
     ```
+
   </Tabs.Tab>
   <Tabs.Tab>
-    ```tsx filename="src/pages/profile.page.jsx" {5,10,17} showLineNumbers /useParams/  copy
+    ```tsx filename="src/app/profile.page.jsx" {5,10,17} showLineNumbers /useParams/  copy
     import { PageComponent, defineRoutePage, useParams } from "rasengan";
 
     class Profile extends PageComponent {
@@ -110,11 +113,14 @@ To access the dynamic route parameters, you can use the `useParams` hook.
       description: "User Profile",
     })(Profile);
     ```
+
   </Tabs.Tab>
 </Tabs>
 
 <AlertBox>
-`useParams` returns an object containing the dynamic route parameters. You can learn more about `useParams` on [React Router docs](https://reactrouter.com/en/main/hooks/use-params).
+  `useParams` returns an object containing the dynamic route parameters. You can
+  learn more about `useParams` on [React Router
+  docs](https://reactrouter.com/en/main/hooks/use-params).
 </AlertBox>
 
 ## Dynamic Route with Optional Parameters
@@ -123,7 +129,7 @@ You can also create a `Dynamic Route` with optional parameters.
 
 <Tabs items={['TypeScript', 'JavaScript']} defaultIndex="1">
   <Tabs.Tab>
-    ```tsx filename="src/pages/profile.page.tsx" {7,18} showLineNumbers copy
+    ```tsx filename="src/app/profile.page.tsx" {7,18} showLineNumbers copy
     import { PageComponent, defineRoutePage, useParams } from "rasengan";
 
     class Profile extends PageComponent {
@@ -146,9 +152,10 @@ You can also create a `Dynamic Route` with optional parameters.
       description: "User Profile",
     })(Profile);
     ```
+
   </Tabs.Tab>
   <Tabs.Tab>
-    ```tsx filename="src/pages/profile.page.jsx" {7,18} showLineNumbers copy
+    ```tsx filename="src/app/profile.page.jsx" {7,18} showLineNumbers copy
     import { PageComponent, defineRoutePage, useParams } from "rasengan";
 
     class Profile extends PageComponent {
@@ -171,17 +178,18 @@ You can also create a `Dynamic Route` with optional parameters.
       description: "User Profile",
     })(Profile);
     ```
+
   </Tabs.Tab>
 </Tabs>
 
 In the example above, we have created a `Dynamic Route` with an optional parameter. The `?` at the end of the route parameter makes it optional.
 
-By doing like this, when we access the `/profile` route, the `id` will be `undefined` and we won't get a `404 error`. But in the case where the `id` is not `optional`, 
+By doing like this, when we access the `/profile` route, the `id` will be `undefined` and we won't get a `404 error`. But in the case where the `id` is not `optional`,
 navigating to `/profile` will result in a `404 error`.
 
 You can have `optional static segments` too.
 
-``` tsx filename="src/pages/profile.page.tsx" {2} showLineNumbers /edit?/ copy
+```tsx filename="src/app/profile.page.tsx" {2} showLineNumbers /edit?/ copy
 defineRoutePage({
   path: "/profile/:id?/edit?",
   title: "Profile",
@@ -195,7 +203,7 @@ You can also create a `Dynamic Route` with multiple parameters.
 
 <Tabs items={['TypeScript', 'JavaScript']} defaultIndex="1">
   <Tabs.Tab>
-    ```tsx filename="src/pages/profile.page.tsx" {7,18} showLineNumbers copy
+    ```tsx filename="src/app/profile.page.tsx" {7,18} showLineNumbers copy
     import { PageComponent, defineRoutePage, useParams } from "rasengan";
 
     class Profile extends PageComponent {
@@ -218,9 +226,10 @@ You can also create a `Dynamic Route` with multiple parameters.
       description: "User Profile",
     })(Profile);
     ```
+
   </Tabs.Tab>
   <Tabs.Tab>
-    ```tsx filename="src/pages/profile.page.jsx" {7,18} showLineNumbers copy
+    ```tsx filename="src/app/profile.page.jsx" {7,18} showLineNumbers copy
     import { PageComponent, defineRoutePage, useParams } from "rasengan";
 
     class Profile extends PageComponent {
@@ -243,9 +252,10 @@ You can also create a `Dynamic Route` with multiple parameters.
       description: "User Profile",
     })(Profile);
     ```
+
   </Tabs.Tab>
 </Tabs>
 
 You can chain multiple parameters in a `Dynamic Route` by separating them with a `/`.
 
-## Next steps 
+## Next steps

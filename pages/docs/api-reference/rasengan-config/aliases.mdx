@@ -1,9 +1,9 @@
-import { Steps, Tabs } from "nextra/components"
+import { Steps, Tabs } from "nextra/components";
 import AlertBox from "@components/atoms/Alert";
 
 # Alias imports
 
-Alias imports allow you to shorten and clarify file paths or modules. Instead of lengthy import paths, you can use concise, descriptive aliases. 
+Alias imports allow you to shorten and clarify file paths or modules. Instead of lengthy import paths, you can use concise, descriptive aliases.
 This not only makes your code cleaner but also more readable.
 
 ## Define aliases
@@ -22,7 +22,7 @@ This is very useful for autocompletion purposes.
         "paths": {
           "@components/*": ["src/components/*"],
           "@styles/*": ["src/styles/*"],
-          "@pages/*": ["src/pages/*"]
+          "@app/*": ["src/app/*"]
         }
       }
     }
@@ -39,7 +39,7 @@ This is very useful for autocompletion purposes.
         "paths": {
           "@components/*": ["src/components/*"],
           "@styles/*": ["src/styles/*"],
-          "@pages/*": ["src/pages/*"]
+          "@app/*": ["src/app/*"]
         }
       }
     }
@@ -48,13 +48,14 @@ This is very useful for autocompletion purposes.
     <AlertBox>
       If you are using `jsconfig.json`, make sure to set the `baseUrl` to `.`.
     </AlertBox>
+
   </Tabs.Tab>
 </Tabs>
 
 ### Define aliases in `rasengan.config.js`
 
 ```javascript filename="rasengan.config.js" copy showLineNumbers
-import { defineConfig } from 'rasengan'
+import { defineConfig } from "rasengan";
 
 export default defineConfig({
   vite: {
@@ -62,27 +63,28 @@ export default defineConfig({
       alias: [
         {
           find: "@components",
-          replacement: "src/components"
+          replacement: "src/components",
         },
         {
           find: "@styles",
-          replacement: "src/styles"
+          replacement: "src/styles",
         },
         {
-          find: "@pages",
-          replacement: "src/pages"
-        }
-      ]
-    }
-  }
-})
+          find: "@app",
+          replacement: "src/app",
+        },
+      ],
+    },
+  },
+});
 ```
+
 </Steps>
 
 ## Use aliases
 
 ```javascript showLineNumbers
-import { Steps, Tabs } from "@components"
+import { Steps, Tabs } from "@components";
 
 // Alias imports
 ```
