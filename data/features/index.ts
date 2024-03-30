@@ -16,14 +16,14 @@ export const FeaturesData: Array<CardDataType> = [
     description:
       "Based on React-Router, Rasengan.js supports multi page routing by default which allow you to create complex apps.",
     image: "",
-    link: "#"
+    link: "/docs/core/routing/base-concepts"
   },
   {
     id: 2,
     title: "Image optimization",
     description: "To improve UX, Rasengan.js proposes an Image component that optimizes the rendering of your images with a lazy loading.",
     image: "",
-    link: "#"
+    link: "/docs/core/optimizing/images"
   },
   {
     id: 3,
@@ -37,7 +37,7 @@ export const FeaturesData: Array<CardDataType> = [
     title: "CSS Support",
     description: "In terms of styling, Rasengan.js supports CSS Modules, Tailwind and many other CSS Libraries.",
     image: "",
-    link: "#"
+    link: "/docs/core/styling/css-module"
   },
   {
     id: 5,

@@ -3,8 +3,8 @@ import { Html, Head, Main, NextScript } from "next/document";
 export default function Document() {
   const meta = {
     title: "Rasengan.js",
-    description: "Documentation website of Rasengan.js Framework",
-    image: "",
+    description: "The modern React Framework.",
+    image: "https://beta.rasengan.dev/home.png",
   };
 
   return (
@@ -18,14 +18,14 @@ export default function Document() {
         <meta property="og:title" content={meta.title} />
         <meta property="og:image" content={meta.image} />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@Official_R_deep" />
+        <meta name="twitter:site" content="@rasenganjs" />
+        <meta name="twitter:creator" content="@dilanekombou" />
         <meta name="twitter:title" content={meta.title} />
         <meta name="twitter:description" content={meta.description} />
         <meta name="twitter:image" content={meta.image} />
         
-        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-        <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-
+        {/* <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+        <link rel="icon" href="/favicon.ico" type="image/x-icon" /> */}
       </Head>
       <body>
         <Main />
