@@ -1,0 +1,23 @@
+{
+  "index": {
+    "theme": {
+      "breadcrumb": false,
+      "footer": true,
+      "sidebar": false,
+      "toc": false,
+      "pagination": false,
+      "layout": "full"
+    }
+  },
+
+  "rasengan-1-beta": {
+    "theme": {
+      "breadcrumb": false,
+      "footer": true,
+      "sidebar": false,
+      "toc": false,
+      "pagination": false,
+      "layout": "blog"
+    }
+  }
+}
