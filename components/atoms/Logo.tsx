@@ -40,7 +40,7 @@ export default function Logo() {
   const handleResize = () => {
     let isSmall: boolean;
 
-    if (window.innerWidth < 768) {
+    if (window.innerWidth < 820) {
       isSmall = true;
     } else {
       isSmall = false;
@@ -58,7 +58,7 @@ export default function Logo() {
         height={isSmallScreen ? 30 : 80}
       />
 
-      <small className={twMerge("flex items-center text-xs absolute bg-blue-50 rounded-full p-1 px-2 text-blue-600 leading-none font-semibold", isSmallScreen ? " top-2 -right-12":" top-8 -right-0")}>
+      <small className={twMerge("flex items-center text-xs absolute bg-blue-50 rounded-full p-1 px-2 text-blue-600 leading-none font-semibold", isSmallScreen ? " top-2 -right-12":" top-3 -right-[50px]")}>
         {/* <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
