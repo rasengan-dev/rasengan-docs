@@ -17,7 +17,7 @@
       "sidebar": false,
       "toc": false,
       "pagination": false,
-      "layout": "blog"
+      "layout": "full"
     }
   }
 }

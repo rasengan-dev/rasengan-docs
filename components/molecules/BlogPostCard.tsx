@@ -3,8 +3,14 @@ import { twMerge } from "tailwind-merge";
 import Image from "next/image";
 import img from "assets/images/backgrounds/bg2.jpg"
 import Button from "@components/atoms/Button";
+import { BlogDataType } from "data/blog";
+import { Link } from "nextra-theme-docs";
 
-export default function BlogPostCard() {
+type Props = {
+  data: BlogDataType
+}
+
+export default function BlogPostCard({ data }: Props) {
   const { isDark } = useTheme();
 
   return (
@@ -26,22 +32,19 @@ export default function BlogPostCard() {
       />
 
       <div className="mt-2">
-        <h3 className="text-lg mb-2">Rasengan 1.0.0-beta: First beta version</h3>
+        <h3 className="text-lg mb-2">{data.title}</h3>
 
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
-          convallis libero in dui bibendum, ac ultricies dui ultricies. Donec
-          fermentum, libero sit amet egestas tincidunt, nunc tortor fermentum
-          justo, nec fermentum sapien ex nec metus. Sed nec nulla et nunc
-          fermentum luctus. Donec id nunc vel turpis tincidunt tincidunt. Donec
-          nec turpis in nunc ultricies ultricies. Nulla facilisi.
+          {data.description}
         </p>
       </div>
 
       <div className="flex items-center justify-between mt-8">
-        <small>31 March, 2024</small>
+        <small>{data.createdAt}</small>
 
+        <Link href={data.link}>
         <Button text="Read More" />
+        </Link>
       </div>
     </article>
   );

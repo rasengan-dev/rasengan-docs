@@ -13,10 +13,15 @@ System Requirements:
 We recommend starting a new Rasengan.js app using [create-rasengan](/docs/api-reference/create-rasengan-app), which sets up everything automatically for you.
 To create a project, run:
 
-<Tabs items={["npm", "yarn"]}>
+<Tabs items={["npx", "npm", "yarn"]}>
   <Tabs.Tab>
     ```bash filename="Terminal" copy 
     npx create-rasengan@latest 
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```bash filename="Terminal" copy 
+    npm create rasengan 
     ```
   </Tabs.Tab>
   <Tabs.Tab>
@@ -36,7 +41,7 @@ You are using Create Rasengan CLI 🎉
 ? Select a template: blank
 ```
 
-After the prompts, create-rasengan will create a folder with your project name. You will then have to install the required dependencies manually.
+After the prompts, `create-rasengan` will create a folder with your project name. You will then have to install the required dependencies manually.
 
 ```bash filename="Terminal" copy
 cd my-app
@@ -52,7 +57,7 @@ mkdir my-app
 cd my-app
 npm init -y
 npm install rasengan@latest react@latest react-dom@latest
-npm install --save-dev cross-env
+npm install --save-dev cross-env vite@latest
 ```
 
 Open the `package.json` file and add the following scripts:
@@ -84,44 +89,15 @@ There are just two directories you need to create at the root level of your proj
 mkdir public src
 ```
 
-Always at the root level, create these important files:
+Always at the root level, create the following file:
 
-- `index.html`: the main HTML template file of your application.
 - `rasengan.config.js`: the configuration file for Rasengan.js.
 
 ```bash filename="Terminal" copy
-touch index.html
 touch rasengan.config.js
 ```
 
-Then add the following content to the `index.html` file:
-
-```html filename="index.html" showLineNumbers copy
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <!--app-head-->
-  </head>
-  <body>
-    <div id="root"><!--app-html--></div>
-
-    <script
-      type="module"
-      src="/node_modules/rasengan/lib/entries/entry-client.js"
-      defer
-    ></script>
-  </body>
-</html>
-```
-
-<AlertBox type="info">
-  The `<!--app-head-->` and `<!--app-html-->` comments are used by Rasengan.js to inject the head and HTML content of your application.
-</AlertBox>
-
-And the following content to the `rasengan.config.js` file:
+Then add the following content to the `rasengan.config.js` file:
 
 ```javascript filename="rasengan.config.js" showLineNumbers copy
 import { defineConfig } from "rasengan";
@@ -158,43 +134,39 @@ After, copy and paste the following code into `home.page.tsx`
 <Tabs items={['TypeScript', 'JavaScript']} defaultIndex="1">
   <Tabs.Tab>
     ```tsx filename="home.page.tsx" showLineNumbers copy
-    import { PageComponent, defineRoutePage } from "rasengan";
+    import { type PageComponent } from "rasengan";
 
-    class Home extends PageComponent {
-      render() {
-        return (
-          <div>Home Page</div>
-        )
-      }
+    const Home: PageComponent = () => {
+      return (
+        <div>Home Page</div>
+      )
     }
-
-    export default defineRoutePage({
-      path: "/",
+    
+    Home.path = "/"; 
+    Home.metadata = {
       title: "Home",
       description: "Home page",
-    })(Home);
-    ```
+    }
 
+    export default Home;
+    ```
   </Tabs.Tab>
   <Tabs.Tab>
     ```jsx filename="home.page.jsx" showLineNumbers copy
-    import { PageComponent, defineRoutePage } from "rasengan";
-
-    class Home extends PageComponent {
-      render() {
-        return (
-          <div>Home Page</div>
-        )
-      }
+    const Home = () => {
+      return (
+        <div>Home Page</div>
+      )
     }
-
-    export default defineRoutePage({
-      path: "/",
+    
+    Home.path = "/"; 
+    Home.metadata = {
       title: "Home",
       description: "Home page",
-    })(Home);
-    ```
+    }
 
+    export default Home;
+    ```
   </Tabs.Tab>
 </Tabs>
 
@@ -235,13 +207,73 @@ Do the same for `app.router.js`
   automatically.
 </AlertBox>
 
-Finally, create the entry file called `main.tsx` inside the `src` folder.
+Finally, create the entry file called `main.tsx` and the `template.tsx` file inside the `src` folder.
 
 ```bash filename="Terminal" copy
-touch src/main.tsx
+touch src/main.tsx src/template.tsx
 ```
 
-Then add the following content in it:
+Then add the following content inside the `template.tsx`:
+
+<Tabs items={['TypeScript', 'JavaScript']}>
+  <Tabs.Tab>
+    ```tsx filename="template.tsx" showLineNumbers copy
+    import { type TemplateProps } from "rasengan";
+
+    export default function Template({
+      children,
+      Head,
+      Body,
+      Script
+    }: TemplateProps) {
+      return (
+        <html lang="en">
+          <Head>
+            <meta charSet="UTF-8" />
+            <link rel="icon" type="image/svg+xml" href="/rasengan.svg" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+          </Head>
+
+          <Body>
+            {children}
+
+            <Script />
+          </Body>
+        </html>
+      );
+    }
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```jsx filename="template.jsx" showLineNumbers copy
+    export default function Template({
+      children,
+      Head,
+      Body,
+      Script
+    }) {
+      return (
+        <html lang="en">
+          <Head>
+            <meta charSet="UTF-8" />
+            <link rel="icon" type="image/svg+xml" href="/rasengan.svg" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+          </Head>
+
+          <Body>
+            {children}
+
+            <Script />
+          </Body>
+        </html>
+      );
+    }
+    ```
+
+  </Tabs.Tab>
+</Tabs>
+
+and add the following content inside the `main.tsx`:
 
 <Tabs items={['TypeScript', 'JavaScript']}>
   <Tabs.Tab>
@@ -273,6 +305,49 @@ Learn more about [`main.tsx`](/docs/api-reference/file-conventions/main) file.
   The `main.tsx` file is the entry file of a Rasengan.js application, so it is
   required.
 </AlertBox>
+
+
+### Add extract configuration file for `TypeScript`.
+
+At the root level of your project, create a `tsconfig.json` and `rasengan-env.d.ts` file.
+
+```bash filename="Terminal" copy
+touch tsconfig.json rasengan-env.d.ts
+```
+
+Then add the following content to the `tsconfig.json` file:
+
+```json filename="tsconfig.json" showLineNumbers copy
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "target": "ES2020",
+
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+    "module": "ESNext",
+    "jsx": "react-jsx",
+
+    /* Aliases for intellisence */
+    "paths": {
+      "@/*": ["src/*"],
+      "@app/*": ["src/app/*"],
+      "@components/*": ["src/components/*"],
+      "@assets/*": ["src/assets/*"],
+      "@styles/*": ["src/styles/*"]
+    }
+  },
+  "include": ["src", "rasengan-env.d.ts"],
+
+  "extends": "./node_modules/rasengan/tsconfig.base.json"
+}
+```
+
+and add the following content to the `rasengan-env.d.ts` file:
+
+```typescript filename="rasengan-env.d.ts" showLineNumbers copy
+/// <reference types="rasengan/types/client" />
+```
 
 ### Run the development server
 

@@ -15,7 +15,8 @@ A `Layout` is a component that wraps a set of `Pages` and provides a common stru
 
 ## How to create a Layout?
 
-To create a `Layout` you have to create a class that extends `LayoutComponent` and then use the `defineRouteLayout` function to set the base `path` that will be used by its `Pages` as base URL.
+To create a `Layout` you have to define a function that returns a `JSX` element.
+Also, you have to use the `<Outlet />` component provided by Rasengan.js to render the `Pages` inside the `Layout`
 
 Let's suppose you have a `Layout` component that set the base URL path to `/admin`, and you want to create a page which URL is `/admin/dashboard`. You have to create a `Page` component and set its `path` to `/dashboard`
 because the `Layout` component already set the base URL to `/admin`.
@@ -24,56 +25,47 @@ Now let's see how to create a `Layout`:
 
 <Tabs items={['TypeScript', 'JavaScript']} defaultIndex="1">
   <Tabs.Tab>
-    ```typescript filename="src/app/app.layout.tsx" showLineNumbers copy
+    ```tsx filename="src/app/app.layout.tsx" showLineNumbers copy
     import React from "react";
-    import { LayoutComponent, Outlet, defineRouteLayout } from "rasengan";
+    import { LayoutComponent, Outlet } from "rasengan";
 
-    class AppLayout extends LayoutComponent {
-      render() {
-        return (
-          <React.Fragment>
-            {/* Outlet component will render the Page component that matches the current URL */}
-            <Outlet />
-          </React.Fragment>
-        );
-      }
+    const AppLayout: LayoutComponent = () => {
+      return (
+        <React.Fragment>
+          {/* Outlet component will render the Page component that matches the current URL */}
+          <Outlet />
+        </React.Fragment>
+      )
     }
 
-    export default defineRouteLayout({
-      path: "/",
-    })(AppLayout);
-    ```
+    AppLayout.path = "/"; // base path URL shared by all pages which will use the layout
 
+    export default AppLayout;
+    ```
   </Tabs.Tab>
   <Tabs.Tab>
-    ```javascript filename="src/app/app.layout.jsx" showLineNumbers copy
+    ```jsx filename="src/app/app.layout.jsx" showLineNumbers copy
     import React from "react";
-    import { LayoutComponent, Outlet, defineRouteLayout } from "rasengan";
+    import { Outlet } from "rasengan";
 
-    class AppLayout extends LayoutComponent {
-      render() {
-        return (
-          <React.Fragment>
-            {/* Outlet component will render the Page component that matches the current URL */}
-            <Outlet />
-          </React.Fragment>
-        );
-      }
+    const AppLayout = () => {
+      return (
+        <React.Fragment>
+          {/* Outlet component will render the Page component that matches the current URL */}
+          <Outlet />
+        </React.Fragment>
+      )
     }
 
-    export default defineRouteLayout({
-      path: "/" // base path URL shared by all pages which will use the layout
-    })(AppLayout);
-    ```
+    AppLayout.path = "/"; // base path URL shared by all pages which will use the layout
 
+    export default AppLayout;
+    ```
   </Tabs.Tab>
 </Tabs>
 
 <AlertBox>
-`LayoutComponent` is a class component, different to `React.Component` class, because the `render` methods, support `hooks` call.
-
 `Outlet` component is a special component that will render the `Page` component that matches the current URL.
-
 </AlertBox>
 
 ## How to use a Layout?
@@ -96,7 +88,6 @@ where you group all your `Pages`, you just have to set the `Layout` there and al
       pages: [Home]
     })(AppRouter);
     ```
-
   </Tabs.Tab>
   <Tabs.Tab>
     ```javascript filename="src/app/app.router.jsx" {3,9} showLineNumbers copy
@@ -112,7 +103,6 @@ where you group all your `Pages`, you just have to set the `Layout` there and al
       pages: [Home]
     })(AppRouter);
     ```
-
   </Tabs.Tab>
 </Tabs>
 
@@ -129,48 +119,42 @@ Let's create a `Layout` that will be used in the `/admin` part of the applicatio
 
 <Tabs items={['TypeScript', 'JavaScript']} defaultIndex="1">
   <Tabs.Tab>
-    ```typescript filename="src/app/admin.layout.tsx" showLineNumbers copy
+    ```tsx filename="src/app/admin.layout.tsx" showLineNumbers copy
     import React from "react";
-    import { LayoutComponent, Outlet, defineRouteLayout } from "rasengan";
+    import { LayoutComponent, Outlet } from "rasengan";
 
-    class AdminLayout extends LayoutComponent {
-      render() {
-        return (
-          <React.Fragment>
-            <h1>Admin Layout</h1>
-            <Outlet />
-          </React.Fragment>
-        );
-      }
+    const AdminLayout: LayoutComponent = () => {
+      return (
+        <React.Fragment>
+          <h1>Admin Layout</h1>
+          <Outlet />
+        </React.Fragment>
+      );
     }
 
-    export default defineRouteLayout({
-      path: "/admin",
-    })(AdminLayout);
-    ```
+    AdminLayout.path = "/admin";
 
+    export default AdminLayout
+    ```
   </Tabs.Tab>
   <Tabs.Tab>
-    ```javascript filename="src/app/admin.layout.jsx" showLineNumbers copy
+    ```jsx filename="src/app/admin.layout.jsx" showLineNumbers copy
     import React from "react";
-    import { LayoutComponent, Outlet, defineRouteLayout } from "rasengan";
+    import { LayoutComponent, Outlet } from "rasengan";
 
-    class AdminLayout extends LayoutComponent {
-      render() {
-        return (
-          <React.Fragment>
-            <h1>Admin Layout</h1>
-            <Outlet />
-          </React.Fragment>
-        );
-      }
+    const AdminLayout = () => {
+      return (
+        <React.Fragment>
+          <h1>Admin Layout</h1>
+          <Outlet />
+        </React.Fragment>
+      );
     }
 
-    export default defineRouteLayout({
-      path: "/admin",
-    })(AdminLayout);
-    ```
+    AdminLayout.path = "/admin";
 
+    export default AdminLayout
+    ```
   </Tabs.Tab>
 </Tabs>
 
@@ -180,46 +164,43 @@ Now let's create another `Page` called `Dashboard` that will use the `AdminLayou
 
 <Tabs items={['TypeScript', 'JavaScript']} defaultIndex="1">
   <Tabs.Tab>
-    ```typescript filename="src/app/dashboard.page.tsx" showLineNumbers copy
+    ```tsx filename="src/app/dashboard.page.tsx" showLineNumbers copy
     import React from "react";
-    import { PageComponent, defineRoutePage } from "rasengan";
+    import { PageComponent } from "rasengan";
 
-    class Dashboard extends PageComponent {
-      render() {
-        return (
-          <h1>Admin Dashboard</h1>
-        );
-      }
+    const Dashboard: PageComponent = () => {
+      return (
+        <h1>Admin Dashboard</h1>
+      );
     }
 
-    export default defineRoutePage({
-      path: "/dashboard", // the path is set to /dashboard because the AdminLayout already set the base path to /admin
+    Dashboard.path = "/dashboard"; // the path is set to /dashboard because the AdminLayout already set the base path to /admin
+    Dashboard.metadata = {
       title: "Dashboard",
       description: "Admin Dashboard",
-    })(AdminDashboard);
-    ```
+    }
 
+    export default Dashboard;
+    ```
   </Tabs.Tab>
   <Tabs.Tab>
-    ```javascript filename="src/app/dashboard.page.jsx" showLineNumbers copy
+    ```jsx filename="src/app/dashboard.page.jsx" showLineNumbers copy
     import React from "react";
-    import { PageComponent, defineRoutePage } from "rasengan";
 
-    class Dashboard extends PageComponent {
-      render() {
-        return (
-          <h1>Admin Dashboard</h1>
-        );
-      }
+    const Dashboard = () => {
+      return (
+        <h1>Admin Dashboard</h1>
+      );
     }
 
-    export default defineRoutePage({
-      path: "/dashboard", // the path is set to /dashboard because the AdminLayout already set the base path to /admin
+    Dashboard.path = "/dashboard"; // the path is set to /dashboard because the AdminLayout already set the base path to /admin
+    Dashboard.metadata = {
       title: "Dashboard",
       description: "Admin Dashboard",
-    })(AdminDashboard);
-    ```
+    }
 
+    export default Dashboard;
+    ```
   </Tabs.Tab>
 </Tabs>
 
@@ -242,7 +223,6 @@ Then we have to create a `Router` that will use the `AdminLayout` and the `Dashb
       pages: [Dashboard]
     })(AdminRouter);
     ```
-
   </Tabs.Tab>
   <Tabs.Tab>
     ```javascript filename="src/app/admin.router.js" {2-3,9-10} showLineNumbers copy
@@ -258,11 +238,10 @@ Then we have to create a `Router` that will use the `AdminLayout` and the `Dashb
       pages: [Dashboard]
     })(AdminRouter);
     ```
-
   </Tabs.Tab>
 </Tabs>
 
-### Set the AdminRouter into the AppRouter
+### Import the AdminRouter into the AppRouter
 
 Finally we have to set the `AdminRouter` in the main `Router` of the application.
 
@@ -282,7 +261,6 @@ Finally we have to set the `AdminRouter` in the main `Router` of the application
       pages: [Home]
     })(AppRouter);
     ```
-
   </Tabs.Tab>
   <Tabs.Tab>
     ```javascript filename="src/app/app.router.js" {4,9} showLineNumbers copy
@@ -299,9 +277,10 @@ Finally we have to set the `AdminRouter` in the main `Router` of the application
       pages: [Home]
     })(AppRouter);
     ```
-
   </Tabs.Tab>
 </Tabs>
+
+Launch the application with `npm run dev` and access the URL [`http://localhost:5320/admin/dashboard`](http://localhost:5320/admin/dashboard) to see the `AdminLayout` and the `Dashboard` page.
 
 <AlertBox>
   To define many `Routers` in the same application, you have to set the `import`

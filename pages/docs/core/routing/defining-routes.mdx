@@ -13,56 +13,50 @@ you have to define a `Router` and a `Page` to create a route.
 
 ## Create a Page
 
-To create a `Page` you have to create a class that extends `PageComponent` and then use the `defineRoutePage` function to set the `path` that will be used by the `Page` as base URL and some `metadata`.
+To create a `Page` you have to define a function that returns a `JSX` element.
+After, you have to set the `path`, and some `metadata` like `title`, `description` and other.
 
-Let's assume that you have a `Home` page that should be accessible at the `/` path. You can create a `home.page` file in the `pages` folder and define the `Home` page as follows:
+Let's assume that you have a `Home` page that should be accessible at the `/` path. You can create a `home.page` file in the `app` folder and define the `Home` page as follows:
 
 <Tabs items={['TypeScript', 'JavaScript']} defaultIndex="1">
   <Tabs.Tab>
-    ```typescript filename="src/app/home.page.tsx" showLineNumbers copy
-    import { PageComponent, defineRoutePage } from "rasengan";
+    ```tsx filename="src/app/home.page.tsx" showLineNumbers copy
+    import { PageComponent } from "rasengan";
 
-    class Home extends PageComponent {
-      // The render method is required to be implemented
-      render() {
-        return <div>This is the home page</div>;
-      }
+    const Home: PageComponent = () => {
+      return (
+        <div>Home page</div>
+      )
     }
 
-    export default defineRoutePage({
-      path: "/",
+    Home.path = "/";
+    Home.metadata = {
       title: "Home",
-      description: "This is the home page"
-    })(Home);
-    ```
+      description: "Home Page"
+    }
 
+    export default Home;
+    ```
   </Tabs.Tab>
   <Tabs.Tab>
-    ```javascript filename="src/app/home.page.jsx" showLineNumbers copy
-    import { PageComponent, defineRoutePage } from "rasengan";
-
-    class Home extends PageComponent {
-      // The render method is required to be implemented
-      render() {
-        return <div>This is the home page</div>;
-      }
+    ```jsx filename="src/app/home.page.jsx" showLineNumbers copy
+    const Home = () => {
+      return (
+        <div>Home page</div>
+      )
     }
 
-    export default defineRoutePage({
-      path: "/",
+    Home.path = "/";
+    Home.metadata = {
       title: "Home",
-      description: "This is the home page"
-    })(Home);
+      description: "Home Page"
+    }
+
+    export default Home;
     ```
 
   </Tabs.Tab>
 </Tabs>
-
-<AlertBox>
-  The `defineRoutePage` function is a higher-order function that receives a
-  `metadata` object and returns a function that receives the `Page` class. This
-  is a common pattern used in Rasengan.js to define metadata for components.
-</AlertBox>
 
 ## Create a Router
 
@@ -104,7 +98,11 @@ Let's assume that you have a `Home` page that should be accessible at the `/` pa
   the `app` folder.
 </AlertBox>
 
-Note that, here we are using the `Home Page` that we defined in the previous section. Also, we haven't defined any `Layout` for this `Router`, so it will use the default `Layout` predifined by Rasengan.js responding to the path `/`.
+Note that, here we are using the `Home Page` that we defined in the previous section. Also, we haven't defined any `Layout` for this `Router`, so it will use the default `Layout` predefined by Rasengan.js responding to the path `/`.
+
+<AlertBox type="tip">
+Learn more about the `defineRouter` function in the [API Reference](/docs/api-reference/functions/define-router) guide.
+</AlertBox>
 
 ## Use the Router
 

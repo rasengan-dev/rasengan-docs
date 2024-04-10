@@ -14,8 +14,9 @@ There are some files and directories that are required in the `src` directory an
 ### Required files and directories
 
 - `app`: This directory contains all the pages of your project. Each file in this directory represents generally either a [`Page`](/docs/core/routing/base-concepts#page), or a [`Router`](/docs/core/routing/base-concepts#router) or a [`Layout`](/docs/core/routing/base-concepts#layout).
-- [`main.js`](/docs/api-reference/file-conventions/main): This file is the entry point of your project. It is the first file that is executed when your project starts.
-- [`app/app.router.js`](/docs/api-reference/file-conventions/router): This file is the main router of your project. It is the file that contains the routes of your project.
+- [`main.ts`](/docs/api-reference/file-conventions/main): This file is the entry point of your project. It is the first file that is executed when your project starts.
+- `template.tsx`: It represents the base structure of your project's pages. It is the file that contains the HTML structure of your project.
+- [`app/app.router.ts`](/docs/api-reference/file-conventions/router): This file is the main router of your project. It is the file that contains the routes of your project.
 
 ### Optional files and directories
 
@@ -49,6 +50,7 @@ Here is how you should organize your `app` directory:
 ```txt
 src
 ├── main.ts (entry point of your app)
+├── template.tsx (HTML Template of your app)
 └── app
     ├── app.router.ts (main router of your app)
     ├── admin

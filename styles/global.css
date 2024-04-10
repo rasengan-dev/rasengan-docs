@@ -65,3 +65,8 @@ h6 {
     min-height: 600px;
   }
 }
+
+a.no-underline-forced {
+  text-decoration: none !important;
+  color: inherit !important;
+}

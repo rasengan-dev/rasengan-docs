@@ -12,48 +12,45 @@ Here is an example of a `Dynamic Route` to display a user's profile page.
 
 <Tabs items={['TypeScript', 'JavaScript']} defaultIndex="1">
   <Tabs.Tab>
-    ```tsx filename="src/app/profile.page.tsx" {14} showLineNumbers copy
-    import { PageComponent, defineRoutePage } from "rasengan";
+    ```tsx filename="src/app/profile.page.tsx" {11} showLineNumbers copy
+    import { PageComponent } from "rasengan";
 
-    class Profile extends PageComponent {
-      render() {
-        return (
-          <div>
-            <h1>User Profile</h1>
-          </div>
-        )
-      }
+    const Profile: PageComponent = () => {  
+      return (
+        <div>
+          <h1>User Profile</h1>
+        </div>
+      )
     }
 
-    export default defineRoutePage({
-      path: "/profile/:id",
+    Profile.path = "/profile/:id";
+    Profile.metadata = {
       title: "Profile",
       description: "User Profile",
-    })(Profile);
+    }
+
+    export default Profile;
     ```
 
   </Tabs.Tab>
   <Tabs.Tab>
-    ```tsx filename="src/app/profile.page.jsx" {14} showLineNumbers copy
-    import { PageComponent, defineRoutePage } from "rasengan";
-
-    class Profile extends PageComponent {
-      render() {
-        return (
-          <div>
-            <h1>User Profile</h1>
-          </div>
-        )
-      }
+    ```tsx filename="src/app/profile.page.jsx" {9} showLineNumbers copy
+    const Profile = () => {  
+      return (
+        <div>
+          <h1>User Profile</h1>
+        </div>
+      )
     }
 
-    export default defineRoutePage({
-      path: "/profile/:id",
+    Profile.path = "/profile/:id";
+    Profile.metadata = {
       title: "Profile",
       description: "User Profile",
-    })(Profile);
-    ```
+    }
 
+    export default Profile;
+    ```
   </Tabs.Tab>
 </Tabs>
 
@@ -66,52 +63,52 @@ To access the dynamic route parameters, you can use the `useParams` hook.
 
 <Tabs items={['TypeScript', 'JavaScript']} defaultIndex="1">
   <Tabs.Tab>
-    ```tsx filename="src/app/profile.page.tsx" {5,10,17} showLineNumbers /useParams/  copy
-    import { PageComponent, defineRoutePage, useParams } from "rasengan";
+    ```tsx filename="src/app/profile.page.tsx" {4,9,14} showLineNumbers /useParams/  copy
+    import { PageComponent, useParams } from "rasengan";
 
-    class Profile extends PageComponent {
-      render() {
-        const { id } = useParams();
+    const Profile: PageComponent = () => {  
+      const { id } = useParams();
 
-        return (
-          <div>
-            <h1>User Profile</h1>
-            <p>User ID: {id}</p>
-          </div>
-        )
-      }
+      return (
+        <div>
+          <h1>User Profile</h1>
+          <p>User ID: {id}</p>
+        </div>
+      )
     }
 
-    export default defineRoutePage({
-      path: "/profile/:id",
+    Profile.path = "/profile/:id";
+    Profile.metadata = {
       title: "Profile",
       description: "User Profile",
-    })(Profile);
+    }
+
+    export default Profile;
     ```
 
   </Tabs.Tab>
   <Tabs.Tab>
-    ```tsx filename="src/app/profile.page.jsx" {5,10,17} showLineNumbers /useParams/  copy
-    import { PageComponent, defineRoutePage, useParams } from "rasengan";
+    ```tsx filename="src/app/profile.page.jsx" {4,9,14} showLineNumbers /useParams/  copy
+    import { useParams } from "rasengan";
 
-    class Profile extends PageComponent {
-      render() {
-        const { id } = useParams();
+    const Profile = () => {  
+      const { id } = useParams();
 
-        return (
-          <div>
-            <h1>User Profile</h1>
-            <p>User ID: {id}</p>
-          </div>
-        )
-      }
+      return (
+        <div>
+          <h1>User Profile</h1>
+          <p>User ID: {id}</p>
+        </div>
+      )
     }
 
-    export default defineRoutePage({
-      path: "/profile/:id",
+    Profile.path = "/profile/:id";
+    Profile.metadata = {
       title: "Profile",
       description: "User Profile",
-    })(Profile);
+    }
+
+    export default Profile;
     ```
 
   </Tabs.Tab>
@@ -129,54 +126,54 @@ You can also create a `Dynamic Route` with optional parameters.
 
 <Tabs items={['TypeScript', 'JavaScript']} defaultIndex="1">
   <Tabs.Tab>
-    ```tsx filename="src/app/profile.page.tsx" {7,18} showLineNumbers copy
-    import { PageComponent, defineRoutePage, useParams } from "rasengan";
+    ```tsx filename="src/app/profile.page.tsx" {6,15} showLineNumbers copy
+    import { PageComponent, useParams } from "rasengan";
 
-    class Profile extends PageComponent {
-      render() {
-        const { id } = useParams();
+    const Profile: PageComponent = () => {  
+      const { id } = useParams();
 
-        console.log(id) // id can be undefined
+      console.log(id) // id can be undefined
 
-        return (
-          <div>
-            <h1>User Profile</h1>
-          </div>
-        )
-      }
+      return (
+        <div>
+          <h1>User Profile</h1>
+        </div>
+      )
     }
 
-    export default defineRoutePage({
-      path: "/profile/:id?",
+    Profile.path = "/profile/:id?";
+    Profile.metadata = {
       title: "Profile",
       description: "User Profile",
-    })(Profile);
+    }
+
+    export default Profile;
     ```
 
   </Tabs.Tab>
   <Tabs.Tab>
-    ```tsx filename="src/app/profile.page.jsx" {7,18} showLineNumbers copy
-    import { PageComponent, defineRoutePage, useParams } from "rasengan";
+    ```tsx filename="src/app/profile.page.jsx" {6,15} showLineNumbers copy
+    import { useParams } from "rasengan";
 
-    class Profile extends PageComponent {
-      render() {
-        const { id } = useParams();
+    const Profile = () => {  
+      const { id } = useParams();
 
-        console.log(id) // id can be undefined
+      console.log(id) // id can be undefined
 
-        return (
-          <div>
-            <h1>User Profile</h1>
-          </div>
-        )
-      }
+      return (
+        <div>
+          <h1>User Profile</h1>
+        </div>
+      )
     }
 
-    export default defineRoutePage({
-      path: "/profile/:id?",
+    Profile.path = "/profile/:id?";
+    Profile.metadata = {
       title: "Profile",
       description: "User Profile",
-    })(Profile);
+    }
+
+    export default Profile;
     ```
 
   </Tabs.Tab>
@@ -189,12 +186,8 @@ navigating to `/profile` will result in a `404 error`.
 
 You can have `optional static segments` too.
 
-```tsx filename="src/app/profile.page.tsx" {2} showLineNumbers /edit?/ copy
-defineRoutePage({
-  path: "/profile/:id?/edit?",
-  title: "Profile",
-  description: "User Profile",
-})(Profile);
+```tsx filename="src/app/profile.page.tsx" {1} showLineNumbers /edit?/ copy
+Profile.path = "/profile/:id?/edit?";
 ```
 
 ## Dynamic Route with Multiple Parameters
@@ -203,54 +196,54 @@ You can also create a `Dynamic Route` with multiple parameters.
 
 <Tabs items={['TypeScript', 'JavaScript']} defaultIndex="1">
   <Tabs.Tab>
-    ```tsx filename="src/app/profile.page.tsx" {7,18} showLineNumbers copy
-    import { PageComponent, defineRoutePage, useParams } from "rasengan";
+    ```tsx filename="src/app/profile.page.tsx" {6,15} showLineNumbers copy
+    import { PageComponent, useParams } from "rasengan";
 
-    class Profile extends PageComponent {
-      render() {
-        const { id, name } = useParams();
+    const Profile: PageComponent = () => {
+      const { id, name } = useParams();
 
-        console.log(id, name) // id and name can be undefined
+      console.log(id, name) // id and name can be undefined
 
-        return (
-          <div>
-            <h1>User Profile</h1>
-          </div>
-        )
-      }
+      return (
+        <div>
+          <h1>User Profile</h1>
+        </div>
+      )
     }
 
-    export default defineRoutePage({
-      path: "/profile/:id?/:name?",
+    Profile.path = "/profile/:id?/:name?";
+    Profile.metadata = {
       title: "Profile",
       description: "User Profile",
-    })(Profile);
+    }
+
+    export default Profile;
     ```
 
   </Tabs.Tab>
   <Tabs.Tab>
-    ```tsx filename="src/app/profile.page.jsx" {7,18} showLineNumbers copy
-    import { PageComponent, defineRoutePage, useParams } from "rasengan";
+    ```tsx filename="src/app/profile.page.jsx" {6,15} showLineNumbers copy
+   import { useParams } from "rasengan";
 
-    class Profile extends PageComponent {
-      render() {
-        const { id, name } = useParams();
+    const Profile = () => {
+      const { id, name } = useParams();
 
-        console.log(id, name) // id and name can be undefined
+      console.log(id, name) // id and name can be undefined
 
-        return (
-          <div>
-            <h1>User Profile</h1>
-          </div>
-        )
-      }
+      return (
+        <div>
+          <h1>User Profile</h1>
+        </div>
+      )
     }
 
-    export default defineRoutePage({
-      path: "/profile/:id?/:name?",
+    Profile.path = "/profile/:id?/:name?";
+    Profile.metadata = {
       title: "Profile",
       description: "User Profile",
-    })(Profile);
+    }
+
+    export default Profile;
     ```
 
   </Tabs.Tab>

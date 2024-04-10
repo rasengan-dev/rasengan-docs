@@ -75,170 +75,168 @@ The `useNavigate` hook is used to perform client-side redirections.
   `navigate` function is called with the path to redirect to.
 </AlertBox>
 
-## `PageComponent.loader()` method
+## `PageComponent.loader()` function
 
-Similar to `LayoutComponent.loader()`, the `PageComponent.loader()` method is a special method used for `SSR` (Server-Side Rendering) like `getServerSideProps` in `Next.js`.
+Similar to `LayoutComponent.loader()`, the `PageComponent.loader()` function is a special function used for `SSR` (Server-Side Rendering) like `getServerSideProps` in `Next.js`.
 
-So, you can perform server-side redirections using this method and it can only be used in `Page Components`.
+So, you can perform server-side redirections using this function and it can only be used in `Page Components`.
 
 <Tabs items={['TypeScript', 'JavaScript']} defaultIndex="1">
   <Tabs.Tab>
-    ```tsx filename="src/app/redirect.tsx" {14-23} showLineNumbers copy
+    ```tsx filename="src/app/redirection.page.tsx" {19-28} showLineNumbers copy
     import React from "react";
-    import { PageComponent, defineRoutePage, LoaderResponse } from "rasengan";
+    import { PageComponent, LoaderResponse } from "rasengan";
 
-    class SomeWhere extends PageComponent {
-      render() {
-        return (
-          <div>
-            <h1>Redirecting...</h1>
-          </div>
-        )
-      }
-
-      // Used to perform server-side operations
-      async loader(): Promise<LoaderResponse> {
-        /**
-         * You have the possibility to perform some logic here for example, making API calls
-         * checking if the user is authenticated, etc.
-         */
-
-        return {
-          redirect: "/destination"
-        }
-      }
+    const RedirectionPage: PageComponent = () => {
+      return (
+        <div>
+          <h1>Redirecting...</h1>
+        </div>
+      )
     }
 
-    export default defineRoutePage({
-      path: "/somewhere",
+    RedirectionPage.path = "/somewhere";
+    RedirectionPage.metadata = {
       title: "Redirect",
       description: "Redirecting to somewhere",
-    })(SomeWhere);
+    }
+
+    // Used to perform server-side operations
+    RedirectionPage.loader = async (): Promise<LoaderResponse> => {
+      /**
+       * You have the possibility to perform some logic here for example, making API calls
+       * checking if the user is authenticated, etc.
+       */
+
+      return {
+        redirect: "/destination"
+      }
+    }
+    
+    export default RedirectionPage;
     ```
 
   </Tabs.Tab>
   <Tabs.Tab>
-    ```tsx filename="src/app/redirect.jsx" {14-23} showLineNumbers copy
+    ```tsx filename="src/app/redirection.page.jsx" {19-28} showLineNumbers copy
     import React from "react";
-    import { PageComponent, defineRoutePage } from "rasengan";
+    import { LoaderResponse } from "rasengan";
 
-    class SomeWhere extends PageComponent {
-      render() {
-        return (
-          <div>
-            <h1>Redirecting...</h1>
-          </div>
-        )
-      }
-
-      // Used to perform server-side operations
-      async loader() {
-        /**
-         * You have the possibility to perform some logic here for example, making API calls
-         * checking if the user is authenticated, etc.
-         */
-
-        return {
-          redirect: "/destination"
-        }
-      }
+    const RedirectionPage = () => {
+      return (
+        <div>
+          <h1>Redirecting...</h1>
+        </div>
+      )
     }
 
-    export default defineRoutePage({
-      path: "/somewhere",
+    RedirectionPage.path = "/somewhere";
+    RedirectionPage.metadata = {
       title: "Redirect",
       description: "Redirecting to somewhere",
-    })(SomeWhere);
-    ```
+    }
 
+    // Used to perform server-side operations
+    RedirectionPage.loader = async () => {
+      /**
+       * You have the possibility to perform some logic here for example, making API calls
+       * checking if the user is authenticated, etc.
+       */
+
+      return {
+        redirect: "/destination"
+      }
+    }
+    
+    export default RedirectionPage;
+    ```
   </Tabs.Tab>
 </Tabs>
 
 <AlertBox type="tip">
-  The `loader` method is not only used for redirections, but it can also be used
+  The `loader` function is not only used for redirections, but it can also be used
   to perform server-side operations like making API calls, checking if the user
-  is authenticated, etc. and it can pass data to the `PageComponent.render`
-  method as props. Read more about it
+  is authenticated, etc. and it can pass data to the `PageComponent` as props. Read more about it
   [here](/docs/api-reference/components/page-component#loader).
 </AlertBox>
 
-The `loader` method can receive an object argument containing:
+The `loader` function can receive an object argument containing:
 
 - a `request` instance: The request object from the server.
 - a `param` object: The parameters from the URL.
 
 <Tabs items={['TypeScript', 'JavaScript']}>
   <Tabs.Tab>
-    ```tsx filename="src/app/redirect.tsx" {14} showLineNumbers copy
+    ```tsx filename="src/app/redirection.page.tsx" {19} showLineNumbers copy
     import React from "react";
-    import { PageComponent, defineRoutePage, LoaderResponse, LoaderOptions } from "rasengan";
+    import { PageComponent, LoaderResponse, LoaderOptions } from "rasengan";
 
-    class SomeWhere extends PageComponent {
-      render() {
-        return (
-          <div>
-            <h1>Redirecting...</h1>
-          </div>
-        )
-      }
-
-      // Used to perform server-side operations
-      async loader({ params, request }: LoaderOptions): Promise<LoaderResponse> {
-        /**
-         * You have the possibility to perform some logic here for example, making API calls
-         * checking if the user is authenticated, etc.
-         *
-         * You can also access the request object from the server and the params object
-         */
-
-        return {
-          redirect: "/destination"
-        }
-      }
+    const RedirectionPage: PageComponent = () => {
+      return (
+        <div>
+          <h1>Redirecting...</h1>
+        </div>
+      )
     }
 
-    export default defineRoutePage({
-      path: "/somewhere",
+    RedirectionPage.path = "/somewhere";
+    RedirectionPage.metadata = {
       title: "Redirect",
       description: "Redirecting to somewhere",
-    })(SomeWhere);
+    }
+
+    // Used to perform server-side operations
+    RedirectionPage.loader = async ({ params, request }: LoaderOptions): Promise<LoaderResponse> {
+      /**
+        * You have the possibility to perform some logic here for example, making API calls
+        * checking if the user is authenticated, etc.
+        *
+        * You can also access the request object from the server and the params object
+        */
+
+      return {
+        redirect: "/destination"
+      }
+    }
+    
+    export default RedirectionPage;
     ```
 
   </Tabs.Tab>
   <Tabs.Tab>
-    ```tsx filename="src/app/redirect.jsx" {14} showLineNumbers copy
+    ```tsx filename="src/app/redirection.page.jsx" {19} showLineNumbers copy
     import React from "react";
-    import { PageComponent, defineRoutePage } from "rasengan";
+    import { PageComponent } from "rasengan";
 
-    class SomeWhere extends PageComponent {
-      render() {
-        return (
-          <div>
-            <h1>Redirecting...</h1>
-          </div>
-        )
-      }
-
-      // Used to perform server-side operations
-      async loader({ params, request }) {
-        /**
-         * You have the possibility to perform some logic here for example, making API calls
-         * checking if the user is authenticated, etc.
-         *
-         * You can also access the request object from the server and the params object
-         */
-
-        return {
-          redirect: "/destination"
-        }
-      }
+    const RedirectionPage: PageComponent = () => {
+      return (
+        <div>
+          <h1>Redirecting...</h1>
+        </div>
+      )
     }
 
-    export default defineRoutePage({
-      path: "/somewhere",
+    RedirectionPage.path = "/somewhere";
+    RedirectionPage.metadata = {
       title: "Redirect",
       description: "Redirecting to somewhere",
-    })(SomeWhere);
+    }
+
+    // Used to perform server-side operations
+    RedirectionPage.loader = async ({ params, request }) {
+      /**
+        * You have the possibility to perform some logic here for example, making API calls
+        * checking if the user is authenticated, etc.
+        *
+        * You can also access the request object from the server and the params object
+        */
+
+      return {
+        redirect: "/destination"
+      }
+    }
+    
+    export default RedirectionPage;
     ```
 
   </Tabs.Tab>

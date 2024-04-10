@@ -1,7 +1,7 @@
 import { ShowcaseDataType } from "data/showcase";
 import useTheme from "hooks/useTheme";
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "nextra-theme-docs";
 import { twMerge } from "tailwind-merge";
 
 type Props = {
@@ -37,10 +37,10 @@ export default function ShowcaseProjectCard({ data }: Props) {
   };
 
   return (
-    <Link href={data.link}>
+    <Link href={data.link} className="no-underline-forced">
       <article
         className={twMerge(
-          "w-full hover:cursor-pointer border-[1px] rounded-lg transition-all",
+          "w-full hover:cursor-pointer border-[1px] rounded-lg transition-all no-underline",
           isDark ? "border-gray-900 hover:border-primary" : "border-gray-200 hover:border-primary"
         )}
       >
