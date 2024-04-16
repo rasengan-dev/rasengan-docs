@@ -30,7 +30,7 @@ import { adaptPath } from "rasengan";
 
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: adaptPath(["./index.html", "./src/**/*.{ts,tsx,js,jsx}"]),
+  content: adaptPath(["./src/**/*.{ts,tsx,js,jsx}"]),
   theme: {
     extend: {},
   },
@@ -101,46 +101,35 @@ After installing Tailwind CSS and adding the global styles, you can use Tailwind
 
 <Tabs items={['TypeScript', 'JavaScript']} defaultIndex="1">
   <Tabs.Tab>
-    ```tsx filename="src/app/home.page.tsx" showLineNumbers copy
-    import { PageComponent, defineRoutePage } from "rasengan";
+    ```tsx filename="src/components/Card.tsx" showLineNumbers copy
+    type CardProps = {
+      title: string;
+      content: string;
+    };
 
-    class Home extends PageComponent {
-      render() {
-        return (
-          <div className="w-full px-8 py-4">
-            <h1 className="text-3xl font-bold capitalize">Home</h1>
-          </div>
-        )
-      }
+    export default function Card({ title, content }: CardProps) {
+      return (
+        <div className="w-[20rem] rounded-lg bg-white p-4 flex flex-col">
+          <h1 className="text-3xl font-bold capitalize">{title}</h1>
+
+          <p className="text-lg font-normal mt-4">{content}</p>
+        </div>
+      )
     }
-
-    export default defineRoutePage({
-      path: "/",
-      title: "Home",
-      description: "Home page description"
-    })(Home);
     ```
 
   </Tabs.Tab>
   <Tabs.Tab>
-    ```jsx filename="src/app/home.page.jsx" showLineNumbers copy
-    import { PageComponent, defineRoutePage } from "rasengan";
+    ```jsx filename="src/components/Card.tsx" showLineNumbers copy
+    export default function Card({ title, content }) {
+      return (
+        <div className="w-[20rem] rounded-lg bg-white p-4 flex flex-col">
+          <h1 className="text-3xl font-bold capitalize">{title}</h1>
 
-    class Home extends PageComponent {
-      render() {
-        return (
-          <div className="w-full px-8 py-4">
-            <h1 className="text-3xl font-bold capitalize">Home</h1>
-          </div>
-        )
-      }
+          <p className="text-lg font-normal mt-4">{content}</p>
+        </div>
+      )
     }
-
-    export default defineRoutePage({
-      path: "/",
-      title: "Home",
-      description: "Home page description"
-    })(Home);
     ```
 
   </Tabs.Tab>

@@ -9,7 +9,7 @@ It comes with built-in TypeScript support for automatically installing the neces
 `create-rasengan` CLI can be used to create a new TypeScript project.
 
 ```bash filename="Terminal" copy 
-npx create-rasengan my-app
+npx create-rasengan@latest my-app
 ```
 
 During the project creation, you will be prompted to choose the language for your project. Select `TypeScript` to create a TypeScript project.
@@ -31,25 +31,11 @@ Then add the following `tsconfig.json` file to the root of your project.
   "compilerOptions": {
     "baseUrl": ".",
     "target": "ES2020",
-    "useDefineForClassFields": true,
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
-    "module": "ESNext",
-    "skipLibCheck": true,
-    "experimentalDecorators": true,
 
     /* Bundler mode */
     "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
+    "module": "ESNext",
     "jsx": "react-jsx",
-
-    /* Linting */
-    "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true,
 
     /* Aliases for intellisence */
     "paths": {
@@ -60,15 +46,16 @@ Then add the following `tsconfig.json` file to the root of your project.
       "@styles/*": ["src/styles/*"]
     }
   },
-  "include": ["src", "rasengan-env.d.ts"]
+  "include": ["src", "rasengan-env.d.ts"],
+
+  "extends": "./node_modules/rasengan/tsconfig.base.json"
 }
 ```
 
 Finally, add the following `rasengan-env.d.ts` file to the root of your project.
 
 ```typescript filename="rasengan-env.d.ts" showLineNumbers copy
-/// <reference types="rasengan/types/image" />
-/// <reference types="rasengan/types/style" />
+/// <reference types="rasengan/types/client" />
 ```
 
 Run `npm run dev` to start the development server.

@@ -15,7 +15,7 @@ import { adaptPath } from "rasengan";
 
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: adaptPath(["./index.html", "./src/**/*.{ts,tsx,js,jsx}"]),
+  content: adaptPath(["./src/**/*.{ts,tsx,js,jsx}"]),
   // ...
 }
 ```
@@ -24,11 +24,11 @@ export default {
 
 `adaptPath` accepts either a path string or an array of paths as its first parameter.
 
-| Parameter | Type | Description |
-| :--- | :--- | :--- |
-| `paths` | `string`, `string[]` | Either a path or an array of paths to adapt. |
+| Parameter | Type                 | Description                                  |
+| --------- | -------------------- | -------------------------------------------- |
+| `paths`   | `string`, `string[]` | Either a path or an array of paths to adapt. |
 
 
 ## Returned value
 
-`adaptPath` returns an array of adapted paths depending on the environment mode `(development or production)`.
+`adaptPath` returns either an array of adapted paths or a simple adapted string path depending on the environment mode `(development or production)`.

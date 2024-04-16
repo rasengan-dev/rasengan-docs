@@ -11,7 +11,32 @@ Rasengan.js is using `Server Side Rendering` to render the React components.
 
 ### `Client Side Rendering` (CSR)
 
-`Client Side Rendering` (CSR), in React involves rendering the user interface entirely on the client's browser using JavaScript. There is no server involved in the rendering process, all is done on the client's browser.
+`Client Side Rendering` (CSR), in React involves rendering the user interface entirely on the client's browser using JavaScript. 
+There is no server involved in the rendering process, all is done on the client's browser.
+
+That means, if the JavaScript is not enabled on the browser, we won't be able to have the user interface rendered, event the simple html page structure.
+
+This approach will affect the SEO (Search Engine Optimization) of the website, as the search engine crawlers will not be able to see the content of the website. That's the reason why we are using `Server Side Rendering` in Rasengan.js.
 
 ### `Server Side Rendering` (SSR)
 
+`Server Side Rendering` (SSR), in React involves rendering the user interface on the server and sending the final HTML to the client's browser in the initial request.
+Then, the client's browser will only need to download the JavaScript files and hydrate the HTML that was sent by the server by adding the interactivity to the website.
+
+As the content is already rendered on the server, the search engine crawlers will be able to see the content of the website, which will improve the SEO of the website.
+
+
+## Why `SSR`?
+
+- **SEO**: As mentioned above, the search engine crawlers will be able to see the content of the website, which will improve the SEO of the website.
+- **Performance**: The initial load time of the website will be faster as the content is already rendered on the server.
+- **Accessibility**: The website will be accessible even if the JavaScript is disabled on the browser.
+
+## How `SSR` works in Rasengan.js?
+
+Rasengan.js uses `React` and `Express` to render the React components on the server. 
+When the user makes a request to the server, the server will render the React components and send the final HTML to the client's browser.
+
+The client's browser will only need to download the JavaScript files and hydrate the HTML that was sent by the server by adding the interactivity to the website.
+
+All these things are done under the hood, so you don't have to worry about the rendering process. You can focus on building the website using the components and tools provided by Rasengan.js.

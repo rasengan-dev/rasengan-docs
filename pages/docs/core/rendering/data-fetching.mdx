@@ -1,0 +1,56 @@
+import AlertBox from "@components/atoms/Alert";
+
+# Data Fetching 
+
+Data fetching is the process of fetching data required to render a page. This data can be fetched from various sources, such as a database, an API, or a file system.
+
+In `Rasengan.js`, at this time you just have one way to fetch data, which is using the `loader` function.:
+
+- **Dynamic Data Fetching**: You can fetch data at runtime using `PageComponent.loader` function. This data will be fetched on the server when the page is requested by the client.
+
+## Example
+
+```tsx filename="home.page.tsx" showLineNumbers copy
+import { PageComponent } from "rasengan";
+
+type Props = {
+  data: any
+}
+
+const Home: PageComponent = ({ data }: Props) => {
+  // data is fetched from the server and passed as props dynamically at runtime
+
+  return (
+    <div>Home page</div>
+  )
+}
+
+Home.path = "/";
+
+Home.loader = async () => {
+  const data = await fetch("https://api.example.com/data");
+  const json = await data.json();
+
+  return {
+    props: {
+      data: json,
+    }
+  }
+}
+
+export default Home;
+```
+
+<AlertBox>
+Learn more about the `loader` function in the [`API Reference`](/docs/api-reference/components/layout-component#loader-function).
+</AlertBox>
+
+## Use Cases
+
+- **Fetching Data from an API**: You can fetch data from an API and pass it as props to the page component.
+- **Implementing and authentication strategy**: You can fetch user data from a database and pass it as props, which can be used to authenticate the user. 
+And if the user is not authenticated, you can redirect them to the login page by just returning a `redirect` object from the `loader` function.
+
+## Conclusion
+
+Data fetching is an essential part of building a web application. In `Rasengan.js`, you can fetch data dynamically using the `loader` function. This data will be fetched on the server when the page is requested by the client.

@@ -1,0 +1,88 @@
+import { Tabs } from "nextra/components";
+import AlertBox from '@components/atoms/Alert';
+
+# HTML Template
+
+The HTML template component is a simple component that allows you to define the base structure of your html content inside your application.
+
+It's `required` and has to be defined into the `src/` folder.
+
+## Usage
+
+<Tabs items={['TypeScript', 'JavaScript']}>
+  <Tabs.Tab>
+    ```tsx filename="src/template.tsx" showLineNumbers copy
+    import { TemplateProps } from "rasengan";
+
+    export default function Template({
+      children,
+      Head,
+      Body,
+      Script
+    }: TemplateProps) {
+      return (
+        <html lang="en">
+          <Head>
+            <meta charSet="UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <title>Document</title>
+          </Head>
+          <Body>
+            {children}
+
+            <Script />
+          </Body>
+        </html>
+      )
+    }
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```jsx filename="src/template.jsx" showLineNumbers copy
+    export default function Template({
+      children,
+      Head,
+      Body,
+      Script
+    }) {
+      return (
+        <html lang="en">
+          <Head>
+            <meta charSet="UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <title>Document</title>
+          </Head>
+          <Body>
+            {children}
+
+            <Script />
+          </Body>
+        </html>
+      )
+    }
+    ```
+  </Tabs.Tab>
+</Tabs>
+
+## Properties
+
+The `Template` component has the following properties:
+
+- `children`: The children of the component. The place where the app content will be rendered.
+- `Head`: The head of the component. It's used to define the head of the html document.
+- `Body`: The body of the component. It's used to define the body of the html document.
+- `Script`: The script of the component. It's used to define the script of the html document.
+
+<AlertBox>
+You can add `scripts` into the `Script` component to define the scripts that will act to the html document.
+</AlertBox>
+
+<AlertBox type="info">
+You can add `styles` into the `Head` component to define the styles that will act to the html document. And you can add `meta` tags as well.
+</AlertBox>
+
+<AlertBox type="error">
+The `Template` component is required and has to be defined into the `src/` folder.
+</AlertBox>
+
+

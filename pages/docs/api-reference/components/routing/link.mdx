@@ -16,48 +16,47 @@ Here's an example of how to use the `<Link>` component:
   <Tabs.Tab>
     ```tsx filename="src/app/home.page.tsx" showLineNumbers copy
     import React from "react";
-    import { PageComponent, defineRoutePage, Link } from "rasengan";
+    import { PageComponent, Link } from "rasengan";
 
-    class Home extends PageComponent {
-      render() {
-        return (
-          <div>
-            <h1>Home</h1>
-            <Link to="/dashboard">Go to Dashboard</Link>
-          </div>
-        );
-      }
-    }
+    const Home: PageComponent = () => {
+      return (
+        <div>
+          <h1>Home</h1>
+          <Link to="/dashboard">Go to Dashboard</Link>
+        </div>
+      );
+    };
 
-    export default defineRoutePage({
-      path: "/",
+    Home.path = "/";
+    Home.metadata = {
       title: "Home",
       description: "Home Page",
-    })(Home);
-    ```
+    };
 
+    export default Home;
+    ```
   </Tabs.Tab>
   <Tabs.Tab>
     ```jsx filename="src/app/home.page.jsx" showLineNumbers copy
     import React from "react";
-    import { PageComponent, defineRoutePage, Link } from "rasengan";
+    import { Link } from "rasengan";
 
-    class Home extends PageComponent {
-      render() {
-        return (
-          <div>
-            <h1>Home</h1>
-            <Link to="/dashboard">Go to Dashboard</Link>
-          </div>
-        );
-      }
-    }
+    const Home = () => {
+      return (
+        <div>
+          <h1>Home</h1>
+          <Link to="/dashboard">Go to Dashboard</Link>
+        </div>
+      );
+    };
 
-    export default defineRoutePage({
-      path: "/",
+    Home.path = "/";
+    Home.metadata = {
       title: "Home",
       description: "Home Page",
-    })(Home);
+    };
+
+    export default Home;
     ```
 
   </Tabs.Tab>
@@ -73,48 +72,48 @@ Here's an example of how to use the `<Link>` component:
   <Tabs.Tab>
     ```tsx filename="src/app/home.page.tsx" showLineNumbers copy /state={{ name: "hello" }}/
     import React from "react";
-    import { PageComponent, defineRoutePage, Link } from "rasengan";
+    import { PageComponent, Link } from "rasengan";
 
-    class Home extends PageComponent {
-      render() {
-        return (
-          <div>
-            <h1>Home</h1>
-            <Link to="/dashboard" state={{ name: "hello" }}>Go to Dashboard</Link>
-          </div>
-        );
-      }
-    }
+    const Home: PageComponent = () => {
+      return (
+        <div>
+          <h1>Home</h1>
+          <Link to="/dashboard" state={{ name: "hello" }}>Go to Dashboard</Link>
+        </div>
+      );
+    };
 
-    export default defineRoutePage({
-      path: "/",
+    Home.path = "/";
+    Home.metadata = {
       title: "Home",
       description: "Home Page",
-    })(Home);
+    };
+
+    export default Home;
     ```
 
   </Tabs.Tab>
   <Tabs.Tab>
     ```jsx filename="src/app/home.page.jsx" showLineNumbers copy /state={{ name: "hello" }}/
     import React from "react";
-    import { PageComponent, defineRoutePage, Link } from "rasengan";
+    import { Link } from "rasengan";
 
-    class Home extends PageComponent {
-      render() {
-        return (
-          <div>
-            <h1>Home</h1>
-            <Link to="/dashboard" state={{ name: "hello" }}>Go to Dashboard</Link>
-          </div>
-        );
-      }
-    }
+    const Home = () => {
+      return (
+        <div>
+          <h1>Home</h1>
+          <Link to="/dashboard" state={{ name: "hello" }}>Go to Dashboard</Link>
+        </div>
+      );
+    };
 
-    export default defineRoutePage({
-      path: "/",
+    Home.path = "/";
+    Home.metadata = {
       title: "Home",
       description: "Home Page",
-    })(Home);
+    };
+
+    export default Home;
     ```
 
   </Tabs.Tab>

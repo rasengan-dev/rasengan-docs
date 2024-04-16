@@ -16,50 +16,46 @@ A `layout` is UI that is shared between routes.
 <Tabs items={['TypeScript', 'JavaScript']} defaultIndex="1">
   <Tabs.Tab>
     ```tsx filename="app.layout.tsx" showLineNumbers copy /app.layout.tsx/
-    import { LayoutComponent, defineRouteLayout, Outlet } from "rasengan";
+    import { LayoutComponent, Outlet } from "rasengan";
 
     /*
      * This AppLayout is located inside the app.layout.tsx file
      */
-    class AppLayout extends LayoutComponent {
-      render() {
-        return (
-          <div>
-            <h1>App Layout</h1>
+    const AppLayout: LayoutComponent = () => {
+      return (
+        <div>
+          <h1>App Layout</h1>
 
-            <Outlet />
-          </div>
-        )
-      }
+          <Outlet />
+        </div>
+      )
     }
+    
+    AppLayout.path = "/";
 
-    export default defineRouteLayout({
-      path: "/",
-    })(AppLayout);
+    export default AppLayout;
     ```
   </Tabs.Tab>
   <Tabs.Tab>
     ```jsx filename="app.layout.jsx" showLineNumbers copy  /app.layout.jsx/
-    import { LayoutComponent, defineRouteLayout, Outlet } from "rasengan";
+    import { Outlet } from "rasengan";
 
     /*
-     * This AppLayout is located inside the app.layout.jsx file
+     * This AppLayout is located inside the app.layout.tsx file
      */
-    class AppLayout extends LayoutComponent {
-      render() {
-        return (
-          <div>
-            <h1>App Layout</h1>
+    const AppLayout = () => {
+      return (
+        <div>
+          <h1>App Layout</h1>
 
-            <Outlet />
-          </div>
-        )
-      }
+          <Outlet />
+        </div>
+      )
     }
+    
+    AppLayout.path = "/";
 
-    export default defineRouteLayout({
-      path: "/",
-    })(AppLayout);
+    export default AppLayout;
     ```
   </Tabs.Tab>
 </Tabs>

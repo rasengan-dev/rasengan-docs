@@ -1,7 +1,5 @@
 {
   "adapt-path": "adaptPath",
   "define-config": "defineConfig",
-  "define-route-layout": "defineRouteLayout",
-  "define-route-page": "defineRoutePage",
   "define-router": "defineRouter"
 }

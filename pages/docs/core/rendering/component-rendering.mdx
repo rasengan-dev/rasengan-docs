@@ -1,0 +1,25 @@
+# Component Rendering 
+
+In `Rasengan.js`, the components are rendered on the server using `React` and `Express`. 
+
+When the user makes a request to the server, the server will render the React components and send the final HTML to the client's browser.
+
+Rasengan.js supports only Client Components. Comparing to Next.js, Rasengan.js doesn't support Server Components, which are components that can do server action directly like fetching data from the database.
+
+```jsx 
+const Home = () => {
+  // This is a client component
+
+  // You can use hooks, context, etc.
+
+  // You can access the browser's API
+
+  return (
+    <div>Home page</div>
+  )
+}
+
+Home.path = "/";
+
+export default Home;
+```

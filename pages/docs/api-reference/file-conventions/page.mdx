@@ -16,50 +16,50 @@ A `page` is UI that is unique to a route.
 <Tabs items={['TypeScript', 'JavaScript']} defaultIndex="1">
   <Tabs.Tab>
     ```tsx filename="home.page.tsx" showLineNumbers copy /home.page.tsx/
-    import { PageComponent, defineRoutePage } from "rasengan";
+    import { PageComponent } from "rasengan";
 
     /*
      * This Home Page is located inside the home.page.tsx file
      */
-    class Home extends PageComponent {
-      render() {
-        return (
-          <div>
-            <h1>Home Page</h1>
-          </div>
-        )
-      }
+    const Home: pageComponent = () => {
+      return (
+        <div>
+          <h1>Home Page</h1>
+        </div>
+      )
     }
-
-    export default defineRoutePage({
-      path: "/",
+    
+    Home.path = "/";
+    Home.metadata = {
       title: "Home",
       description: "This is the home page",
-    })(Home);
+    }
+
+    export default Home;
     ```
   </Tabs.Tab>
   <Tabs.Tab>
     ```jsx filename="home.page.jsx" showLineNumbers copy /home.page.jsx/
-    import { PageComponent, defineRoutePage } from "rasengan";
+    import React from "react";
 
     /*
-     * This `Home Page` is located inside the home.page.jsx file
+     * This Home Page is located inside the home.page.tsx file
      */
-    class Home extends PageComponent {
-      render() {
-        return (
-          <div>
-            <h1>Home Page</h1>
-          </div>
-        )
-      }
+    const Home = () => {
+      return (
+        <div>
+          <h1>Home Page</h1>
+        </div>
+      )
     }
-
-    export default defineRoutePage({
-      path: "/",
+    
+    Home.path = "/";
+    Home.metadata = {
       title: "Home",
       description: "This is the home page",
-    })(Home);
+    }
+
+    export default Home;
     ```
   </Tabs.Tab>
 </Tabs>

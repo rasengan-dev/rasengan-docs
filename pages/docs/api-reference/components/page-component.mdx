@@ -3,71 +3,61 @@ import AlertBox from '@components/atoms/Alert';
 
 # PageComponent
 
-`PageComponent` is an abstract class provided by Rasengan.js to define `pages`.
+`PageComponent` is a functional component that defines a `page` in a Rasengan.js app.
 
-## Usage
+## Example
 
 <Tabs items={['TypeScript', 'JavaScript']}>
   <Tabs.Tab>
     ```tsx filename="home.page.tsx" showLineNumbers copy /PageComponent/
-    import { PageComponent, defineRoutePage } from "rasengan";
-    
-    class Home extends PageComponent {
-      render() {
-        return (
-          <div>
-            <h1>Home Page</h1>
-          </div>
-        );
-      }
+    import { PageComponent } from "rasengan";
+
+    const Home: PageComponent = () => {
+      return (
+        <div>Home page</div>
+      )
     }
 
-    export default defineRoutePage({
-      path: "/",
+    Home.path = "/";
+    Home.metadata = {
       title: "Home",
-      description: "Home page"
-    })(Home);
+      description: "Home Page"
+    }
+
+    export default Home;
     ```
   </Tabs.Tab>
   <Tabs.Tab>
     ```jsx filename="home.page.jsx" showLineNumbers copy /PageComponent/
-    import { PageComponent, defineRoutePage } from "rasengan";
-    
-    class Home extends PageComponent {
-      render() {
-        return (
-          <div>
-            <h1>Home Page</h1>
-          </div>
-        );
-      }
+    const Home = () => {
+      return (
+        <div>Home page</div>
+      )
     }
 
-    export default defineRoutePage({
-      path: "/",
+    Home.path = "/";
+    Home.metadata = {
       title: "Home",
-      description: "Home page"
-    })(Home);
+      description: "Home Page"
+    }
+
+    export default Home;
     ```
   </Tabs.Tab>
 </Tabs>
 
-Similar to [`LayoutComponent`](/docs/api-reference/components/layout-component), the `PageComponent` class requires a `render` method to be implemented. 
-The `render` method should return a `React.Node` element representing the page.
+Similar to [`LayoutComponent`](/docs/api-reference/components/layout-component), the `PageComponent` component requires a `path` property to define the route of the page. 
 
 ## Properties and Methods
 
-The `PageComponent` class has the following properties and methods:
+The `PageComponent` functional component has the following properties and methods:
 
 ### Properties
 
 - `path`: The path of the page. It is used to define the route of the page.
-- `title`: The title of the page. It is used to define the title of the page in the browser.
-- `description`: The description of the page. It is used to define the description of the page in the browser.
-
+- `metadata`: The metadata of the page. It is used to define the title, description of the page and other things.
 ### Methods
 
-- `render()`: This method is used to define the content of the page
 - `loader()`: Similar to `getServerSideProps()` in Next.js, this method is used to make some operations on the server before the page is rendered.
 
 The `loader()` method is optional. The returned promise has to follow the following structure:
@@ -80,13 +70,13 @@ type LoaderResponse = {
 ```
 
 <AlertBox>
-- `props`: The props that will be passed to the page component `render` method.
+- `props`: The props that will be passed to the page component.
 - `redirect`: The path to redirect the user.
 
 The `props` and `redirect` are optional. If the `redirect` is defined, the `props` will be ignored.
 </AlertBox>
 
-## Example with `loader()` method
+## Example with `loader()` method [#loader-function]
 
 All what was mentioned in the `LayoutComponent` section about `loader` is applied here. 
 

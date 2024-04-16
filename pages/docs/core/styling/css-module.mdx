@@ -15,48 +15,39 @@ CSS Modules can be imported into any file inside the `src` directory to be used 
 
 <Tabs items={['TypeScript', 'JavaScript']} defaultIndex="1">
   <Tabs.Tab>
-    ```tsx filename="src/app/app.layout.tsx" {2,7-8} showLineNumbers copy
-    import { LayoutComponent, defineRouteLayout, Outlet } from "rasengan";
+    ```tsx filename="src/components/Card.tsx" {1} showLineNumbers copy
     import styles from "./layout.module.css";
 
-    class AppLayout extends LayoutComponent {
-      render() {
-        return (
-          <div className={styles.container}>
-            <h1 className={styles.title}>App Layout</h1>
+    type CardProps = {
+      title: string;
+      content: string;
+    };
 
-            <Outlet />
-          </div>
-        )
-      }
+    export default function Card({ title, content }: CardProps) {
+      return (
+        <div className={styles.card}>
+          <h1 className={styles.card__title}>{title}</h1>
+
+          <p className={styles.card__content}>{content}</p>
+        </div>
+      )
     }
-
-    export default defineRouteLayout({
-      path: "/",
-    })(AppLayout);
     ```
 
   </Tabs.Tab>
   <Tabs.Tab>
-    ```jsx filename="src/app/app.layout.jsx" {2,7-8} showLineNumbers copy
-    import { LayoutComponent, defineRouteLayout, Outlet } from "rasengan";
+    ```jsx filename="src/components/Card.jsx" {1} showLineNumbers copy
     import styles from "./layout.module.css";
 
-    class AppLayout extends LayoutComponent {
-      render() {
-        return (
-          <div className={styles.container}>
-            <h1 className={styles.title}>App Layout</h1>
+    export default function Card({ title, content }) {
+      return (
+        <div className={styles.card}>
+          <h1 className={styles.card__title}>{title}</h1>
 
-            <Outlet />
-          </div>
-        )
-      }
+          <p className={styles.card__content}>{content}</p>
+        </div>
+      )
     }
-
-    export default defineRouteLayout({
-      path: "/",
-    })(AppLayout);
     ```
 
   </Tabs.Tab>

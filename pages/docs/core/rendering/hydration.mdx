@@ -1,0 +1,21 @@
+# Hydration
+
+Hydration is the process of attaching event listeners to the server-rendered HTML. This allows the page to be interactive and respond to user input.
+
+In Rasengan.js, the hydration process is done automatically by the client-side JavaScript. When the client's browser downloads the JavaScript files, it will hydrate the HTML that was sent by the server.
+
+Rasengan.js handles the hydration process under the hood, so you don't have to worry about it. You can focus on building the website using the components and tools provided by Rasengan.js.
+
+## How it works
+
+When the client-side JavaScript is loaded, it will attach event listeners to the HTML elements that were rendered by the server. This allows the page to be interactive and respond to user input.
+
+Here is what happens during the hydration process:
+
+1. The server renders the React components and sends the final HTML to the client's browser.
+2. The client's browser downloads the JavaScript files.
+3. The client-side JavaScript attaches event listeners to the HTML elements that were rendered by the server.
+4. The page becomes interactive and responds to user input.
+
+Rasengan.js uses the `ReactDOM.hydrateRoot` method to attach event listeners to the server-rendered HTML.
+

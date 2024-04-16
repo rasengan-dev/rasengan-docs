@@ -3,68 +3,64 @@ import AlertBox from '@components/atoms/Alert';
 
 # LayoutComponent
 
-`LayoutComponent` is an abstract class that defines the structure of a layout component. It is used to create a new layout component.
+`LayoutComponent` is a functional component that defines the structure of a layout component.
 
-## Usage
+## Example
 
 <Tabs items={['TypeScript', 'JavaScript']}>
   <Tabs.Tab>
     ```tsx filename="app.layout.tsx" showLineNumbers copy /LayoutComponent/
-    import { LayoutComponent, Outlet, defineRouteLayout } from "rasengan";
+    import { LayoutComponent, Outlet } from "rasengan";
     
-    class AppLayout extends LayoutComponent {
-      render() {
-        return (
-          <div>
-            <header>
-              <h1>App Layout</h1>
-            </header>
-            <main>
-              <Outlet />
-            </main>
-          </div>
-        );
-      }
+    const AppLayout: LayoutComponent = () => {
+      return (
+        <div>
+          <header>
+            <h1>App Layout</h1>
+          </header>
+          <main>
+            <Outlet />
+          </main>
+        </div>
+      );
     }
 
-    export default defineRouteLayout({
-      path: "/"
-    })(AppLayout);
+    AppLayout.path = "/";
+
+    export default AppLayout;
     ```
   </Tabs.Tab>
   <Tabs.Tab>
     ```jsx filename="app.layout.jsx" showLineNumbers copy /LayoutComponent/
-    import { LayoutComponent, Outlet, defineRouteLayout } from "rasengan";
+    import { Outlet } from "rasengan";
     
-    class AppLayout extends LayoutComponent {
-      render() {
-        return (
-          <div>
-            <header>
-              <h1>App Layout</h1>
-            </header>
-            <main>
-              <Outlet />
-            </main>
-          </div>
-        );
-      }
+    const AppLayout = () => {
+      return (
+        <div>
+          <header>
+            <h1>App Layout</h1>
+          </header>
+          <main>
+            <Outlet />
+          </main>
+        </div>
+      );
     }
 
-    export default defineRouteLayout({
-      path: "/"
-    })(AppLayout);
+    AppLayout.path = "/";
+
+    export default AppLayout;
     ```
   </Tabs.Tab>
 </Tabs>
 
-The `LayoutComponent` class requires a `render` method to be implemented. The `render` method should return the layout structure.
+The `LayoutComponent` function component requires a `path` property to define the route layout that will be considered as the base path of all pages that will use the layout.
 
-Inside the `render` method, the `Outlet` component is used to render the child components of the layout.
+Inside the return, the `Outlet` component is used to render the child components of the layout.
 
 ## Properties and Methods
 
-The `LayoutComponent` class has the following properties and methods:
+The `LayoutComponent` function has the following properties and methods:
 
 ### Properties
 
@@ -72,7 +68,6 @@ The `LayoutComponent` class has the following properties and methods:
 
 ### Methods
 
-- `render()`: This method is used to define the layout structure. It should return the layout structure and should include the `Outlet` component to render the child components of the layout.
 - `loader()`: Similar to `getServerSideProps()` in Next.js, this method is used to make some operations on the server before the layout is rendered. It should return a promise with the result of the operations.
 
 The `loader()` method is optional. The returned promise has to follow the following structure:
@@ -85,94 +80,94 @@ type LoaderResponse = {
 ```
 
 <AlertBox>
-- `props`: The props that will be passed to the layout component `render` method.
+- `props`: The props that will be passed to the layout component.
 - `redirect`: The path to redirect the user.
 
 The `props` and `redirect` are optional. If the `redirect` is defined, the `props` will be ignored.
 </AlertBox>
 
-## Example with `loader()` method
+## Example with `loader()` method [#loader-function]
 
 ### return props
 
 <Tabs items={['TypeScript', 'JavaScript']}>
   <Tabs.Tab>
-    ```tsx filename="app.layout.tsx" {21-29} showLineNumbers copy /LayoutComponent/
-    import { LayoutComponent, Outlet, defineRouteLayout } from "rasengan";
-    
+    ```tsx filename="app.layout.tsx" {22-30} showLineNumbers copy /LayoutComponent/
+    import { LayoutComponent, Outlet } from "rasengan";
+
     type Props = {
       title: string;
     };
-
-    class AppLayout extends LayoutComponent {
-      render({ title }: Props) {
-        return (
-          <div>
-            <header>
-              <h1>{title}</h1>
-            </header>
-            <main>
-              <Outlet />
-            </main>
-          </div>
-        );
-      }
-
-      async loader() {
-        // You can make some operations here
-
-        return {
-          props: {
-            title: "App Layout"
-          }
-        };
-      }
+    
+    const AppLayout: LayoutComponent = ({ title }: Props) => {
+       return (
+        <div>
+          <header>
+            <h1>{title}</h1>
+          </header>
+          <main>
+            <Outlet />
+          </main>
+        </div>
+      );
     }
 
-    export default defineRouteLayout({
-      path: "/"
-    })(AppLayout);
+    AppLayout.path = "/";
+
+    AppLayout.loader = async () => {
+      // You can make some operations here
+
+      return {
+        props: {
+          title: "App Layout"
+        }
+      };
+    };
+
+    export default AppLayout;
     ```
   </Tabs.Tab>
   <Tabs.Tab>
-    ```jsx filename="app.layout.jsx" {17-25} showLineNumbers copy /LayoutComponent/
-    import { LayoutComponent, Outlet, defineRouteLayout } from "rasengan";
+    ```jsx filename="app.layout.jsx" {12-30} showLineNumbers copy /LayoutComponent/
+    import { LayoutComponent, Outlet } from "rasengan";
+
+    type Props = {
+      title: string;
+    };
     
-    class AppLayout extends LayoutComponent {
-      render({ title }) {
-        return (
-          <div>
-            <header>
-              <h1>{title}</h1>
-            </header>
-            <main>
-              <Outlet />
-            </main>
-          </div>
-        );
-      }
-
-      async loader() {
-        // You can make some operations here
-
-        return {
-          props: {
-            title: "App Layout"
-          }
-        };
-      }
+    const AppLayout = ({ title }) => {
+       return (
+        <div>
+          <header>
+            <h1>{title}</h1>
+          </header>
+          <main>
+            <Outlet />
+          </main>
+        </div>
+      );
     }
 
-    export default defineRouteLayout({
-      path: "/"
-    })(AppLayout);
+    AppLayout.path = "/";
+
+    AppLayout.loader = async () => {
+      // You can make some operations here
+
+      return {
+        props: {
+          title: "App Layout"
+        }
+      };
+    };
+
+    export default AppLayout;
     ```
   </Tabs.Tab>
 </Tabs>
 
 In the example above, the `loader` method is used to make some operations on the server before the layout is rendered. 
 
-The `loader` method returns a promise with the props that will be passed to the layout component `render` method.
+The `loader` method returns a promise with the props that will be passed to the layout component.
 
 ### redirect
 
@@ -180,87 +175,87 @@ You can also use the `redirect` property to redirect the user to another page.
 
 <Tabs items={['TypeScript', 'JavaScript']}>
   <Tabs.Tab>
-    ```tsx filename="app.layout.tsx" {22-28} showLineNumbers copy /LayoutComponent/
-    import { LayoutComponent, Outlet, defineRouteLayout } from "rasengan";
-    
+    ```tsx filename="app.layout.tsx" {22-29} showLineNumbers copy /LayoutComponent/
+    import { LayoutComponent, Outlet } from "rasengan";
+
     type Props = {
       title: string;
     };
-
-    class AppLayout extends LayoutComponent {
-      render({ title }: Props) {
-        return (
-          <div>
-            <header>
-              <h1>{title}</h1>
-            </header>
-            <main>
-              <Outlet />
-            </main>
-          </div>
-        );
-      }
-
-      async loader() {
-        const isAuth = false;
-
-        if (!isAuth) {
-          return {
-            redirect: "/login"
-          };
-        }
-
-        return {
-          props: {
-            title: "App Layout"
-          }
-        };
-      }
+    
+    const AppLayout: LayoutComponent = ({ title }: Props) => {
+       return (
+        <div>
+          <header>
+            <h1>{title}</h1>
+          </header>
+          <main>
+            <Outlet />
+          </main>
+        </div>
+      );
     }
 
-    export default defineRouteLayout({
-      path: "/"
-    })(AppLayout);
+    AppLayout.path = "/";
+
+    AppLayout.loader = async () => {
+      const isAuth = false;
+
+      if (!isAuth) {
+        return {
+          redirect: "/login"
+        };
+      }
+
+      return {
+        props: {
+          title: "App Layout"
+        }
+      };
+    };
+
+    export default AppLayout;
     ```
   </Tabs.Tab>
   <Tabs.Tab>
-    ```jsx filename="app.layout.jsx" {18-24} showLineNumbers copy /LayoutComponent/
-    import { LayoutComponent, Outlet, defineRouteLayout } from "rasengan";
+    ```jsx filename="app.layout.jsx" {22-29} showLineNumbers copy /LayoutComponent/
+    import { LayoutComponent, Outlet } from "rasengan";
+
+    type Props = {
+      title: string;
+    };
     
-    class AppLayout extends LayoutComponent {
-      render({ title }) {
-        return (
-          <div>
-            <header>
-              <h1>{title}</h1>
-            </header>
-            <main>
-              <Outlet />
-            </main>
-          </div>
-        );
-      }
-
-      async loader() {
-        const isAuth = false;
-
-        if (!isAuth) {
-          return {
-            redirect: "/login"
-          };
-        }
-
-        return {
-          props: {
-            title: "App Layout"
-          }
-        };
-      }
+    const AppLayout: LayoutComponent = ({ title }: Props) => {
+       return (
+        <div>
+          <header>
+            <h1>{title}</h1>
+          </header>
+          <main>
+            <Outlet />
+          </main>
+        </div>
+      );
     }
 
-    export default defineRouteLayout({
-      path: "/"
-    })(AppLayout);
+    AppLayout.path = "/";
+
+    AppLayout.loader = async () => {
+      const isAuth = false;
+
+      if (!isAuth) {
+        return {
+          redirect: "/login"
+        };
+      }
+
+      return {
+        props: {
+          title: "App Layout"
+        }
+      };
+    };
+
+    export default AppLayout;
     ```
   </Tabs.Tab>
 </Tabs>
@@ -274,49 +269,27 @@ You have to possibility to access to some parameters via the loader methods:
 
 <Tabs items={['TypeScript', 'JavaScript']}>
   <Tabs.Tab>
-    ```tsx filename="app.layout.tsx" {8} showLineNumbers copy
-    import { LoaderOptions, Outlet, defineRouteLayout } from "rasengan"
+    ```tsx filename="app.layout.tsx" {3} showLineNumbers copy
+    import { LoaderOptions } from "rasengan"
 
-    class AppLayout extends LayoutComponent {
-      render() {
-        return <Outlet />
-      }
+    AppLayout.loader = async loader({ params, request }: LoaderOptions) {
+      // You can make some operations here
 
-      async loader({ params, request }: LoaderOptions) {
-        // You can make some operations here
-
-        return {
-          props: {}
-        }
+      return {
+        props: {}
       }
     }
-
-    export default defineRouteLayout({
-      path: "/"
-    })(AppLayout);
     ```
   </Tabs.Tab>
   <Tabs.Tab>
-    ```jsx filename="app.layout.jsx" {8} showLineNumbers copy
-    import { Outlet, defineRouteLayout } from "rasengan"
+    ```jsx filename="app.layout.jsx" {1} showLineNumbers copy
+    AppLayout.loader = async loader({ params, request }) {
+      // You can make some operations here
 
-    class AppLayout extends LayoutComponent {
-      render() {
-        return <Outlet />
-      }
-
-      async loader({ params, request }) {
-        // You can make some operations here
-
-        return {
-          props: {}
-        }
+      return {
+        props: {}
       }
     }
-
-    export default defineRouteLayout({
-      path: "/"
-    })(AppLayout);
     ```
   </Tabs.Tab>
 </Tabs>

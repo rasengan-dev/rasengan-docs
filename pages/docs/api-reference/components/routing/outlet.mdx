@@ -9,55 +9,47 @@ The `Outlet` React component is a special component that is used to render the c
 
 <Tabs items={["Typescript", "JavaScript"]}>
   <Tabs.Tab>
-    ```tsx filename="app.layout.tsx" {15} showLineNumbers copy /Outlet/
-    import { LayoutComponent, Outlet, defineRouteLayout } from "rasengan";
+    ```tsx filename="app.layout.tsx" {10} showLineNumbers copy /Outlet/
+    import { LayoutComponent, Outlet } from "rasengan";
     
-    type Props = {
-      title: string;
+    const AppLayout: LayoutComponent = () => {
+      return (
+        <div>
+          <header>
+            <h1>Header</h1>
+          </header>
+          <main>
+            <Outlet />
+          </main>
+        </div>
+      );
     };
 
-    class AppLayout extends LayoutComponent {
-      render({ title }: Props) {
-        return (
-          <div>
-            <header>
-              <h1>{title}</h1>
-            </header>
-            <main>
-              <Outlet />
-            </main>
-          </div>
-        );
-      }
-    }
+    AppLayout.path = "/";
 
-    export default defineRouteLayout({
-      path: "/"
-    })(AppLayout);
+    export default AppLayout;
     ```
   </Tabs.Tab>
   <Tabs.Tab>
-    ```jsx filename="app.layout.jsx" {11} showLineNumbers copy /Outlet/
-    import { LayoutComponent, Outlet, defineRouteLayout } from "rasengan";
+    ```jsx filename="app.layout.jsx" {10} showLineNumbers copy /Outlet/
+    import { Outlet } from "rasengan";
     
-    class AppLayout extends LayoutComponent {
-      render({ title }) {
-        return (
-          <div>
-            <header>
-              <h1>{title}</h1>
-            </header>
-            <main>
-              <Outlet />
-            </main>
-          </div>
-        );
-      }
-    }
+    const AppLayout = () => {
+      return (
+        <div>
+          <header>
+            <h1>Header</h1>
+          </header>
+          <main>
+            <Outlet />
+          </main>
+        </div>
+      );
+    };
 
-    export default defineRouteLayout({
-      path: "/"
-    })(AppLayout);
+    AppLayout.path = "/";
+
+    export default AppLayout;
     ```
   </Tabs.Tab>
 </Tabs>

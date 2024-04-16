@@ -3,6 +3,7 @@
     "title": "Routing"
   },
   "component": "Component",
+  "template": "Template",
   "layout-component": "LayoutComponent",
   "page-component": "PageComponent",
   "router-component": "RouterComponent"

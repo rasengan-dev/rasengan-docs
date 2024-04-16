@@ -11,8 +11,8 @@
   "rasengan-config": {
     "title": "rasengan.config.js"
   },
-  "create-rasengan-app": {
-    "title": "create-rasengan-app"
+  "create-rasengan": {
+    "title": "create-rasengan"
   },
   "cli": {
     "title": "Rasengan CLI"

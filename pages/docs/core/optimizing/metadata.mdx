@@ -9,14 +9,20 @@ Rasengan.js has a Metadata API that can be used to define your application metad
 
 <Tabs items={["TypeScript", "JavaScript"]}>
   <Tabs.Tab>
-    ```typescript filename="src/app/home.page.tsx" {36} showLineNumbers copy
-    import { Metadata, defineRoutePage } from "rasengan";
+    ```tsx filename="src/app/home.page.tsx" {3-37, 48} showLineNumbers copy
+    import { Metadata, PageComponent } from "rasengan";
 
     const metadata: Metadata = {
+      // Title of the page
+      title: "Home",
+
+      // Description of the page
+      description: "Home page",
+
       // Defines the meta tags to be added to the head element
       metadataTags: [{
-        name: "description",
-        content: "Rasengan.js
+        name: "viewport",
+        content: "width=device-width, initial-scale=1.0"
       }],
 
       // Defines the link tags to be added to the head element
@@ -42,27 +48,38 @@ Rasengan.js has a Metadata API that can be used to define your application metad
       },
     }
 
-    export default defineRoutePage({
-      title: "Home",
-      description: "Home page",
-      metadata,
-    })
+    const HomePage: PageComponent = () => {
+      return (
+        <div>
+          <h1>Home Page</h1>
+        </div>
+      )
+    }
+
+    HomePage.path = "/";
+    HomePage.metadata = metadata;
+
+    export default HomePage;
     ```
 
   </Tabs.Tab>
 
   <Tabs.Tab>
-    ```javascript filename="src/app/home.page.jsx" {36} showLineNumbers copy
-    import { Metadata, defineRoutePage } from "rasengan";
-
+    ```jsx filename="src/app/home.page.jsx" {1-35, 46} showLineNumbers copy
     const metadata = {
+      // Title of the page
+      title: "Home",
+
+      // Description of the page
+      description: "Home page",
+
       // Defines the meta tags to be added to the head element
       metadataTags: [{
-        name: "description",
-        content: "Rasengan.js
+        name: "viewport",
+        content: "width=device-width, initial-scale=1.0"
       }],
 
-      // Defines the link tags for icons to be added to the head element
+      // Defines the link tags to be added to the head element
       links: [{
         rel: "icon",
         href: "/favicon.ico",
@@ -85,17 +102,31 @@ Rasengan.js has a Metadata API that can be used to define your application metad
       },
     }
 
-    export default defineRoutePage({
-      title: "Home",
-      description: "Home page",
-      metadata,
-    })
+    const Home = () => {
+      return (
+        <div>
+          <h1>Home Page</h1>
+        </div>
+      )
+    }
+
+    Home.path = "/";
+    Home.metadata = metadata;
+
+    export default Home;
     ```
 
   </Tabs.Tab>
 </Tabs>
 
 ## API
+
+### `Metadata.title` and `Metadata.description` [#title_description]
+
+| Property      | Type     | Description                  | Optional | Default |
+| ------------- | -------- | ---------------------------- | -------- | ------- |
+| `title`       | `string` | The title of the page        | true     | Name of the page component |
+| `description` | `string` | The description of the page  | true     | -       |
 
 ### `Metadata.metadataTags`[#tags]
 

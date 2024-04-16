@@ -16,17 +16,18 @@ export default defineConfig({
 
 ## Configuration Options
 
-| Option | Type | Description | Default |
-|--------|------|-------------|---------|
-| `reactStrictMode` | `boolean` | Enable strict mode | `true` |
-| `server.development.port` | `number` | Port to listen on | `5320` |
-| `server.development.open` | `boolean` | Automatically open browser | `false` |
+| Option                      | Type              | Description | Default |
+|-----------------------------|-------------------|-------------|---------|
+| `reactStrictMode`           | `boolean`         | Enable strict mode | `true` |
+| `server.development.port`   | `number`          | Port to listen on | `5320` |
+| `server.development.open`   | `boolean`         | Automatically open browser | `false` |
 | `server.production.hosting` | `vercel` `custom` | Set the hosting strategy | `custom` |
-| `vite.plugins` | `any[]` | Configure Vite plugins | `[]` |
-| `vite.optimizeDeps.exclude` | `string[]` | Optimize dependencies | `[]` |
-| `vite.css.postcss.plugins` | `any[]` | Configure css options | `[]` |
-| `vite.build.external` | `string[]` | Configure external dependencies | `[]` |
-| `vite.resolve.alias` | `Array<{ find: string; replacement: string; }>` | Configure aliases | `[]` |
+| `vite.plugins`              | `any[]`           | Configure Vite plugins | `[]` |
+| `vite.optimizeDeps.exclude` | `string[]`        | Dependencies to exclude during optimization | `[]` |
+| `vite.optimizeDeps.include` | `string[]`        | Dependencies to include during optimization | `[]` |
+| `vite.css.postcss.plugins`  | `any[]`           | Configure css options | `[]` |
+| `vite.build.external`       | `string[]`        | Configure external dependencies | `[]` |
+| `vite.resolve.alias`        | `Array<{ find: string; replacement: string; }>` | Configure aliases | `[]` |
 
 ## Example
 
@@ -47,6 +48,7 @@ export default defineConfig({
     plugins: [],
     optimizeDeps: {
       exclude: ['@chakra-ui/react'],
+      include: ['react'],
     },
     css: {
       postcss: {
