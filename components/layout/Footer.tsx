@@ -63,13 +63,13 @@ export default function Footer() {
 
             <nav className="mt-4">
               <ul className="flex flex-col gap-2">
-                <Link href="https://github.com/rasengan-dev/rasenganjs/discussion">
+                <Link href="https://github.com/rasengan-dev/rasenganjs/discussions" target="_blank">
                   <li>Github</li>
                 </Link>
-                <Link href="/discord.com/rasengan-server">
+                {/* <Link href="/discord.com/rasengan-server">
                   <li>Discord</li>
-                </Link>
-                <Link href="/x.com/rasengan.js">
+                </Link> */}
+                <Link href="https://twitter.com/rasenganjs" target="_blank">
                   <li>X (Twitter)</li>
                 </Link>
               </ul>

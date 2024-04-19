@@ -30,7 +30,7 @@ export const FeaturesData: Array<CardDataType> = [
     title: "Data Fetching",
     description: "Rasengan.js supports both client and server side Data Fetching that allows you to fetch data from a server and use it on client.",
     image: "",
-    link: "#"
+    link: "/docs/core/rendering/data-fetching"
   },
   {
     id: 4,
@@ -44,14 +44,14 @@ export const FeaturesData: Array<CardDataType> = [
     title: "Client and Server Rendering",
     description: "Rasengan.js supports SSR by default which enhances the SEO of your final application.",
     image: "",
-    link: "#"
+    link: "/docs/core/rendering/introduction#server-side-rendering-ssr"
   },
   {
     id: 6,
-    title: "Rasengan.js 1.0.0",
+    title: "Rasengan.js 1.0.0 Beta",
     description: "First release of Rasengan.js. Built for creating high-quality web apps.",
     image: "",
-    link: "#",
+    link: "/blog/rasengan-1-beta",
     isblog: true
   },
 ];
