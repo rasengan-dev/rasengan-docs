@@ -22,14 +22,24 @@ export default function BlogPostCard({ data }: Props) {
           : "border-gray-200 hover:border-primary"
       )}
     >
-      <Image
-        src={img}
-        alt="something"
-        width={64}
-        height={64}
-        className="rounded-full object-cover w-10 h-10"
-        title="Avatar of Dilane Kombou"
-      />
+      <div className="relative flex items-center h-[50px]">
+        {
+          data.authors.map((author, index) => (
+            <Image
+              key={author.id}
+              src={author.avatar}
+              alt={`Avatar of ${author.name}`}
+              width={64}
+              height={64}
+              className={twMerge("absolute rounded-full object-cover w-10 h-10")}
+              style={{
+                left: index * 20
+              }}
+              title={author.name}
+            />
+          ))
+        }
+      </div>
 
       <div className="mt-2">
         <h3 className="text-lg mb-2">{data.title}</h3>
@@ -40,7 +50,7 @@ export default function BlogPostCard({ data }: Props) {
       </div>
 
       <div className="flex items-center justify-between mt-8">
-        <small>{data.createdAt}</small>
+        <small>posted on {data.postedAt}</small>
 
         <Link href={data.link}>
         <Button text="Read More" />
