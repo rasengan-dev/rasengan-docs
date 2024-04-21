@@ -39,17 +39,5 @@
       "pagination": true,
       "layout": "full"
     }
-  },
-  "about": {
-    "title": "About",
-    "type": "page",
-    "theme": {
-      "breadcrumb": false,
-      "footer": true,
-      "sidebar": true,
-      "toc": true,
-      "pagination": true,
-      "layout": "raw"
-    }
   }
 }
