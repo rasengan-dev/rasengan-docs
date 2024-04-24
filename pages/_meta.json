@@ -39,5 +39,18 @@
       "pagination": true,
       "layout": "full"
     }
+  },
+  "learn": {
+    "title": "Learn",
+    "type": "page",
+    "display": "hidden",
+    "theme": {
+      "breadcrumb": false,
+      "footer": true,
+      "sidebar": false,
+      "toc": false,
+      "pagination": false,
+      "layout": "full"
+    }
   }
 }

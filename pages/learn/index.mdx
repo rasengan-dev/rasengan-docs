@@ -1,0 +1,33 @@
+---
+title: Learn Rasengan.js
+description: Learn step by step all the basics of Rasengan.js
+---
+
+import image from "@assets/images/gifs/learn-loading.gif";
+import Image from "next/image";
+import Button from "@components/atoms/Button";
+import Link from "next/link";
+
+export default function Learn() {
+  return (
+    <>
+      <section className="w-full h-hero flex flex-col items-center justify-center">
+        <Link href="https://icons8.com/illustrations/author/7WmtYU90j36d" target="_blank">
+          <Image 
+            src={image}
+            alt="Learn Rasengan.js loading gif"
+            title="Illustration by Fruzka from Ouch!"
+            width={300}
+          />
+        </Link>
+
+        <h1 className="text-[50px] leading-[45px] mb-2">Learn Rasengan.js</h1>
+        <p>We are building this section to provide you a great experience while learning Rasengan.js</p>
+      
+        <Link href="/docs">
+          <Button text="Read the Documentation" className="mt-4" />
+        </Link>
+      </section>
+    </>
+  )
+}
