@@ -1,3 +1,5 @@
 {
-  
+  "images": "Images",
+  "metadata": "Metadata",
+  "static-assets": "Static Assets"
 }

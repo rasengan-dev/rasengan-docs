@@ -78,8 +78,6 @@ const config: DocsThemeConfig = {
           return "https://beta.rasengan.dev/home.png";
       }
     }, [asPath, url]);
-
-    console.log({ image })
  
     return (
       <>
