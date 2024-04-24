@@ -5,6 +5,7 @@ import Logo from 'components/atoms/Logo'
 import Footer from '@components/layout/Footer'
 import { useRouter } from 'next/router'
 import { useConfig } from 'nextra-theme-docs'
+import ProductHuntButton from '@components/atoms/ProductHuntButton'
 
 const config: DocsThemeConfig = {
   logo: <Logo />,
@@ -39,7 +40,10 @@ const config: DocsThemeConfig = {
   navbar: {
     extraContent: () => {
       return (
-        <Button text="Learn" className="hidden" />
+        <>
+          <Button text="Learn" className="hidden" />
+          {/* <ProductHuntButton /> */}
+        </>
       )
     }
   },
