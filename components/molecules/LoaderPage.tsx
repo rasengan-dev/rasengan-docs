@@ -35,7 +35,7 @@ export default function LoaderPage() {
   return (
     <div
       ref={loaderRef}
-      className="fixed inset-0 bg-white top-0 left-0 w-full h-full z-50 overflow-hidden flex flex-col items-center justify-center"
+      className="fixed inset-0 bg-white top-0 left-0 w-full h-full z-50 overflow-hidden flex flex-col items-center justify-center px-10"
     >
       <Image
         src={Logo}

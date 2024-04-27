@@ -1,10 +1,12 @@
 ---
-title: 'Optimizing: Metadata'
-description: 'Learn how to optimize your application metadata with Rasengan.js'
+title: "Optimizing: Metadata"
+description: "Learn how to optimize your application metadata with Rasengan.js"
 ---
 
 import { Tabs } from "nextra/components";
 import AlertBox from "@components/atoms/Alert";
+import NextStepCard from "@components/molecules/NextStepCard";
+import Container from "@components/molecules/Container";
 
 # Metadata
 
@@ -128,10 +130,10 @@ Rasengan.js has a Metadata API that can be used to define your application metad
 
 ### `Metadata.title` and `Metadata.description` [#title_description]
 
-| Property      | Type     | Description                  | Optional | Default |
-| ------------- | -------- | ---------------------------- | -------- | ------- |
-| `title`       | `string` | The title of the page        | true     | Name of the page component |
-| `description` | `string` | The description of the page  | true     | -       |
+| Property      | Type     | Description                 | Optional | Default                    |
+| ------------- | -------- | --------------------------- | -------- | -------------------------- |
+| `title`       | `string` | The title of the page       | true     | Name of the page component |
+| `description` | `string` | The description of the page | true     | -                          |
 
 ### `Metadata.metadataTags`[#tags]
 
@@ -201,3 +203,12 @@ An object containing the Twitter metadata for link previews.
   `image` has to be an absolute path of the image you want to display in the
   link preview
 </AlertBox>
+
+## Next steps
+
+<Container>
+  <NextStepCard
+    text="Optimizing - Static Files"
+    link="/docs/core/optimizing/static-assets"
+  />
+</Container>

@@ -1,10 +1,12 @@
 ---
-title: 'Routing: Redirecting'
-description: 'Learn how to handle redirections in Rasengan.js.'
+title: "Routing: Redirecting"
+description: "Learn how to handle redirections in Rasengan.js."
 ---
 
 import { Tabs } from "nextra/components";
 import AlertBox from "@components/atoms/Alert";
+import NextStepCard from "@components/molecules/NextStepCard";
+import Container from "@components/molecules/Container";
 
 # Redirecting
 
@@ -117,7 +119,7 @@ So, you can perform server-side redirections using this function and it can only
         redirect: "/destination"
       }
     }
-    
+
     export default RedirectionPage;
     ```
 
@@ -152,16 +154,18 @@ So, you can perform server-side redirections using this function and it can only
         redirect: "/destination"
       }
     }
-    
+
     export default RedirectionPage;
     ```
+
   </Tabs.Tab>
 </Tabs>
 
 <AlertBox type="tip">
-  The `loader` function is not only used for redirections, but it can also be used
-  to perform server-side operations like making API calls, checking if the user
-  is authenticated, etc. and it can pass data to the `PageComponent` as props. Read more about it
+  The `loader` function is not only used for redirections, but it can also be
+  used to perform server-side operations like making API calls, checking if the
+  user is authenticated, etc. and it can pass data to the `PageComponent` as
+  props. Read more about it
   [here](/docs/api-reference/components/page-component#loader).
 </AlertBox>
 
@@ -203,7 +207,7 @@ The `loader` function can receive an object argument containing:
         redirect: "/destination"
       }
     }
-    
+
     export default RedirectionPage;
     ```
 
@@ -240,7 +244,7 @@ The `loader` function can receive an object argument containing:
         redirect: "/destination"
       }
     }
-    
+
     export default RedirectionPage;
     ```
 
@@ -248,3 +252,14 @@ The `loader` function can receive an object argument containing:
 </Tabs>
 
 ## Next Steps
+
+<Container>
+  <NextStepCard
+    text="Project Organization"
+    link="/docs/core/routing/project-organization"
+  />
+  <NextStepCard
+    text="Dynamic Routes"
+    link="/docs/core/routing/dynamic-routes"
+  />
+</Container>

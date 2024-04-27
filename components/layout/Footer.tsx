@@ -4,13 +4,22 @@ import LogoBlack from "@assets/images/logo/logo-text-black.svg";
 import useTheme from "hooks/useTheme";
 import Icon from "@components/atoms/Icon";
 import { twMerge } from "tailwind-merge";
-import Link from "next/link";
+import { Link } from "nextra-theme-docs";
 import Button from "@components/atoms/Button";
-import { useCallback, useEffect, useState } from "react";
-import sleep from "utils/sleep";
+import { useCallback, useContext } from "react";
+import { checkEmail } from "utils/check";
+import Newsletter from "contexts/Newsletter";
+import { useRouter } from "next/router";
 
 export default function Footer() {
+  // Theme
   const { isDark, theme, setTheme } = useTheme();
+
+  // Context
+  const { email, setEmail } = useContext(Newsletter)
+
+  // Navigation
+  const router = useRouter();
 
   // Handler
   const handleThemeChange = (newTheme: string) => {
@@ -20,6 +29,19 @@ export default function Footer() {
   const isActive = useCallback((themeName: string) => {
     return theme === themeName;
   }, [theme, isDark]);
+
+  const checkValidEmail = useCallback(() => {
+    // check email format
+    if (!email) return;
+
+    return checkEmail(email);      
+  }, [email]);
+
+  const handleNavigateToNewsletter = () => {
+    if (checkValidEmail()) {
+      router.push("/newsletter")
+    }
+  };
 
   return (
     <footer
@@ -91,10 +113,14 @@ export default function Footer() {
                   isDark ? "border-gray-900 bg-transparent" : "border-gray-200"
                 )}
                 placeholder="yourname@domain.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
               <Button
                 text="subscribe"
                 className="bg-primary hover:bg-primary-600 text-white"
+                disabled={!checkValidEmail()}
+                onClick={handleNavigateToNewsletter}
               />
             </div>
           </div>
@@ -103,6 +129,7 @@ export default function Footer() {
         <div className="flex items-center justify-between mt-12">
           <p>Rasengan.js © 2024</p>
 
+          {/* Theme button */}
           <div
             className={twMerge(
               "h-10 px-1 flex items-center rounded-full border-[1px] ",

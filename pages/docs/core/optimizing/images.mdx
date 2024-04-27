@@ -1,14 +1,17 @@
 ---
-title: 'Optimizing: Images'
-description: 'Discover how to optimize images with Rasengan.js.'
+title: "Optimizing: Images"
+description: "Discover how to optimize images with Rasengan.js."
 ---
+
+import NextStepCard from "@components/molecules/NextStepCard";
+import Container from "@components/molecules/Container";
 
 # Images Optimization
 
-Images are the most important part of a website. They are the first thing that a user sees when they visit a website. 
+Images are the most important part of a website. They are the first thing that a user sees when they visit a website.
 So, it is important to optimize images to make the website load faster.
 
-Rasengan.js provides an external package called [`@rasenganjs/image`](https://www.npmjs.com/package/@rasenganjs/image) to display images on the website with a lazy loading feature. 
+Rasengan.js provides an external package called [`@rasenganjs/image`](https://www.npmjs.com/package/@rasenganjs/image) to display images on the website with a lazy loading feature.
 The package doesn't compress images but it loads them only when they are in the viewport.
 
 ## Installation
@@ -17,7 +20,7 @@ By default, when using the [`Rasengan CLI`](/docs/api-reference/cli) to create a
 
 If not, you can install it by running the following command:
 
-```bash filename="Terminal" copy 
+```bash filename="Terminal" copy
 npm install @rasenganjs/image
 ```
 
@@ -25,7 +28,7 @@ npm install @rasenganjs/image
 
 First of all, you have to import the `css` file in your project. You can do this by adding the following line in your `main.js` file:
 
-```js filename="main.js" showLineNumbers copy 
+```js filename="main.js" showLineNumbers copy
 import "@rasenganjs/image/lib/styles/index.css";
 ```
 
@@ -42,14 +45,7 @@ import Image from "@rasenganjs/image";
 import avatar from "@assets/images/avatar.jpg";
 
 export default function Avatar() {
-  return (
-    <Image
-      src={avatar}
-      alt="Avatar"
-      width={200}
-      height={200}
-    />
-  );
+  return <Image src={avatar} alt="Avatar" width={200} height={200} />;
 }
 ```
 
@@ -72,3 +68,16 @@ export default function Avatar() {
   );
 }
 ```
+
+## Next steps
+
+<Container>
+  <NextStepCard
+    text="Optimizing - Metadata"
+    link="/docs/core/optimizing/metadata"
+  />
+  <NextStepCard
+    text="Optimizing - Static Files"
+    link="/docs/core/optimizing/static-assets"
+  />
+</Container>

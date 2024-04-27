@@ -5,9 +5,11 @@ import { twMerge } from "tailwind-merge";
 type Props = {
   text: string;
   className?: ComponentProps<"button">["className"];
+  disabled?: boolean;
+  onClick?: (e: any) => Promise<void> | void;
 };
 
-export default function Button({ text, className }: Props) {
+export default function Button({ text, className, disabled, onClick }: Props) {
   const { isDark } = useTheme();
   const [style, setStyle] = useState("");
 
@@ -28,6 +30,8 @@ export default function Button({ text, className }: Props) {
         style,
         className
       )}
+      disabled={disabled}
+      onClick={onClick}
     >
       {text}
     </button>

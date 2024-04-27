@@ -1,10 +1,12 @@
 ---
-title: 'Routing: Linking and Navigating'
-description: 'Learn how to navigate between routes in Rasengan.js'
+title: "Routing: Linking and Navigating"
+description: "Learn how to navigate between routes in Rasengan.js"
 ---
 
 import { Tabs } from "nextra/components";
 import AlertBox from "@components/atoms/Alert";
+import NextStepCard from "@components/molecules/NextStepCard";
+import Container from "@components/molecules/Container";
 
 # Linking and Navigating
 
@@ -45,6 +47,7 @@ Here's an example of how to use the `<Link>` component:
 
     export default Home;
     ```
+
   </Tabs.Tab>
   <Tabs.Tab>
     ```jsx filename="src/app/home.page.jsx" showLineNumbers copy
@@ -231,6 +234,7 @@ Here's an example of how to use the `useNavigate` hook:
 
     export default Home;
     ```
+
   </Tabs.Tab>
   <Tabs.Tab>
     ```jsx filename="src/app/home.page.jsx" showLineNumbers copy
@@ -256,6 +260,7 @@ Here's an example of how to use the `useNavigate` hook:
 
     export default Home;
     ```
+
   </Tabs.Tab>
 </Tabs>
 
@@ -320,3 +325,19 @@ For a full list of `useNavigate` options, see the [API reference](https://reactr
 </Tabs>
 
 ## Next Steps
+
+<Container>
+  <NextStepCard
+    text="Error Handling"
+    link="/docs/core/routing/error-handling"
+  />
+  <NextStepCard text="Redirecting" link="/docs/core/routing/redirecting" />
+  <NextStepCard
+    text="Project Organization"
+    link="/docs/core/routing/project-organization"
+  />
+  <NextStepCard
+    text="Dynamic Routes"
+    link="/docs/core/routing/dynamic-routes"
+  />
+</Container>

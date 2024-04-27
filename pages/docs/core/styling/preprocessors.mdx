@@ -1,20 +1,23 @@
 ---
-title: 'Styling: CSS Preprocessors'
-description: 'Learn how to use CSS preprocessors like Sass, Less, and Stylus in Rasengan.js.'
+title: "Styling: CSS Preprocessors"
+description: "Learn how to use CSS preprocessors like Sass, Less, and Stylus in Rasengan.js."
 ---
+
+import NextStepCard from "@components/molecules/NextStepCard";
+import Container from "@components/molecules/Container";
 
 # CSS Preprocessors
 
 Rasengan.js supports CSS preprocessors like `Sass`, `Less`, and `Stylus`. You can use them by adding the corresponding file extension to your CSS file.
 
-## Sass 
+## Sass
 
-Rasengan.js has built-in support for integrating with `Sass` after the package is installed using both the `.scss` and `.sass` extensions. 
+Rasengan.js has built-in support for integrating with `Sass` after the package is installed using both the `.scss` and `.sass` extensions.
 You can use component-level Sass via CSS Modules and the `.module.scss` or `.module.sass` extension.
 
 First, you need to install [`sass`](https://github.com/sass/sass):
 
-```bash filename="Terminal" copy 
+```bash filename="Terminal" copy
 npm install --save-dev sass
 ```
 
@@ -29,9 +32,9 @@ $primary-color: #333;
 ```
 
 ```jsx filename="src/components/MyComponent.jsx" showLineNumbers copy
-import React from 'react';
+import React from "react";
 
-import './MyComponent.scss';
+import "./MyComponent.scss";
 
 const MyComponent = () => {
   return <div className="my-component">Hello, world!</div>;
@@ -51,9 +54,9 @@ $primary-color: #333;
 ```
 
 ```jsx filename="src/components/MyComponent.jsx" showLineNumbers copy
-import React from 'react';
+import React from "react";
 
-import styles from './MyComponent.module.scss';
+import styles from "./MyComponent.module.scss";
 
 const MyComponent = () => {
   return <div className={styles.component}>Hello, world!</div>;
@@ -84,9 +87,9 @@ Then, you can create a `.less` file and import it into your component:
 ```
 
 ```jsx filename="src/components/MyComponent.jsx" showLineNumbers copy
-import React from 'react';
+import React from "react";
 
-import './MyComponent.less';
+import "./MyComponent.less";
 
 const MyComponent = () => {
   return <div className="my-component">Hello, world!</div>;
@@ -116,9 +119,9 @@ primary-color = #333
 ```
 
 ```jsx filename="src/components/MyComponent.jsx" showLineNumbers copy
-import React from 'react';
+import React from "react";
 
-import './MyComponent.styl';
+import "./MyComponent.styl";
 
 const MyComponent = () => {
   return <div className="my-component">Hello, world!</div>;
@@ -126,3 +129,12 @@ const MyComponent = () => {
 
 export default MyComponent;
 ```
+
+## Next steps
+
+<Container>
+  <NextStepCard
+    text="Optimizing - Images"
+    link="/docs/core/optimizing/images"
+  />
+</Container>

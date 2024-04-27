@@ -1,17 +1,20 @@
 ---
-title: 'Rendering: Component Rendering'
-description: 'Discover how components are rendered in Rasengan.js.'
+title: "Rendering: Component Rendering"
+description: "Discover how components are rendered in Rasengan.js."
 ---
 
-# Component Rendering 
+import NextStepCard from "@components/molecules/NextStepCard";
+import Container from "@components/molecules/Container";
 
-In `Rasengan.js`, the components are rendered on the server using `React` and `Express`. 
+# Component Rendering
+
+In `Rasengan.js`, the components are rendered on the server using `React` and `Express`.
 
 When the user makes a request to the server, the server will render the React components and send the final HTML to the client's browser.
 
 Rasengan.js supports only Client Components. Comparing to Next.js, Rasengan.js doesn't support Server Components, which are components that can do server action directly like fetching data from the database.
 
-```jsx 
+```jsx
 const Home = () => {
   // This is a client component
 
@@ -19,12 +22,20 @@ const Home = () => {
 
   // You can access the browser's API
 
-  return (
-    <div>Home page</div>
-  )
-}
+  return <div>Home page</div>;
+};
 
 Home.path = "/";
 
 export default Home;
 ```
+
+## Next steps
+
+<Container>
+  <NextStepCard text="Hydration" link="/docs/core/rendering/hydration" />
+  <NextStepCard
+    text="Data Fetching"
+    link="/docs/core/rendering/data-fetching"
+  />
+</Container>

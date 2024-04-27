@@ -1,9 +1,11 @@
 ---
-title: 'Optimizing: Static Assets'
-description: 'Learn how to serve static assets in Rasengan.js.'
+title: "Optimizing: Static Assets"
+description: "Learn how to serve static assets in Rasengan.js."
 ---
 
-import AlertBox from '@components/atoms/Alert';
+import AlertBox from "@components/atoms/Alert";
+import NextStepCard from "@components/molecules/NextStepCard";
+import Container from "@components/molecules/Container";
 
 # Static Assets in `public`
 
@@ -11,7 +13,7 @@ Rasengan.js can serve static files, like images, under a folder called `public` 
 
 For example, the file `public/avatars/1.png` can be viewed by visiting the `/avatars/1.png` path. Here is an example of code to illustrate that:
 
-```jsx filename="src/components/Avatar.jsx" showLineNumbers copy 
+```jsx filename="src/components/Avatar.jsx" showLineNumbers copy
 import { Image } from "@rasenganjs/image";
 
 export function Avatar({ id, alt }) {
@@ -20,6 +22,16 @@ export function Avatar({ id, alt }) {
 ```
 
 <AlertBox>
-The name of the folder has to be named `public`. The files inside `public` are served as-is.
-After the build, the files in the `public` folder are available at the root of the server.
+  The name of the folder has to be named `public`. The files inside `public` are
+  served as-is. After the build, the files in the `public` folder are available
+  at the root of the server.
 </AlertBox>
+
+## Next steps
+
+<Container>
+  <NextStepCard
+    text="Configuring - TypeScript"
+    link="/docs/core/configuring/typescript"
+  />
+</Container>

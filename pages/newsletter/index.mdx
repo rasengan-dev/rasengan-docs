@@ -1,0 +1,15 @@
+import NewsletterForm from "components/organismes/newsletter/NewsletterForm";
+import Main from "components/layout/Main";
+
+export default function Page(props) {
+  return (
+    <Main>
+      <section className="min-h-hero flex flex-col items-center mt-12 px-8">
+        <h1 className="text-[35px] leading-[30px] md:text-[40px] md:leading-[40px] lg:text-[50px] lg:leading-[50px] 2xl:text-[60px] 2xl:leading-[60px] font-urbanistBlack text-center">Newsletter Registration</h1>
+        <p className="mt-6 text-center">Subscribe to our newsletter to get the latest updates.</p>
+
+        <NewsletterForm />
+      </section>
+    </Main>
+  );
+}

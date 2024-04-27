@@ -1,10 +1,12 @@
 ---
-title: 'Routing: Defining Routes'
-description: 'Learn how to define routes in Rasengan.js.'
+title: "Routing: Defining Routes"
+description: "Learn how to define routes in Rasengan.js."
 ---
 
 import { Tabs } from "nextra/components";
 import AlertBox from "@components/atoms/Alert";
+import NextStepCard from "@components/molecules/NextStepCard";
+import Container from "@components/molecules/Container";
 
 # Defining Routes
 
@@ -42,6 +44,7 @@ Let's assume that you have a `Home` page that should be accessible at the `/` pa
 
     export default Home;
     ```
+
   </Tabs.Tab>
   <Tabs.Tab>
     ```jsx filename="src/app/home.page.jsx" showLineNumbers copy
@@ -106,7 +109,8 @@ Let's assume that you have a `Home` page that should be accessible at the `/` pa
 Note that, here we are using the `Home Page` that we defined in the previous section. Also, we haven't defined any `Layout` for this `Router`, so it will use the default `Layout` predefined by Rasengan.js responding to the path `/`.
 
 <AlertBox type="tip">
-Learn more about the `defineRouter` function in the [API Reference](/docs/api-reference/functions/define-router) guide.
+  Learn more about the `defineRouter` function in the [API
+  Reference](/docs/api-reference/functions/define-router) guide.
 </AlertBox>
 
 ## Use the Router
@@ -148,23 +152,35 @@ In order to have your routing system working, you have to use the `Router` compo
 Now you can run your application and access the `/` path to see the `Home` page being rendered.
 
 <Tabs items={["npm", "yarn", "pnpm"]} defaultIndex="0">
-  <Tabs.Tab>
-    ```bash filename="terminal" copy 
-    npm run dev 
-    ```
-  </Tabs.Tab>
-  <Tabs.Tab>
-    ```bash filename="terminal" copy 
-    yarn dev 
-    ```
-  </Tabs.Tab>
-  <Tabs.Tab>
-    ```bash filename="terminal" copy 
-    pnpm run dev 
-    ```
-  </Tabs.Tab>
+  <Tabs.Tab>```bash filename="terminal" copy npm run dev ```</Tabs.Tab>
+  <Tabs.Tab>```bash filename="terminal" copy yarn dev ```</Tabs.Tab>
+  <Tabs.Tab>```bash filename="terminal" copy pnpm run dev ```</Tabs.Tab>
 </Tabs>
 
 Then open your browser and access the [`http://localhost:5320`](http://localhost:5320) URL to see the `Home` page being rendered.
 
 ## Next Steps
+
+<Container>
+  <NextStepCard
+    text="Setting Layouts"
+    link="/docs/core/routing/setting-layouts"
+  />
+  <NextStepCard
+    text="Linking and Navigating"
+    link="/docs/core/routing/linking"
+  />
+  <NextStepCard
+    text="Error Handling"
+    link="/docs/core/routing/error-handling"
+  />
+  <NextStepCard text="Redirecting" link="/docs/core/routing/redirecting" />
+  <NextStepCard
+    text="Project Organization"
+    link="/docs/core/routing/project-organization"
+  />
+  <NextStepCard
+    text="Dynamic Routes"
+    link="/docs/core/routing/dynamic-routes"
+  />
+</Container>

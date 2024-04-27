@@ -1,10 +1,12 @@
 ---
-title: 'Styling: CSS Modules'
-description: 'Integrate CSS Modules into your Rasengan.js project.'
+title: "Styling: CSS Modules"
+description: "Integrate CSS Modules into your Rasengan.js project."
 ---
 
 import { Tabs } from "nextra/components";
 import AlertBox from "@components/atoms/Alert";
+import NextStepCard from "@components/molecules/NextStepCard";
+import Container from "@components/molecules/Container";
 
 # CSS Modules
 
@@ -145,3 +147,13 @@ Stylesheets published by external packages can be imported in the `src/main.tsx`
 
   </Tabs.Tab>
 </Tabs>
+
+## Next steps
+
+<Container>
+  <NextStepCard text="Tailwind CSS" link="/docs/core/styling/tailwind" />
+  <NextStepCard
+    text="CSS Preprocessors"
+    link="/docs/core/styling/preprocessors"
+  />
+</Container>

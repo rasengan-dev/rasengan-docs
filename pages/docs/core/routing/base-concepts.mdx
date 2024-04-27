@@ -1,10 +1,12 @@
 ---
-title: 'Routing: Base Concepts'
-description: 'Learn the base concepts of routing in Rasengan.js'
+title: "Routing: Base Concepts"
+description: "Learn the base concepts of routing in Rasengan.js"
 ---
 
 import { Tabs } from "nextra/components";
 import AlertBox from "@components/atoms/Alert";
+import NextStepCard from "@components/molecules/NextStepCard";
+import Container from "@components/molecules/Container";
 
 # Routing Base Concepts
 
@@ -107,6 +109,7 @@ and after you can define the base URL path that all your pages will use directly
 
     export default AppLayout;
     ```
+
   </Tabs.Tab>
   <Tabs.Tab>
     ```javascript filename="app.layout.jsx" copy showLineNumbers
@@ -125,6 +128,7 @@ and after you can define the base URL path that all your pages will use directly
 
     export default AppLayout;
     ```
+
   </Tabs.Tab>
 </Tabs>
 
@@ -156,6 +160,7 @@ After, you have to set the `path`, and some `metadata` like `title`, `descriptio
 
     export default Home;
     ```
+
   </Tabs.Tab>
   <Tabs.Tab>
     ```javascript filename="home.page.jsx" copy showLineNumbers
@@ -173,7 +178,36 @@ After, you have to set the `path`, and some `metadata` like `title`, `descriptio
 
     export default Home;
     ```
+
   </Tabs.Tab>
 </Tabs>
 
 ## Next Steps
+
+<Container>
+  <NextStepCard
+    text="Defining Routes"
+    link="/docs/core/routing/defining-routes"
+  />
+  <NextStepCard
+    text="Setting Layouts"
+    link="/docs/core/routing/setting-layouts"
+  />
+  <NextStepCard
+    text="Linking and Navigating"
+    link="/docs/core/routing/linking"
+  />
+  <NextStepCard
+    text="Error Handling"
+    link="/docs/core/routing/error-handling"
+  />
+  <NextStepCard text="Redirecting" link="/docs/core/routing/redirecting" />
+  <NextStepCard
+    text="Project Organization"
+    link="/docs/core/routing/project-organization"
+  />
+  <NextStepCard
+    text="Dynamic Routes"
+    link="/docs/core/routing/dynamic-routes"
+  />
+</Container>

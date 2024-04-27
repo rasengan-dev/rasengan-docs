@@ -1,11 +1,13 @@
 ---
-title: 'Routing: Setting Layouts'
-description: 'Learn how to create and use layouts in Rasengan.js applications.'
+title: "Routing: Setting Layouts"
+description: "Learn how to create and use layouts in Rasengan.js applications."
 ---
 
 import { Tabs } from "nextra/components";
 import AlertBox from "@components/atoms/Alert";
 import { Steps } from "nextra/components";
+import NextStepCard from "@components/molecules/NextStepCard";
+import Container from "@components/molecules/Container";
 
 # Setting Layout
 
@@ -47,6 +49,7 @@ Now let's see how to create a `Layout`:
 
     export default AppLayout;
     ```
+
   </Tabs.Tab>
   <Tabs.Tab>
     ```jsx filename="src/app/app.layout.jsx" showLineNumbers copy
@@ -66,11 +69,13 @@ Now let's see how to create a `Layout`:
 
     export default AppLayout;
     ```
+
   </Tabs.Tab>
 </Tabs>
 
 <AlertBox>
-`Outlet` component is a special component that will render the `Page` component that matches the current URL.
+  `Outlet` component is a special component that will render the `Page`
+  component that matches the current URL.
 </AlertBox>
 
 ## How to use a Layout?
@@ -93,6 +98,7 @@ where you group all your `Pages`, you just have to set the `Layout` there and al
       pages: [Home]
     })(AppRouter);
     ```
+
   </Tabs.Tab>
   <Tabs.Tab>
     ```javascript filename="src/app/app.router.jsx" {3,9} showLineNumbers copy
@@ -108,6 +114,7 @@ where you group all your `Pages`, you just have to set the `Layout` there and al
       pages: [Home]
     })(AppRouter);
     ```
+
   </Tabs.Tab>
 </Tabs>
 
@@ -141,6 +148,7 @@ Let's create a `Layout` that will be used in the `/admin` part of the applicatio
 
     export default AdminLayout
     ```
+
   </Tabs.Tab>
   <Tabs.Tab>
     ```jsx filename="src/app/admin.layout.jsx" showLineNumbers copy
@@ -160,6 +168,7 @@ Let's create a `Layout` that will be used in the `/admin` part of the applicatio
 
     export default AdminLayout
     ```
+
   </Tabs.Tab>
 </Tabs>
 
@@ -187,6 +196,7 @@ Now let's create another `Page` called `Dashboard` that will use the `AdminLayou
 
     export default Dashboard;
     ```
+
   </Tabs.Tab>
   <Tabs.Tab>
     ```jsx filename="src/app/dashboard.page.jsx" showLineNumbers copy
@@ -206,6 +216,7 @@ Now let's create another `Page` called `Dashboard` that will use the `AdminLayou
 
     export default Dashboard;
     ```
+
   </Tabs.Tab>
 </Tabs>
 
@@ -228,6 +239,7 @@ Then we have to create a `Router` that will use the `AdminLayout` and the `Dashb
       pages: [Dashboard]
     })(AdminRouter);
     ```
+
   </Tabs.Tab>
   <Tabs.Tab>
     ```javascript filename="src/app/admin.router.js" {2-3,9-10} showLineNumbers copy
@@ -243,6 +255,7 @@ Then we have to create a `Router` that will use the `AdminLayout` and the `Dashb
       pages: [Dashboard]
     })(AdminRouter);
     ```
+
   </Tabs.Tab>
 </Tabs>
 
@@ -266,6 +279,7 @@ Finally we have to set the `AdminRouter` in the main `Router` of the application
       pages: [Home]
     })(AppRouter);
     ```
+
   </Tabs.Tab>
   <Tabs.Tab>
     ```javascript filename="src/app/app.router.js" {4,9} showLineNumbers copy
@@ -282,6 +296,7 @@ Finally we have to set the `AdminRouter` in the main `Router` of the application
       pages: [Home]
     })(AppRouter);
     ```
+
   </Tabs.Tab>
 </Tabs>
 
@@ -302,3 +317,23 @@ Launch the application with `npm run dev` and access the URL [`http://localhost:
 </Steps>
 
 ## Next Steps
+
+<Container>
+  <NextStepCard
+    text="Linking and Navigating"
+    link="/docs/core/routing/linking"
+  />
+  <NextStepCard
+    text="Error Handling"
+    link="/docs/core/routing/error-handling"
+  />
+  <NextStepCard text="Redirecting" link="/docs/core/routing/redirecting" />
+  <NextStepCard
+    text="Project Organization"
+    link="/docs/core/routing/project-organization"
+  />
+  <NextStepCard
+    text="Dynamic Routes"
+    link="/docs/core/routing/dynamic-routes"
+  />
+</Container>

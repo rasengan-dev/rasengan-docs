@@ -13,8 +13,11 @@ export default function useTheme() {
   const [refresh, setRefresh] = useState(false);
 
   useEffect(() => {
-    if (theme === "light" || theme === "system") setTheme("dark");
-    else setTheme("light");
+    if (theme === "system") {
+      setTheme(baseTheme);
+    } else {
+      setTheme("light")
+    }
   }, [refresh]);
 
   const isDark = useMemo(() => {

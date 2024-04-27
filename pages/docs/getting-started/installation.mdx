@@ -4,6 +4,8 @@ description: Start building high-quality web applications with Rasengan.js
 ---
 
 import AlertBox from "@components/atoms/Alert";
+import NextStepCard from "@components/molecules/NextStepCard";
+import Container from "@components/molecules/Container";
 import { Tabs } from "nextra/components";
 
 # Installation
@@ -359,3 +361,16 @@ and add the following content to the `rasengan-env.d.ts` file:
 1. Execute `npm run dev` command.
 2. Open `http://localhost:5320` in the browser.
 3. Edit `src/app/home.page.tsx` and save to reload automatically.
+
+### Next Steps
+
+<Container>
+  <NextStepCard 
+    text="Project Structure"
+    link="/docs/getting-started/project-structure"
+  />
+  <NextStepCard 
+    text="Routing Base Concepts"
+    link="/docs/core/routing/base-concepts"
+  />
+</Container>

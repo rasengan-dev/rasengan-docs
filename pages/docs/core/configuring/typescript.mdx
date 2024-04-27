@@ -1,7 +1,10 @@
 ---
-title: 'Configuring: TypeScript'
-description: 'Configure TypeScript in your Rasengan.js project.'
+title: "Configuring: TypeScript"
+description: "Configure TypeScript in your Rasengan.js project."
 ---
+
+import NextStepCard from "@components/molecules/NextStepCard";
+import Container from "@components/molecules/Container";
 
 # TypeScript
 
@@ -13,7 +16,7 @@ It comes with built-in TypeScript support for automatically installing the neces
 
 `create-rasengan` CLI can be used to create a new TypeScript project.
 
-```bash filename="Terminal" copy 
+```bash filename="Terminal" copy
 npx create-rasengan@latest my-app
 ```
 
@@ -64,3 +67,16 @@ Finally, add the following `rasengan-env.d.ts` file to the root of your project.
 ```
 
 Run `npm run dev` to start the development server.
+
+## Next steps
+
+<Container>
+  <NextStepCard
+    text="Environment Variables"
+    link="/docs/core/configuring/env"
+  />
+  <NextStepCard
+    text="Configuring - Aliases"
+    link="/docs/core/configuring/aliases"
+  />
+</Container>

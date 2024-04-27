@@ -1,7 +1,10 @@
 ---
-title: 'Rendering: Hydration'
-description: 'Learn how hydration works in Rasengan.js.'
+title: "Rendering: Hydration"
+description: "Learn how hydration works in Rasengan.js."
 ---
+
+import NextStepCard from "@components/molecules/NextStepCard";
+import Container from "@components/molecules/Container";
 
 # Hydration
 
@@ -24,3 +27,11 @@ Here is what happens during the hydration process:
 
 Rasengan.js uses the `ReactDOM.hydrateRoot` method to attach event listeners to the server-rendered HTML.
 
+## Next steps
+
+<Container>
+  <NextStepCard
+    text="Data Fetching"
+    link="/docs/core/rendering/data-fetching"
+  />
+</Container>

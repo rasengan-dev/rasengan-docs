@@ -1,10 +1,12 @@
 ---
-title: 'Routing: Dynamic Routes'
-description: 'Learn how to create dynamic routes in Rasengan.js.'
+title: "Routing: Dynamic Routes"
+description: "Learn how to create dynamic routes in Rasengan.js."
 ---
 
 import { Tabs } from "nextra/components";
 import AlertBox from "@components/atoms/Alert";
+import NextStepCard from "@components/molecules/NextStepCard";
+import Container from "@components/molecules/Container";
 
 # Dynamic Routes
 
@@ -20,7 +22,7 @@ Here is an example of a `Dynamic Route` to display a user's profile page.
     ```tsx filename="src/app/profile.page.tsx" {11} showLineNumbers copy
     import { PageComponent } from "rasengan";
 
-    const Profile: PageComponent = () => {  
+    const Profile: PageComponent = () => {
       return (
         <div>
           <h1>User Profile</h1>
@@ -56,6 +58,7 @@ Here is an example of a `Dynamic Route` to display a user's profile page.
 
     export default Profile;
     ```
+
   </Tabs.Tab>
 </Tabs>
 
@@ -71,7 +74,7 @@ To access the dynamic route parameters, you can use the `useParams` hook.
     ```tsx filename="src/app/profile.page.tsx" {4,9,14} showLineNumbers /useParams/  copy
     import { PageComponent, useParams } from "rasengan";
 
-    const Profile: PageComponent = () => {  
+    const Profile: PageComponent = () => {
       const { id } = useParams();
 
       return (
@@ -96,7 +99,7 @@ To access the dynamic route parameters, you can use the `useParams` hook.
     ```tsx filename="src/app/profile.page.jsx" {4,9,14} showLineNumbers /useParams/  copy
     import { useParams } from "rasengan";
 
-    const Profile = () => {  
+    const Profile = () => {
       const { id } = useParams();
 
       return (
@@ -134,7 +137,7 @@ You can also create a `Dynamic Route` with optional parameters.
     ```tsx filename="src/app/profile.page.tsx" {6,15} showLineNumbers copy
     import { PageComponent, useParams } from "rasengan";
 
-    const Profile: PageComponent = () => {  
+    const Profile: PageComponent = () => {
       const { id } = useParams();
 
       console.log(id) // id can be undefined
@@ -160,7 +163,7 @@ You can also create a `Dynamic Route` with optional parameters.
     ```tsx filename="src/app/profile.page.jsx" {6,15} showLineNumbers copy
     import { useParams } from "rasengan";
 
-    const Profile = () => {  
+    const Profile = () => {
       const { id } = useParams();
 
       console.log(id) // id can be undefined
@@ -257,3 +260,10 @@ You can also create a `Dynamic Route` with multiple parameters.
 You can chain multiple parameters in a `Dynamic Route` by separating them with a `/`.
 
 ## Next steps
+
+<Container>
+  <NextStepCard
+    text="Introduction to Rendering"
+    link="/docs/core/rendering/introduction"
+  />
+</Container>
