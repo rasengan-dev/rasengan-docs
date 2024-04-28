@@ -15,6 +15,12 @@ export default function Document() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@rasenganjs" />
         <meta name="twitter:creator" content="@dilanekombou" />
+
+        <script
+          data-domain="rasengan.dev"
+          src="https://plausible.io/js/script.js"
+          defer
+        ></script>
       </Head>
       <body>
         <Main />
