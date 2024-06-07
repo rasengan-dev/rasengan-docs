@@ -1,42 +1,41 @@
 ---
-title: 'API Reference: CLI'
-description: 'Learn how to use the Rasengan.js CLI to develop, build, and start your application.'
+title: "API Reference: CLI"
+description: "Learn how to use the Rasengan.js CLI to develop, build, and start your application."
 ---
 
-
-import AlertBox from '@components/atoms/Alert';
+import AlertBox from "@components/atoms/Alert";
 
 # Rasengan CLI
 
 The Rasengan.js CLI allows you to develop, build, start your application, and more.
 
-## development 
+## development
 
 `rasengan dev` starts the application in development mode with hot-code reloading, error reporting, and more.
 
-```bash filename="Terminal" copy
+```bash filename="terminal" copy
 rasengan dev
 ```
 
 This will start the application in development mode. The application will be available at `http://localhost:5320`.
 The default port can be changed with -p, like so:
 
-```bash filename="Terminal" copy
-rasengan dev -p 3000
+```bash filename="terminal" copy
+rasengan dev -p 30terminal
 ```
 
 Or configure it in the `rasengan.config.js` file:
 
 ```javascript filename="rasengan.config.js" copy {8}
-import { defineConfig } from 'rasengan';
+import { defineConfig } from "rasengan";
 
 export default defineConfig({
   reactStrictMode: true,
 
   server: {
     development: {
-      port: 3000
-    }
+      port: 3000,
+    },
   },
 });
 ```
@@ -46,7 +45,7 @@ And just run `rasengan dev` again.
 If you want to automatically open the browser after starting the development server, just enable the `server.development.open` property.
 
 ```javascript filename="rasengan.config.js" copy {9}
-import { defineConfig } from 'rasengan';
+import { defineConfig } from "rasengan";
 
 export default defineConfig({
   reactStrictMode: true,
@@ -54,8 +53,8 @@ export default defineConfig({
   server: {
     development: {
       port: 3000,
-      open: true
-    }
+      open: true,
+    },
   },
 });
 ```
@@ -64,14 +63,14 @@ export default defineConfig({
 
 `rasengan build` creates a production build of your application in the `dist` directory.
 
-```bash filename="Terminal" copy
-rasengan build
+```bash filename="terminal" copy
+rasengan buildterminal
 ```
 
 The output prompts showed is similar to the following:
 
-```bash filename="Terminal"
-vite v5.0.12 building for production...
+```bash filename="terminal"
+vite v5.0.12 buildterminalproduction...
 ✓ 68 modules transformed.
 dist/client/assets/worker-gQaxk6_E.js           0.15 kB
 dist/client/index.html                          0.53 kB │ gzip:  0.33 kB
@@ -91,37 +90,38 @@ dist/server/entry-server.js          14.77 kB │ map: 37.02 kB
 ✓ built in 893ms
 ```
 
-## prepare 
+## prepare
 
 `rasengan prepare` configure your application for production depending on the hosting strategy.
 
 You have to select a hosting strategy, which is `vercel` for now.
 
 ```javascript filename="rasengan.config.js" copy {8}
-import { defineConfig } from 'rasengan';
+import { defineConfig } from "rasengan";
 
 export default defineConfig({
   reactStrictMode: true,
 
   server: {
     production: {
-      hosting: "vercel"
-    }
-  }
+      hosting: "vercel",
+    },
+  },
 });
 ```
 
 <AlertBox type="tip">
-Actually, there is only one strategy supported, which is hosting on `vercel`. We are working on others.
+  Actually, there is only one strategy supported, which is hosting on `vercel`.
+  We are working on others.
 </AlertBox>
 
-```bash filename="Terminal" copy
+```bash filename="terminal" copy
 rasengan prepare
 ```
 
 The output prompts showed is similar to the following:
 
-```text filename="Terminal"
+```text filename="terminal"
 Preparing your project for production...
 
 Your project is configured to be hosted on vercel.
@@ -131,7 +131,7 @@ Your project is configured to be hosted on vercel.
 
 `rasengan start` starts the application in production mode.
 
-```bash filename="Terminal" copy
+```bash filename="terminal" copy
 rasengan start
 ```
 

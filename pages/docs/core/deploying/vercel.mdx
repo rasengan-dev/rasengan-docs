@@ -1,6 +1,6 @@
 ---
-title: 'Deploying: Hosting on Vercel'
-description: 'Learn how to deploy a Rasengan.js app to Vercel.'
+title: "Deploying: Hosting on Vercel"
+description: "Learn how to deploy a Rasengan.js app to Vercel."
 ---
 
 import NextStepCard from "@components/molecules/NextStepCard";
@@ -8,7 +8,7 @@ import Container from "@components/molecules/Container";
 
 # Deploying to Vercel
 
-Vercel is a cloud platform for static sites and Serverless Functions that fits perfectly with Rasengan.js. 
+Vercel is a cloud platform for static sites and Serverless Functions that fits perfectly with Rasengan.js.
 It enables developers to host websites and web services that deploy instantly, scale automatically, and require no supervision, all with minimal configuration.
 
 In this guide, you will learn how to deploy a Rasengan.js app to Vercel.
@@ -20,14 +20,14 @@ Before you start, You need to:
 - Have a Rasengan.js app ready to deploy. If you don't have one yet, you can create a new project using the [`create-rasengan` CLI](/docs/api-reference/create-rasengan).
 - Build you app locally, in order to be sure that there is no error that occurs during the build process. You can do this by running the following command:
 
-```bash filename="Terminal" copy
+```bash filename="terminal" copy
 npm run build
 ```
 
-- Prepare your app by defining a `serverless function` because Rasengan.js need to run on the server side. 
-Rasengan.js provides a simple way to create serverless functions using the [`Rasengan CLI`](/docs/api-reference/cli).
+- Prepare your app by defining a `serverless function` because Rasengan.js need to run on the server side.
+  Rasengan.js provides a simple way to create serverless functions using the [`Rasengan CLI`](/docs/api-reference/cli).
 
-  - Configure your `rasengan.config.js` file to use the `vercel` hosting strategy: 
+  - Configure your `rasengan.config.js` file to use the `vercel` hosting strategy:
 
   ```javascript filename="rasengan.config.js"
   import { defineConfig } from "rasengan";
@@ -37,13 +37,13 @@ Rasengan.js provides a simple way to create serverless functions using the [`Ras
       production: {
         hosting: "vercel",
       },
-    }
+    },
   });
   ```
 
   - Then create a new serverless function using the `rasengan` CLI:
 
-  ```bash filename="Terminal" copy
+  ```bash filename="terminal" copy
   npm run prepare
   ```
 
@@ -51,7 +51,7 @@ Rasengan.js provides a simple way to create serverless functions using the [`Ras
 
   - Finally, you can add new generated files and folders into your git repository:
 
-  ```bash filename="Terminal" copy
+  ```bash filename="terminal" copy
   git add .
   git commit -m "Add serverless function"
   ```
@@ -62,28 +62,28 @@ To deploy your Rasengan.js app to Vercel, you need to follow these steps:
 
 1. Install the Vercel CLI by running the following command:
 
-```bash filename="Terminal" copy
+```bash filename="terminal" copy
 npm install -g vercel
 ```
 
 2. Login to your Vercel account by running the following command:
 
-```bash filename="Terminal" copy
+```bash filename="terminal" copy
 vercel login
 ```
 
 3. Deploy your app by running the following command:
 
-```bash filename="Terminal" copy
+```bash filename="terminal" copy
 vercel
 ```
 
 4. Follow the instructions to deploy your app to Vercel. But, you have to change the following scripts used by vercel to deploy your app:
 
-```bash 
+```bash
 build command: npm run build
 development command: npm run dev
-``` 
+```
 
 5. Once the deployment is complete, you will get a URL where your app is hosted.
 

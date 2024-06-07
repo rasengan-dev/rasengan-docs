@@ -38,6 +38,10 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --primary: #2A7FFF;
+}
+
 body {
   font-family: "Urbanist-Regular";
 }
@@ -64,12 +68,16 @@ h6 {
   .hero-section {
     min-height: 600px;
   }
-}
+} 
 
 a {
   text-decoration: none !important;
-  color: inherit !important;
+  /* color: var(--primary) !important; */
 }
+/* 
+a.forced {
+  color: blue !important;
+} */
 
 button:disabled {
   cursor: not-allowed;

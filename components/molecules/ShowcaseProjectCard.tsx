@@ -1,7 +1,8 @@
+import Button from "@components/atoms/Button";
 import { ShowcaseDataType } from "data/showcase";
 import useTheme from "hooks/useTheme";
 import Image from "next/image";
-import { Link } from "nextra-theme-docs";
+import Link from "next/link";
 import { twMerge } from "tailwind-merge";
 
 type Props = {
@@ -22,7 +23,7 @@ export default function ShowcaseProjectCard({ data }: Props) {
             href={data.twitterProfile}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-primary"
+            className="text-primary forced"
           >
             {" "}
             {word}{" "}
@@ -37,7 +38,7 @@ export default function ShowcaseProjectCard({ data }: Props) {
   };
 
   return (
-    <Link href={data.link} className="no-underline-forced">
+    <>
       <article
         className={twMerge(
           "w-full hover:cursor-pointer border-[1px] rounded-lg transition-all no-underline",
@@ -53,9 +54,13 @@ export default function ShowcaseProjectCard({ data }: Props) {
 
         <div className="mt-2 px-4 pb-4">
           <h3 className="text-lg mb-2">{data.title}</h3>
-          <p>{handleParseDescription(data.description)}</p>
+          <p className="mb-4">{handleParseDescription(data.description)}</p>
+
+          <Link href={data.link} className="no-underline-forced" target="_blank">
+            <Button className="w-full" text="Open Preview"></Button>
+          </Link>
         </div>
       </article>
-    </Link>
+    </>
   );
 }

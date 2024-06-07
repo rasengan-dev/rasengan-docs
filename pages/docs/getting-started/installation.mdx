@@ -22,25 +22,15 @@ To create a project, run:
 
 <Tabs items={["npx", "npm", "yarn"]}>
   <Tabs.Tab>
-    ```bash filename="Terminal" copy 
-    npx create-rasengan@latest 
-    ```
+    ```bash filename="terminal" copy npx create-rasengan@latest ```
   </Tabs.Tab>
-  <Tabs.Tab>
-    ```bash filename="Terminal" copy 
-    npm create rasengan 
-    ```
-  </Tabs.Tab>
-  <Tabs.Tab>
-    ```bash filename="Terminal" copy 
-    yarn create rasengan 
-    ```
-  </Tabs.Tab>
+  <Tabs.Tab>```bash filename="terminal" copy npm create rasengan ```</Tabs.Tab>
+  <Tabs.Tab>```bash filename="terminal" copy yarn create rasengan ```</Tabs.Tab>
 </Tabs>
 
 On the installation process, you will see the following prompts:
 
-```txt filename="Terminal"
+```txt filename="terminal"
 You are using Create Rasengan CLI 🎉
 
 ? Enter the project name: my-app
@@ -50,7 +40,7 @@ You are using Create Rasengan CLI 🎉
 
 After the prompts, `create-rasengan` will create a folder with your project name. You will then have to install the required dependencies manually.
 
-```bash filename="Terminal" copy
+```bash filename="terminal" copy
 cd my-app
 npm install
 ```
@@ -59,7 +49,7 @@ npm install
 
 If you prefer to install Rasengan.js manually, you have to create a new project and install the required dependencies.
 
-```bash filename="Terminal" copy
+```bash filename="terminal" copy
 mkdir my-app
 cd my-app
 npm init -y
@@ -92,7 +82,7 @@ There are just two directories you need to create at the root level of your proj
 - `public`: contains static files that will be served by Rasengan.js, especially icons or images.
 - `src`: contains the source code of your application.
 
-```bash filename="Terminal" copy
+```bash filename="terminal" copy
 mkdir public src
 ```
 
@@ -100,7 +90,7 @@ Always at the root level, create the following file:
 
 - `rasengan.config.js`: the configuration file for Rasengan.js.
 
-```bash filename="Terminal" copy
+```bash filename="terminal" copy
 touch rasengan.config.js
 ```
 
@@ -123,13 +113,13 @@ See the [Configuration](/docs/api-reference/rasengan-config) section for more de
 
 Inside the `src` directory, create an `app` folder to store your application's pages.
 
-```bash filename="Terminal" copy
+```bash filename="terminal" copy
 mkdir src/app
 ```
 
 Then create a `home.page.tsx` and `app.router.ts` files inside the `app` directory:
 
-```bash filename="Terminal" copy
+```bash filename="terminal" copy
 touch src/app/home.page.tsx src/app/app.router.ts
 ```
 
@@ -148,8 +138,8 @@ After, copy and paste the following code into `home.page.tsx`
         <div>Home Page</div>
       )
     }
-    
-    Home.path = "/"; 
+
+    Home.path = "/";
     Home.metadata = {
       title: "Home",
       description: "Home page",
@@ -157,6 +147,7 @@ After, copy and paste the following code into `home.page.tsx`
 
     export default Home;
     ```
+
   </Tabs.Tab>
   <Tabs.Tab>
     ```jsx filename="home.page.jsx" showLineNumbers copy
@@ -174,6 +165,7 @@ After, copy and paste the following code into `home.page.tsx`
 
     export default Home;
     ```
+
   </Tabs.Tab>
 </Tabs>
 
@@ -216,7 +208,7 @@ Do the same for `app.router.js`
 
 Finally, create the entry file called `main.tsx` and the `template.tsx` file inside the `src` folder.
 
-```bash filename="Terminal" copy
+```bash filename="terminal" copy
 touch src/main.tsx src/template.tsx
 ```
 
@@ -250,6 +242,7 @@ Then add the following content inside the `template.tsx`:
       );
     }
     ```
+
   </Tabs.Tab>
   <Tabs.Tab>
     ```jsx filename="template.jsx" showLineNumbers copy
@@ -313,12 +306,11 @@ Learn more about [`main.tsx`](/docs/api-reference/file-conventions/main) file.
   required.
 </AlertBox>
 
-
 ### Add extract configuration file for `TypeScript`.
 
 At the root level of your project, create a `tsconfig.json` and `rasengan-env.d.ts` file.
 
-```bash filename="Terminal" copy
+```bash filename="terminal" copy
 touch tsconfig.json rasengan-env.d.ts
 ```
 
@@ -365,11 +357,11 @@ and add the following content to the `rasengan-env.d.ts` file:
 ### Next Steps
 
 <Container>
-  <NextStepCard 
+  <NextStepCard
     text="Project Structure"
     link="/docs/getting-started/project-structure"
   />
-  <NextStepCard 
+  <NextStepCard
     text="Routing Base Concepts"
     link="/docs/core/routing/base-concepts"
   />
