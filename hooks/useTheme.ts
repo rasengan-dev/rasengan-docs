@@ -13,10 +13,14 @@ export default function useTheme() {
   const [refresh, setRefresh] = useState(false);
 
   useEffect(() => {
-    if (theme === "system") {
-      setTheme(baseTheme);
-    } else {
-      setTheme("light")
+    if (refresh) {
+      if (theme === "system") {
+        setTheme(baseTheme);
+      } else {
+        setTheme("light")
+      }
+
+      setRefresh(false);
     }
   }, [refresh]);
 
